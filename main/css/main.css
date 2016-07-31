@@ -8,52 +8,69 @@ body {
     height: 100%;
     margin: 0;
     padding-top: 0;
-    overflow-y:hidden;
-    overflow-x: scroll;
+
+}
+div.head {
+    position: relative;
+    height: 15%;
+    width: 100%;
+}
+div.body {
+    height: 85%;
+    width: 100%;
 }
 nav {
     position: fixed;
     width: 100%;
-    height: 70px;
+    height: inherit;
     background-color: #ffffff;
     z-index: 1000;
 }
+#DIADOZLOGO {
+    position: absolute;
+    height: 50%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
 img {
     height: 100%;
-    box-sizing: border-box;
+
     display: block;
 }
 
 table {
-    float: left;
     position: relative;
+    height: 100%;
+    float: left;
     width: inherit;
     padding: 0;
-    border: none;
+    border: 5px red;
     border-spacing: 0px;
-    top:100px;
-
 
 }
+
 td {
-    height: 75%;
+    height: 100%;
     padding: 0;
 }
 
 div.entry-wrap {
     position: relative;
+    overflow: hidden;
     display: block;
-    height: 600px;
+    height: 600px;/*needs to dynamically change px value to 70% of the body size, perhaps javascript*/
 }
 
 header {
-    font-family: Arial;
     color: white;
     position: absolute;
     bottom: 0;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.20);
+    background-color: rgba(0, 0, 0, 0.25);
     width: 100%;
     transition: background-color 0.5s;
     transition-timing-function: linear;
@@ -62,7 +79,7 @@ header:hover {
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.12);
     width: 100%;
 }
 a {
@@ -85,8 +102,3 @@ p.BlockInfo:hover {
     text-shadow: 0 0 2px rgba(255,255,255,0.03),0 0 2px rgba(255,255,255,0.03),0 0 2px rgba(255,255,255,0.62),0 0 2px rgba(255,255,255,0.1),0 0 2px rgba(255,255,255,0.1),0 0 2px rgba(255,255,255,0.1),0 0 2px rgba(255,255,255,0.1),0 0 2px rgba(255,255,255,0.1);
 }
 
-#DIADOZLOGO {
-    position: absolute;
-    height: 100px;
-    left: 45%;
-}
