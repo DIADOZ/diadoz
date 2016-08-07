@@ -43,9 +43,8 @@ img {
 
 table {
     position: relative;
-    height: 100%;
     float: left;
-    width: inherit;
+    width: auto;
     padding: 0;
     border: 5px red;
     border-spacing: 0px;
@@ -53,7 +52,7 @@ table {
 }
 
 td {
-    height: 100%;
+    margin: 0;
     padding: 0;
 }
 
@@ -61,7 +60,7 @@ div.entry-wrap {
     position: relative;
     overflow: hidden;
     display: block;
-    height: 600px;/*needs to dynamically change px value to 70% of the body size, perhaps javascript*/
+    /*needs to dynamically change px value to 70% of the body size, perhaps javascript*/
 }
 
 header {
