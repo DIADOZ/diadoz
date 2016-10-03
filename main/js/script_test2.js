@@ -1,8 +1,3 @@
-/**
- * Created by renzodiaz on 8/6/16.
- */
-
-
 var http = require("http");
 
 http.createServer(function (request, response) {
