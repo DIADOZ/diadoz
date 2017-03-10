@@ -2,13 +2,13 @@ body{
     margin: 30px 0px 50px 0px;
 }
 
-.header{
+.logo-container{
     width: 100%;
     border-bottom: 5px black;
     margin-bottom: 100px;
 }
 
-.header img{
+.logo-container img{
     height: 80px;
     width: 263.562px;
 }
