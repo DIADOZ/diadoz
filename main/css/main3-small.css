@@ -14,12 +14,12 @@ body {
     font-size: 62.5%;
 }
 
-.logo-container{
+.footer-banner{
     width: 100%;
     height: 10%;
 }
 
-.logo-container img{
+.footer-banner img{
     width: 21%;
     display: block;
     /*position: absolute;*/
