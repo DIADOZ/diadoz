@@ -81,10 +81,10 @@ body {
     height: 100%;
     float: left;
     position: relative;
-    display: table-row;
+    /*display: table-row;*/
     margin: 0 auto;
     overflow: auto;
-    padding-bottom: 62.5%;
+    /*padding-bottom: 62.5%;*/
 
     /*styling*/
     background: white;
@@ -124,7 +124,7 @@ body {
     text-shadow: none;
 }
 
-header{
+.tile-overlay{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -135,10 +135,10 @@ header{
     transition-timing-function: linear;
     display: inline-block;
     margin: 0 auto;
-    padding-bottom: 75%;
+    padding: 0;
 }
 
-header:hover{
+.tile-overlay:hover{
     position: absolute;
     bottom: 0;
     left: 0;
