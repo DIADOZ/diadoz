@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22ce3133-41e4-4e87-91cc-d64282cec447" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/html/main4.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/IMG_2270.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/chance-8-5.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/drake-4-3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/drake-8-5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/drake-8-6.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/drake-large.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/giphy-1.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/kanye-16-9.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/kanye-8-5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/kanye-og.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/primeDIADOZ-white-rotated.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/primeDIADOZ-white.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/raesremmurd.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/tylon-8-5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/diadoz-logo.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/diadoz-mikey.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/img/diadoz.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="diadoz-1.0.iws" />
@@ -494,7 +510,7 @@
       <workItem from="1490054455563" duration="150000" />
       <workItem from="1490054645999" duration="12000" />
       <workItem from="1490054678048" duration="36000" />
-      <workItem from="1490054745724" duration="4933000" />
+      <workItem from="1490054745724" duration="5010000" />
     </task>
     <task id="LOCAL-00001" summary="trying a cleaner code for main page">
       <created>1482566720563</created>
@@ -538,11 +554,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490072726502</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made for the home page tiles keep proportions once window height resizes">
+      <created>1490132616871</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1490132616871</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115103000" />
+    <option name="totallyTimeSpent" value="115180000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
