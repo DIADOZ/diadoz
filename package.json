@@ -1,0 +1,22 @@
+{
+  "name": "diadoz-1.0",
+  "version": "1.0.0",
+  "description": "First version of the DIADOZ website",
+  "main": "/diadoz-UI/main/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DIADOZ/diadoz-1.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DIADOZ/diadoz-1.0/issues"
+  },
+  "homepage": "https://github.com/DIADOZ/diadoz-1.0#readme",
+  "dependencies": {
+    "mongodb": "^2.2.26"
+  }
+}

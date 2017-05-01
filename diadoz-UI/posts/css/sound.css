@@ -1,0 +1,83 @@
+body{
+    margin: 30px 0px 50px 0px;
+}
+
+.footer-banner{
+    width: 100%;
+    border-bottom: 5px black;
+    margin-bottom: 100px;
+}
+
+.footer-banner img{
+    height: 80px;
+    width: 263.562px;
+}
+
+.footer-banner{
+    height: 80px;
+    width: 263.562px;
+    margin: 0px auto;
+}
+
+.photo-header-wrapper {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+}
+
+.photo-header-wrapper img {
+    width: 100%;
+}
+
+.art-card{
+    margin: 0 auto;
+    width: 600px;
+    min-height: 300px;
+    background-color: #fdfdfd;
+    box-shadow: 1px 2px 4px #c7c7c7;
+}
+
+.art-card-containter{
+    margin: 0;
+    padding: 20px;
+}
+
+.art-card-header{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0px 0px 10px 0px;
+}
+
+.art-card-header .h1{
+    margin: 0;
+    padding: 0;
+}
+
+p.card-text-body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-shadow: 0px 0px .01px gray;
+    word-spacing: .3px;
+    font-size: 15px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.column-body{
+    margin: 0 auto;
+    max-width: 750px;
+    background-color: white;
+}
+
+.sound-wrapper {
+    margin: 20px 0px 20px 0px;
+}
