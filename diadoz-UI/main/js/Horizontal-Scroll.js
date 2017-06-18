@@ -11,12 +11,11 @@ function horizontalFunction(x) {
             event.preventDefault();
             this.scrollLeft -= (delta * .6);
         });
-
     });
     }
 }
 
 
-var x = window.matchMedia("screen and (orientation: landscape)")
+var x = window.matchMedia("only screen and (orientation: landscape)")
 horizontalFunction(x)
 x.addListener(horizontalFunction)

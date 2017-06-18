@@ -29,24 +29,26 @@
     }
 
     .footer-banner {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 9%;
         bottom: 0;
         overflow: hidden;
+        /*background-color: red;*/
     }
 
     .footer-banner img {
-        width: 10%;
+        max-width: 100px;
+        /*width: 10%;*/
         position: absolute;
-        left: 0;
-        right: 0;
+        /*left: 0;*/
+        right: 20px;
         top: 0;
         bottom: 0;
         margin: 0 auto;
-        opacity: 0.3;
-        transition: opacity 0.5s;
-        transition-timing-function: ease;
+        /*opacity: 0.3;*/
+        /*transition: opacity 0.5s;*/
+        /*transition-timing-function: ease;*/
     }
 
     .footer-banner img:hover {
@@ -85,21 +87,17 @@
         background: white;
     }
 
-    .tile-photo {
-
-    }
-
     .tile-text {
         /*from main.css BlockInfo*/
         /*font-family: Harriet, "Georgia", serif;*/
         /*width: 100%;*/
         display: inline-block;
         font-family: 'Montserrat', sans-serif;
-        font-size: 3.8em;
+        font-size: 300%;
         font-weight: bolder;
         -webkit-font-smoothing: antialiased;
-        margin-top: 30px;
-        margin-left: 40px;
+        margin-top: 2%;
+        margin-left: 2%;
         transition: text-shadow .5s;
         transition-timing-function: ease;
         text-transform: uppercase;
@@ -139,7 +137,34 @@
         width: 100%;
     }
 }
-@media screen and (orientation: landscape){
+
+@media only screen and (orientation: portrait) {
+
+    .tile-container {
+        width: 100%;
+        height: 100%;
+        float: left;
+        display: inline-block;
+    }
+
+    .tile {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        /*float: left;*/
+        position: relative;
+    }
+
+    .tile-photo {
+        width: 100%;
+    }
+
+    .tile-overlay {
+        width: 100%;
+    }
+}
+
+@media only screen and (orientation: landscape){
 
     html {
         overflow-y: hidden;
@@ -170,30 +195,4 @@
     .tile-overlay {
         width: 100%;
     }
-}
-
-@media (orientation: portrait) {
-
-    .tile-container {
-        width: 100%;
-        height: 100%;
-        float: left;
-        display: inline-block;
-    }
-
-    .tile {
-        width: 100%;
-        /*float: left;*/
-        position: relative;
-    }
-
-    .tile-photo {
-        width: 100%;
-    }
-
-    .tile-overlay {
-        /*height: 100%;*/
-        width: 100%;
-    }
-
 }
