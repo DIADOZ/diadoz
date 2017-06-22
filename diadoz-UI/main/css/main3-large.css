@@ -93,7 +93,7 @@
         /*width: 100%;*/
         display: inline-block;
         font-family: 'Montserrat', sans-serif;
-        font-size: 300%;
+        font-size: 250%;
         font-weight: bolder;
         -webkit-font-smoothing: antialiased;
         margin-top: 2%;
@@ -147,7 +147,7 @@
         display: inline-block;
     }
 
-    .tile {
+    .tile {/*this is the this that is fucking up the resize*/
         width: 100%;
         padding: 0;
         margin: 0 auto;
