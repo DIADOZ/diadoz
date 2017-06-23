@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22ce3133-41e4-4e87-91cc-d64282cec447" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Cowabunga.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/DUUUUUUUUUUUUUDE2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Halloween.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Ifeelitcoming.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Kiim.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Stars.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/Tiger1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/babababa.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/billybaloney.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/rabbithole.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/main/img/trey_abdella_gallery/tiger_cover_8_5.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/renzodiaz.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/posts/css/gallery.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/diadoz-UI/posts/html/trey-abdella-local-showcase.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css" afterPath="$PROJECT_DIR$/diadoz-UI/main/css/main3.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css" afterPath="$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/main/html/main3.html" afterPath="$PROJECT_DIR$/diadoz-UI/main/html/main3.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js" afterPath="$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js" afterPath="$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/posts/css/sound.css" afterPath="$PROJECT_DIR$/diadoz-UI/posts/css/sound.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html" afterPath="$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/posts/css/video.css" afterPath="$PROJECT_DIR$/diadoz-UI/posts/css/video.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html" afterPath="$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html" afterPath="$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html" />
     </list>
     <list id="af6d89aa-54d7-4a43-b7cd-7a49d41ca951" name="Media querie fix" comment="" />
     <ignored path="diadoz-1.0.iws" />
@@ -43,26 +30,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main3.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main3.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/diadoz-UI/main/html/main3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="78" column="82" lean-forward="false" selection-start-line="78" selection-start-column="82" selection-end-line="78" selection-end-column="82" />
+            <state relative-caret-position="368">
+              <caret line="96" column="49" lean-forward="false" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
               <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#header#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main3-large.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css">
+      <file leaf-file-name="main3.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/main/css/main3.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="153" column="24" lean-forward="false" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
+            <state relative-caret-position="576">
+              <caret line="122" column="16" lean-forward="false" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Image-Resize.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Horizontal-Scroll.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -71,38 +79,48 @@
       <file leaf-file-name="tylon-cartier-bracelet.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="45">
+              <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sound.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="kanye-west-wolves-video.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="72" lean-forward="false" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chance-the-rapper-same-drugs-video.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="72" lean-forward="false" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="video.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/video.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sound.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/sound.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trey-abdella-local-showcase.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/trey-abdella-local-showcase.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gallery.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/gallery.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="795">
+              <caret line="53" column="4" lean-forward="true" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -113,9 +131,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -168,18 +186,21 @@
         <option value="$PROJECT_DIR$/main/css/main3-large.css" />
         <option value="$PROJECT_DIR$/main/js/Horizontal-Scroll.js" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/css/header.css" />
-        <option value="$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html" />
-        <option value="$PROJECT_DIR$/diadoz-UI/posts/css/video.css" />
-        <option value="$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js" />
-        <option value="$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js" />
         <option value="$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css" />
         <option value="$PROJECT_DIR$/../../../DIADOZGrandSlam/Main.html" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/html/trey-abdella-gallery-local-showcase.html" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/html/trey-abdella-local-showcase.html" />
-        <option value="$PROJECT_DIR$/diadoz-UI/main/html/main3.html" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/css/gallery.css" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html" />
         <option value="$PROJECT_DIR$/diadoz-UI/posts/css/sound.css" />
+        <option value="$PROJECT_DIR$/diadoz-UI/posts/css/video.css" />
+        <option value="$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html" />
+        <option value="$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html" />
+        <option value="$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js" />
+        <option value="$PROJECT_DIR$/diadoz-UI/main/css/main3.css" />
+        <option value="$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize-Portrait.js" />
+        <option value="$PROJECT_DIR$/diadoz-UI/main/html/main3.html" />
+        <option value="$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js" />
       </list>
     </option>
   </component>
@@ -193,8 +214,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="404" />
-    <option name="width" value="1036" />
+    <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -468,11 +488,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.tylon-cartier-bracelet.html">
+  <component name="RunManager" selected="JavaScript Debug.main3.html">
     <configuration default="false" name="main3.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="main3.js" working-dir="$PROJECT_DIR$/main/js">
       <method />
     </configuration>
     <configuration default="false" name="tylon-cartier-bracelet.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/diadoz-1.0/diadoz-UI/posts/html/tylon-cartier-bracelet.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="kanye-west-wolves-video.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/diadoz-1.0/diadoz-UI/posts/html/kanye-west-wolves-video.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="main3.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/diadoz-1.0/diadoz-UI/main/html/main3.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -541,14 +567,18 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Node.js.main3.js" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.tylon-cartier-bracelet.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.kanye-west-wolves-video.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.main3.html" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.tylon-cartier-bracelet.html" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.main3.js" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.main3.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.kanye-west-wolves-video.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.tylon-cartier-bracelet.html" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.main3.js" />
       </list>
     </recent_temporary>
   </component>
@@ -598,7 +628,7 @@
       <workItem from="1495243516016" duration="606000" />
       <workItem from="1496770560072" duration="6433000" />
       <workItem from="1497555514368" duration="810000" />
-      <workItem from="1497738989308" duration="20111000" />
+      <workItem from="1497738989308" duration="26511000" />
     </task>
     <task id="LOCAL-00001" summary="trying a cleaner code for main page">
       <created>1482566720563</created>
@@ -684,11 +714,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497896093438</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="mobile first approach to the sound page (i.e. tylon - practice)">
+      <created>1498174793438</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1498174793438</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165864000" />
+    <option name="totallyTimeSpent" value="172264000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -700,24 +737,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="404" y="0" width="1036" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24630542" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3586207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277849" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3759036" sideWeight="0.5046512" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31566265" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3759036" sideWeight="0.49534884" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35301206" sideWeight="0.49534884" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -782,14 +820,14 @@
     <MESSAGE value="Media querie fix" />
     <MESSAGE value="new logo placeholder, bottom right of screen. &#10;&#10;comment: I like the feel of this logo protoype better than the other one." />
     <MESSAGE value="favicon added" />
-    <option name="LAST_COMMIT_MESSAGE" value="favicon added" />
+    <MESSAGE value="mobile first approach to the sound page (i.e. tylon - practice)" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile first approach to the sound page (i.e. tylon - practice)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/html/main4.html" />
     <entry file="file://$PROJECT_DIR$/admin/html/admin.html" />
     <entry file="file://$PROJECT_DIR$/main/js/Image-Resize.js" />
     <entry file="file://$PROJECT_DIR$/main/css/main3-small.css" />
@@ -839,14 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/jquery.mousewheel.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -860,14 +890,6 @@
     <entry file="file://$PROJECT_DIR$/diadoz-UI/main/img/logo/logo_midevil_black_transparent.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/video.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/ernest-baker-drake-in-real-life.html">
@@ -937,22 +959,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../DIADOZGrandSlam/Main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1011,14 +1017,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/script_test2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1032,19 +1030,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/html/main3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="78" column="82" lean-forward="false" selection-start-line="78" selection-start-column="82" selection-end-line="78" selection-end-column="82" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1072,27 +1057,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/css/main3-large.css">
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/video.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="153" column="24" lean-forward="false" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
+        <state relative-caret-position="299">
+          <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html">
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Horizontal-Scroll.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        <state relative-caret-position="240">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/css/sound.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="795">
+          <caret line="53" column="4" lean-forward="true" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/chance-the-rapper-same-drugs-video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="72" lean-forward="false" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/tylon-cartier-bracelet.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/posts/html/kanye-west-wolves-video.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="72" lean-forward="false" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize-Portrait.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/js/Image-Resize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/css/main3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="122" column="16" lean-forward="false" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/main/html/main3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="96" column="49" lean-forward="false" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
+          <folding>
+            <element signature="n#header#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

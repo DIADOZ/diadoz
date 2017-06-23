@@ -1,35 +1,52 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default*/
+
+html{
+    width: 100%
+}
 body{
-    margin: 0px 0px 50px 0px;
-}
-
-.footer-banner{
-
+    margin: 0px;
     width: 100%;
-    border-bottom: 5px black;
-    margin-bottom: 100px;
-}
-
-.footer-banner img{
-    height: 80px;
-    width: 263.562px;
-}
-
-.footer-banner{
-    height: 80px;
-    width: 263.562px;
-    margin: 0px auto;
+    overflow-x: hidden;
 }
 
 .container{
+    display: block;
     position: relative;
-    width: 100%;
+    padding: 8px;
+    width: auto;
     height: 100%;
     background-color: white;
+    /*padding: 10px;*/
+
+}
+
+.header{
+    position: relative;
+    width: 100%;
+    /*background-color: black;*/
+    margin: 10px 0px 50px 0px;
+
+}
+.logo-container{
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    /*background-color: yellow;*/
+    position: relative;
+
+}
+
+.logo-container img {
+    width: 100%;
+    /*background-color: red;*/
+
 }
 
 .column-body{
+    display: block;
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     background-color: white;
 }
 
@@ -38,7 +55,7 @@ body{
     padding-bottom: 56.25%; /* 16:9 */
     /*padding-top: 25px;*/
     height: 0;
-    margin-bottom: 100px;
+    margin: 20px 0px 20px 0px;
 }
 
 .video-wrapper iframe{
@@ -50,15 +67,15 @@ body{
 }
 
 .art-card{
-    margin: 0 auto;
-    width: 600px;
+    margin: 0px auto;
+    max-width: 600px;
     min-height: 300px;
     background-color: #fdfdfd;
-    box-shadow: 1px 2px 4px #c7c7c7;
+    box-shadow: .5px 1px 9px 1px #c7c7c7;
 }
 
 .art-card-containter{
-    margin: 0;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -77,11 +94,6 @@ body{
     padding: 0;
 }
 
-span.media-type{
-    /*TODO: Make the line spacing closer to the header*/
-    font-size: 20px;
-}
-
 p.card-text-body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     text-shadow: 0px 0px .01px gray;
@@ -89,5 +101,60 @@ p.card-text-body {
     font-size: 15px;
     line-height: 24px;
     margin: 0;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+
+    .art-card{
+        margin: 0px auto;
+        max-width: 600px;
+        min-height: 300px;
+        background-color: #fdfdfd;
+        box-shadow: .5px 1px 9px 1px #c7c7c7;
+    }
+
+    .art-card-containter{
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .art-card-header{
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        font-size: 35px;
+        line-height: 40px;
+        font-weight: bolder;
+        margin: 0;
+        padding: 0px 0px 10px 0px;
+    }
+
+    .art-card-header .h1{
+        margin: 0;
+        padding: 0;
+    }
+
+    p.card-text-body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        text-shadow: 0px 0px .01px gray;
+        word-spacing: .3px;
+        font-size: 15px;
+        line-height: 24px;
+        margin: 0;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
 }
 
