@@ -1,22 +1,47 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default*/
+
+html{
+    width: 100%
+}
 body{
-    margin: 30 0 50 0;
-}
-
-.footer-banner{
+    margin: 0px;
     width: 100%;
-    border-bottom: 5px black;
-    margin-bottom: 100px;
+    overflow-x: hidden;
 }
 
-.footer-banner img{
-    height: 80px;
-    width: 263.562px;
+.header{
+    position: relative;
+    width: 100%;
+    /*background-color: black;*/
+    margin: 10px 0px 50px 0px;
+
 }
 
-.footer-banner{
-    height: 80px;
-    width: 263.562px;
-    margin: 0px auto;
+.container{
+    display: block;
+    position: relative;
+    /*padding: 8px;*/
+    width: auto;
+    height: 100%;
+    background-color: white;
+    /*padding: 10px;*/
+
+}
+
+.logo-container{
+    width: 250px;
+    height: auto;
+    margin: 0 auto;
+    /*background-color: yellow;*/
+    position: relative;
+
+}
+
+.logo-container img {
+    width: 100%;
+    /*background-color: red;*/
+
 }
 
 .editorial-header{
@@ -27,10 +52,6 @@ body{
     font-weight: bolder;=
 }
 
-.editorial-header h1 {
-
-}
-
 .photo-header-wrapper {
     width: 100%;
     margin: 20px 0px 20px 0px;
@@ -39,27 +60,70 @@ body{
     width: 100%;
 }
 
-.container{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-}
-
 .column-body{
-    margin: 0 auto;
-    max-width: 70%;
-    background-color: white;
+    padding: 16px;
 }
 
-.editorial-body {
+.editorial-body{
+    font-family: Georgia, serif;
+    font-size: 1.1em; /*1.063em = 17px*/
+    font-weight: 500; /*possibly < 300*/
+    font-style: normal;
+    letter-spacing: 0.01em;
+
+    line-height: 1.6em;
+
     margin: 0 auto;
-    font-size: 21px;
+
     max-width: 740px;
-    color: rgba(0,0,0,.8);
+    color: black;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.4;
-    font-weight: 400;
-    font-style: normal;
+
+
+}
+
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+    .container{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+
+    .column-body{
+        margin: 0 auto;
+        max-width: 70%;
+        background-color: white;
+    }
+
+    .editorial-body {
+        margin: 0 auto;
+        font-size: 21px;
+        max-width: 740px;
+        color: rgba(0,0,0,.8);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.4;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
 }

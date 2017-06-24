@@ -90,10 +90,10 @@ a {
     background-color: rgba(0, 0, 0, 0.35);
     transition: background-color 0.5s;
     transition-timing-function: linear;
-    display: inline-block;
     margin: 0;
     padding: 0;
     width: 100%;
+    /*color: yellow;*/
 }
 
 .tile-overlay:hover {
@@ -104,12 +104,16 @@ a {
     width: 100%;
 }
 
-
-
+.body-container {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
 
 .tile-container {
     width: 100%;
-    height: 100%;
+
 }
 
 .tile {/*this is the this that is fucking up the resize*/
