@@ -1,0 +1,84 @@
+
+.art-card{
+    position: relative;
+    margin: 0px auto;
+    max-width: 600px;
+    min-height: 300px;
+    background-color: #fdfdfd;
+    box-shadow: .5px 1px 9px 1px #c7c7c7;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
+}
+
+@media screen and (orientation: landscape){
+
+    html {
+        /*overflow-y: hidden;*/
+        height: 0%;
+    }
+    body{
+        height: 100%;
+    }
+
+    .body-container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        /*padding: 0px;*/
+        /*overflow: hidden;*/
+    }
+
+    .tile-container {
+        /*vertical centering*/
+        background-color: darkgreen;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: 0;
+        clear: both;
+        width: 10000px;
+        height: 100%;
+        float: left;
+        display: inline-block;
+    }
+
+    .tile {
+        background-color: orangered;
+        height: 100%;
+        width: auto;
+        float: left;
+        position: relative;
+        overflow-y: hidden;
+        /*display: inline-block;*/
+        margin: 0 auto;
+        /*display: block;*/
+    }
+
+    .tile-photo {
+        background-color: black;
+        height: 100%;
+    }
+
+    .art-card-text{
+        width: 600px;
+    }
+}
