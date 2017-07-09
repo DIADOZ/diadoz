@@ -16,4 +16,4 @@ function horizontalFunction(x) {
 
 var x = window.matchMedia("screen and (orientation: landscape)");
 horizontalFunction(x);
-x.addListener(horizontalFunction);
+x.addListener(horizontalFunction(x));
