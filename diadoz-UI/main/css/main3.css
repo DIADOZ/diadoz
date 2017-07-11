@@ -1,18 +1,5 @@
-html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
-    background-color: red;
-}
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default*/
 
 a {
     text-decoration: none;
@@ -52,7 +39,6 @@ a {
     transition-timing-function: linear;
 }
 
-
 .tile-text {
     /*from main.css BlockInfo*/
     /*font-family: Harriet, "Georgia", serif;*/
@@ -90,9 +76,10 @@ a {
     background-color: rgba(0, 0, 0, 0.35);
     transition: background-color 0.5s;
     transition-timing-function: linear;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    width: 100%;
+    width: 100vw;
+    display: block;
     /*color: yellow;*/
 }
 
@@ -104,30 +91,69 @@ a {
     width: 100%;
 }
 
-.body-container {
-    position: relative;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0px;
+
+@media screen and (orientation: portrait) {
+
+    html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 62.5%;
+        background-color: red;
+    }
+
+
+
+    .body-container {
+        position: relative;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0px;
+    }
+
+    .tile-container {
+        width: 100%;
+
+    }
+
+    .tile { /*this is the this that is fucking up the resize*/
+        width: 100%;
+        height: auto;
+        margin: 0;
+        position: relative;
+    }
+
+    .tile-photo {
+        width: 100%;
+        display: flex;
+        /*margin: 0;*/
+    }
 }
 
-.tile-container {
-    width: 100%;
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
 
 }
 
-.tile {/*this is the this that is fucking up the resize*/
-    width: 100%;
-    height: auto;
-    margin: 0;
-    position: relative;
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
 }
 
-.tile-photo {
-    width: 100%;
-    /*margin: 0;*/
-}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 
+
+}
 
 @media screen and (orientation: landscape){
 
@@ -135,16 +161,24 @@ a {
         overflow-y: hidden;
     }
 
+    body{
+        height: 100vh;
+        margin: 0 auto;
+    }
+
     .body-container {
         position: relative;
         height: 100%;
         margin: 0 auto;
-        padding: 0px;
+        display: block;
         overflow: hidden;
+        /*padding: 0px;*/
+        /*overflow: hidden;*/
     }
 
     .tile-container {
         /*vertical centering*/
+        /*background-color: darkgreen;*/
         margin: auto;
         position: absolute;
         top: 0;
@@ -152,21 +186,20 @@ a {
         right: auto;
         bottom: 0;
         clear: both;
-        background: white;
-        width: 10000px;
-        height: 100%;
+        min-width: 100px;
+        height: 100vh;
         float: left;
-        display: inline-block;
+        display: inline-flex;
     }
 
     .tile {
-        height: 100%;
+        height: 100vh;
+        /*width: 100%;*/
         float: left;
         position: relative;
         overflow-y: hidden;
-        /*display: table-row;*/
-        margin: 0 auto;
-        background: white;
+        display: inline-flex;
+        margin: auto;
     }
 
     .tile-photo {
