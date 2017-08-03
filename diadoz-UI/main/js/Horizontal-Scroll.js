@@ -7,7 +7,15 @@ function horizontalFunction(x) {
     $(function (x) {
         $(".body-container").mousewheel(function (event, delta) {
             event.preventDefault();
-            this.scrollLeft -= (delta * .4);
+
+            var isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+
+            if(isMac){
+                this.scrollLeft -= (delta * .9);
+            } else {
+                this.scrollLeft -= (delta * 150);
+            }
+
         });
     });
     }

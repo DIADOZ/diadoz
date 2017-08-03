@@ -24,10 +24,14 @@ a {
     /*width: 10%;*/
     position: absolute;
     /*left: 0;*/
+
+
     right: 20px;
     top: 0;
     bottom: 0;
     margin: 0 auto;
+
+
     /*opacity: 0.3;*/
     /*transition: opacity 0.5s;*/
     /*transition-timing-function: ease;*/
