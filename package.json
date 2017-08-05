@@ -2,7 +2,7 @@
   "name": "diadoz-1.0",
   "version": "1.0.0",
   "description": "First version of the DIADOZ website",
-  "main": "/diadoz-UI/main/main.js",
+  "main": "/diadoz-UI/main/html/main3.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/DIADOZ/diadoz-1.0#readme",
   "dependencies": {
-    "mongodb": "^2.2.26"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.26",
+    "mongoose": "^4.11.5"
   }
 }
