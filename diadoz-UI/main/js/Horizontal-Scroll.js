@@ -8,6 +8,7 @@ function horizontalFunction(x) {
         $(".body-container").mousewheel(function (event, delta) {
             event.preventDefault();
 
+            //variable to check if MAC
             var isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 
             if(isMac){
