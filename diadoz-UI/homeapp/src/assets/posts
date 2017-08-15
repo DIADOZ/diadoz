@@ -1,0 +1,47 @@
+[
+  {
+    "userId":1,
+    "id":1,
+    "title":"Wolves",
+    "artist":"Kanye West",
+    "type":"song",
+    "image":"kanye-8-5.jpg",
+    "link":"kanye-west-wolves-video.html"
+  },
+  {
+    "userId":1,
+    "id":2,
+    "title":"Same Drugs",
+    "artist":"Chance The Rapper",
+    "type":"song",
+    "image":"chance-8-5.gif",
+    "link":"chance-the-rapper-same-drugs-video.html"
+  },
+  {
+    "userId":2,
+    "id":3,
+    "title":"Drake in Real Life",
+    "artist":"Ernest Baker",
+    "type":"editorial",
+    "image":"drake-8-5.jpg",
+    "link":"ernest-baker-drake-in-real-life.html"
+  },
+  {
+    "userId":2,
+    "id":4,
+    "title":"Practice",
+    "artist":"Tylon",
+    "type":"song",
+    "image":"ktylon-8-5.jpg",
+    "link":"tylon-cartier-bracelet.html"
+  },
+  {
+    "userId":1,
+    "id":5,
+    "title":"Local Showcase",
+    "artist":"Trey Abdella",
+    "type":"gallery",
+    "image":"tiger_cover_8_5.jpg",
+    "link":"trey-abdella-local-showcase.html"
+  }
+]
