@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import {post} from "selenium-webdriver/http";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import {post} from "selenium-webdriver/http";
 })
 export class HomeComponent implements OnInit {
   posts: Posts[];
+  logo = './assets/img/logo/diadoz-white-logo-2017.svg';
 
   constructor(private dataService: DataService ) { }
 
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
     this.dataService.getPosts().subscribe((posts) => {
       this.posts = posts;
     });
+
+
 
   }
 
