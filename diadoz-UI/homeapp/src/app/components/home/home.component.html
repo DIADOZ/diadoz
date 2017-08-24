@@ -3,7 +3,7 @@
     <div class="tile" *ngFor="let post of posts" id="tile{{post.id}}">
       <header class="tile-overlay">
         <p class="tile-text">
-          <a href="">
+          <a routerLink="/home/{{post.id}}">
             <strong>{{post.title}}</strong>
             <br>{{post.artist}}
           </a>
@@ -15,9 +15,12 @@
 </div>
 <div class="footer-banner">
 <div class="logo-container">
-<a href=""><img src="{{logo}}" /></a>
+  <a routerLink="/home" routerLinkActive="active">
+    <img src="{{logo}}" />
+  </a>
 </div>
 </div>
+
 
 
 
