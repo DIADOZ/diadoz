@@ -16,11 +16,11 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/main/html/main3.html');
-  console.log('get test.html success');
+  res.sendFile(__dirname + '/diadoz-UI/main/html/main3.html');
+  console.log('get main3.html success');
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(__dirname + '/public/admin/html/admin.html');
-  console.log('get test.html success');
+  res.sendFile(__dirname + '/public0/admin/html/admin.html');
+  console.log('get admin.html success');
 });

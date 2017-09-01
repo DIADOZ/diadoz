@@ -11,6 +11,11 @@ router.get('/', function (req, res){
 	// });
 });
 
+router.get('/:postId', function(req, res){
+	console.log('Grab single post by id, page or just information to fill');
+	res.end();
+});
+
 router.post('/insert', function(req, res){
 	var postData = {
 		title: req.body.title,
