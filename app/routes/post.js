@@ -1,36 +1,47 @@
 var express = require('express');
 var router = express.Router();
-var Post = require('../schemas/schemas');
+var schemas = require('../schemas/schemas');
 
 // Get Home Page
-router.get('/', function (req, res){
-	console.log('Get all posts');
-	res.end();
-	// Post.find({}).limit(25).toArray((err, docs) => {
-	// 	//what to do with all posts
-	// });
+router.get('/post', function (req, res){
+	//get all Posts
+	//need to add limit and stream based get
+	var cursor = schemas.Post.find(function(err, data){
+		if (err){
+			res.send(err);
+		}
+
+        res.json(data);
+	});
 });
 
-router.get('/:postId', function(req, res){
-	console.log('Grab single post by id, page or just information to fill');
-	res.end();
+router.get('/post/:postId', function(req, res){
+	var cursor = schemas.Post.find({
+		id: req.params.postId;
+	}, function(err, data){
+		if (err){
+			res.send(err);
+		}
+
+        res.json(data);
+	});
 });
 
-router.post('/insert', function(req, res){
-	var postData = {
-		title: req.body.title,
-		artist: req.body.artist,
-		publishDate: Date.now(),
-		published: req.body.published
-	};
+// router.post('/insert', function(req, res){
+// 	var postData = {
+// 		title: req.body.title,
+// 		artist: req.body.artist,
+// 		publishDate: Date.now(),
+// 		published: req.body.published
+// 	};
 
-	console.log(postData);
+// 	console.log(postData);
 
-	var data = new Post(postData);
-	data.save();
+// 	var data = new Post(postData);
+// 	data.save();
 
-	res.redirect('/post');
-});
+// 	res.redirect('/post');
+// });
 
 module.exports = router;
 

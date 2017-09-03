@@ -5,7 +5,7 @@ var app = express();
 var mongoose = require('mongoose');
 
 app.use(bodyParser.json());
-app.use('/post', posts);
+app.use('/api', posts);
 
 //connect to db and start server
 mongoose.connect('mongodb://localhost:27017/myproject');

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var postSchema = new Schema({
+	id: {required: true, type: Number},
 	title: {required: true, type: String},
 	primaryArtist: {
 		required: true,
@@ -80,6 +81,7 @@ var postSchema = new Schema({
 });
 
 var entitySchema = new Schema({
+	id: {required: true, type: Number},
 	knowBy: {required: true, type: String},
 	firstName: String,
 	lastName: String,
@@ -88,6 +90,7 @@ var entitySchema = new Schema({
 });
 
 var mediaSchema = new Schema({
+	id: {required: true, type: Number},
 	mediaName: {required: true, type: String},
 	embed: String,
 	url: String,
@@ -95,6 +98,7 @@ var mediaSchema = new Schema({
 });
 
 var userDocument = new Schema({
+	id: {required: true, type: Number},
 	firstName: {required: true, type: String},
 	lastName: {required: true, type: String},
 	rank: {required: true, type: String},
@@ -106,7 +110,15 @@ var userDocument = new Schema({
 });
 
 var Post = mongoose.model('Post', postSchema);
+var Entity = mongoose.model('Entity', entitySchema);
+var Media = mongoose.model('Media', mediaSchema);
+var User = mongoose.model('User', userDocument);
 
 
 
-module.exports = Post;
+module.exports = {
+	Post: Post,
+	Entity: Entity,
+	Media: Media,
+	User: User
+};
