@@ -80,45 +80,4 @@ var postSchema = new Schema({
 	}
 });
 
-var entitySchema = new Schema({
-	id: {required: true, type: Number},
-	knowBy: {required: true, type: String},
-	firstName: String,
-	lastName: String,
-	artistName: String,
-	affilitation: String
-});
-
-var mediaSchema = new Schema({
-	id: {required: true, type: Number},
-	mediaName: {required: true, type: String},
-	embed: String,
-	url: String,
-	mediaTypes: [String]
-});
-
-var userDocument = new Schema({
-	id: {required: true, type: Number},
-	firstName: {required: true, type: String},
-	lastName: {required: true, type: String},
-	rank: {required: true, type: String},
-	email: {required: true, type: String},
-	userName: {required: true, type: String},
-	password: {required: true, type: String},
-	artistName: String,
-	affilitation: String,
-});
-
-var Post = mongoose.model('Post', postSchema);
-var Entity = mongoose.model('Entity', entitySchema);
-var Media = mongoose.model('Media', mediaSchema);
-var User = mongoose.model('User', userDocument);
-
-
-
-module.exports = {
-	Post: Post,
-	Entity: Entity,
-	Media: Media,
-	User: User
-};
+module.exports = mongoose.model('Post', postSchema);

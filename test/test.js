@@ -1,18 +1,25 @@
-var faker = required('faker');
+var faker = require('faker');
 
-function insertTestPosts(dbName, colName, num) {
+var entity = require('../app/models/entity');
+var media = require('../app/models/media');
+var post = require('../app/models/post-test');
+var user = require('../app/models/user');
 
-  var col = db.getSiblingDB(dbName).getCollection(colName);
+var entityArray = [];
+var mediaArray = [];
+var postArray = [];
+var userArray = [];
 
+function insertTestPosts(num) {
   for (i = 0; i < num; i++) {
-    col.insert({
-    	id: db.getCollection(colName).count() + 1,
+    var postInstance = new post({
+    	id: i,
     	title: faker.random.words(),
-		primaryArtist: faker.random.number(db.getCollection('entity').count()),
+		primaryArtist: faker.random.number(entityArray.length),
 		primaryType: faker.random.word(),
 		publishDate: faker.date.recent(),
 		published: faker.random.boolean(),
-		publishedBy: faker.random.number(db.getCollection('user').count()),
+		publishedBy: faker.random.number(userArray.length),
 		postTypes: [
 			faker.random.word(),
 			faker.random.word(),
@@ -23,42 +30,42 @@ function insertTestPosts(dbName, colName, num) {
 			faker.random.word(),
 			faker.random.word()
 		],
-		primaryMedia: faker.random.number(db.getCollection('media').count())
+		primaryMedia: faker.random.number(mediaArray.length)
     });
+
+    postArray.push(postInstance);
+
+    postInstance.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
   }
-
-  print(col.count());
-
 }
 
-function insertTestEntities(dbName, colName, num) {
-
-  var col = db.getSiblingDB(dbName).getCollection(colName);
-
+function insertTestEntities(num) {
   for (i = 0; i < num; i++) {
-    col.insert({
-    	id: db.getCollection(colName).count() + 1,
+    var entityInstance = new entity({
+    	id: i,
     	knowBy: faker.name.findName(),
 		firstName: faker.name.firstName(),
 		lastName: faker.name.lastName(),
 		artistName: faker.name.findName(),
 		affilitation: faker.random.word()
     });
+
+    entityArray.push(entityInstance);
+
+    entityInstance.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
   }
-
-  print(col.count());
-
 }
 
-function insertTestMedias(dbName, colName, num) {
-
-  var col = db.getSiblingDB(dbName).getCollection(colName);
-
+function insertTestMedias(num) {
   for (i = 0; i < num; i++) {
-    col.insert({
-    	id: db.getCollection(colName).count() + 1,
+    var mediaInstance = new media({
+    	id: i,
     	mediaName: faker.random.word(),
-		embed: faker.image.imageURL(),
+		embed: faker.image.imageUrl(),
 		url: faker.internet.url(),
 		mediaTypes: [
 			faker.random.word(),
@@ -66,19 +73,19 @@ function insertTestMedias(dbName, colName, num) {
 			faker.random.word()
 		]
     });
+
+    mediaArray.push(mediaInstance);
+
+    mediaInstance.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
   }
-
-  print(col.count());
-
 }
 
-function insertTestUsers(dbName, colName, num) {
-
-  var col = db.getSiblingDB(dbName).getCollection(colName);
-
+function insertTestUsers(num) {
   for (i = 0; i < num; i++) {
-    col.insert({
-    	id: db.getCollection(colName).count() + 1,
+    var userInstance = new user({
+    	id: i,
     	firstName: faker.name.firstName(),
 		lastName: faker.name.lastName(),
 		rank: faker.random.word(),
@@ -88,8 +95,18 @@ function insertTestUsers(dbName, colName, num) {
 		artistName: faker.name.findName(),
 		affilitation: faker.random.word()
     });
+
+    userArray.push(userInstance);
+
+    userInstance.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
   }
+}
 
-  print(col.count());
-
+module.exports = {
+	insertTestUsers,
+	insertTestMedias,
+	insertTestEntities,
+	insertTestPosts
 }
