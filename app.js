@@ -32,8 +32,8 @@ app.get('/admin', (req, res) => {
 
 var createTestData = function(){
 	test.insertTestUsers(5);
-	test.insertTestMedias(5);
 	test.insertTestEntities(5);
+	test.insertTestMedias(5);
 	test.insertTestPosts(5);
 }
 
