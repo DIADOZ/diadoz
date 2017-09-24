@@ -2,9 +2,10 @@
   "name": "diadoz-1.0",
   "version": "1.0.0",
   "description": "First version of the DIADOZ website",
-  "main": "/diadoz-UI/main/html/main3.html",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

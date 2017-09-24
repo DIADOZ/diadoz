@@ -2,7 +2,7 @@ var faker = require('faker');
 
 var entity = require('../app/models/entity');
 var media = require('../app/models/media');
-var post = require('../app/models/post-test');
+var post = require('../app/models/post');
 var user = require('../app/models/user');
 
 var entityArray = [];

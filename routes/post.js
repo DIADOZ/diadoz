@@ -1,34 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
-var entity = require('../models/entity');
-var media = require('../models/media');
-var post = require('../models/post-test');
-var user = require('../models/user');
+var post = require('../app/models/post');
 
 // Get Home Page
-router.get('/posts', function (req, res){
+router.get('/', function (req, res){
 	//get all Posts
 	//need to add limit and stream based get
-	// var cursor = schemas.Post.find(function(err, data){
-	// 	if (err){
-	// 		res.send(err);
-	// 	}
+	var cursor = post.find(function(err, data){
+		if (err){
+			res.send(err);
+		}
 
- //        res.json(data);
-	// });
+        res.json(data);
+	});
 });
 
-router.get('/posts/:postId', function(req, res){
-	// var cursor = schemas.Post.find({
-	// 	id: req.params.postId
-	// }, function(err, data){
-	// 	if (err){
-	// 		res.send(err);
-	// 	}
+router.get('/:postId', function(req, res){
+	var cursor = post.find({
+		id: req.params.postId
+	}, function(err, data){
+		if (err){
+			res.send(err);
+		}
 
- //        res.json(data);
-	// });
+        res.json(data);
+	});
 });
 
 // router.post('/insert', function(req, res){

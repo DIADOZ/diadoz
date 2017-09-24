@@ -1,28 +1,35 @@
-var express    = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
-var app        = express();
 
-var mongoose   = require('mongoose');
+var mongoose = require('mongoose');
+
+var	index = require('./routes/index');
+var	post = require('./routes/post');
+var	media = require('./routes/media');
+var	entity = require('./routes/entity');
+var	user = require('./routes/user');
+
+var test = require('./test/test');
+
+var app = express();
 
 //connect to db and start server
-mongoose.connect('mongodb://localhost:27017/myproject');
+mongoose.connect('mongodb://localhost:27017/diadoz');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var	posts      = require('./app/routes/post');
-var test       = require('./test/test');
-
 app.use(bodyParser.json());
-app.use('/api', posts);
+
+app.use('/', index);
+app.use('/api/post', post);
+app.use('/api/media', media);
+app.use('/api/entity', entity);
+app.use('/api/user', user);
+//app.use('/users', users);
 
 //port goes in config file later
 app.listen(3000, () => {
 	console.log('listening on 3000');
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/diadoz-UI/main/html/main3.html');
-  console.log('get main3.html success');
 });
 
 app.get('/admin', (req, res) => {
@@ -32,9 +39,11 @@ app.get('/admin', (req, res) => {
 
 var createTestData = function(){
 	test.insertTestUsers(5);
-	test.insertTestEntities(5);
 	test.insertTestMedias(5);
+	test.insertTestEntities(5);
 	test.insertTestPosts(5);
 }
 
 createTestData();
+
+module.exports = app;
