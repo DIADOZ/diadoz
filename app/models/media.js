@@ -8,7 +8,7 @@ var mediaSchema = new Schema({
 	title: {required: true, type: String},
 	primaryArtist: {required: true, type: Number}, // will be Entity _id
 	primaryType: {required: true, type: String},
-	mediaType: [String],
+	mediaTypes: [String],
 	body: String,
 	filePath: String,
 	url: String,

@@ -28,21 +28,30 @@ router.get('/:postId', function(req, res){
 	});
 });
 
-// router.post('/insert', function(req, res){
-// 	var postData = {
-// 		title: req.body.title,
-// 		artist: req.body.artist,
-// 		publishDate: Date.now(),
-// 		published: req.body.published
-// 	};
+router.post('/insert', function(req, res){
+	// parse through data from form
+	var postData = {
+		id: 1,
+		headline: req.body.headline,
+		subHeadline: req.body.subHeadline,
+		postType: req.body.postType,
+		primaryImage: req.body.primaryImage,
+		publishDate: new Date(),
+		published: req.body.published,
+		publishedBy: req.body.publishedBy,
+		media: req.body.media,
+		body: req.body.body
+	};
 
-// 	console.log(postData);
+	console.log(postData);
 
-// 	var data = new Post(postData);
-// 	data.save();
+	var data = new post(postData);
+	data.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
 
-// 	res.redirect('/post');
-// });
+	res.redirect('/');
+});
 
 module.exports = router;
 

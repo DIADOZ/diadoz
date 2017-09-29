@@ -1,11 +1,10 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' });
-
-  res.sendFile(__dirname + '/diadoz-UI/main/html/main3.html');
+  res.sendFile(path.join(__dirname, '../diadoz-UI/homeapp/src/', 'index.html'));
   console.log('get main3.html success');
 });
 

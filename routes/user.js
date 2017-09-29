@@ -29,4 +29,27 @@ router.get('/:userId', function(req, res){
 	});
 });
 
+router.post('/insert', function(req, res){
+	// parse through data from form
+	var userData = {
+		id: 1,
+		email: req.body.email,
+		userName: req.body.userName,
+		password: req.body.password,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		artistName: req.body.artistName,
+		affilitation: req.body.affilitation
+	};
+
+	console.log(userData);
+
+	var data = new user(userData);
+	data.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
+
+	res.redirect('/');
+});
+
 module.exports = router;

@@ -29,4 +29,25 @@ router.get('/:entityId', function(req, res){
 	});
 });
 
+router.post('/insert', function(req, res){
+	// parse through data from form
+	var entityData = {
+		id: 1,
+		name: req.body.name,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		artistName: req.body.artistName,
+		affilitation: req.body.affilitation
+	};
+
+	console.log(entityData);
+
+	var data = new entity(entityData);
+	data.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
+
+	res.redirect('/');
+});
+
 module.exports = router;

@@ -11,8 +11,8 @@ var postArray = [];
 var userArray = [];
 
 function insertTestPosts(num) {
-  for (i = 0; i < num; i++) {
-    var postInstance = new post({
+	for (var i = 0; i < num; i++) {
+		var postInstance = new post({
 			id: i,
 			
 			headline: faker.random.words(),
@@ -32,83 +32,89 @@ function insertTestPosts(num) {
 				faker.random.word(),
 				faker.random.word()
 			]
-    });
+		});
 
-    postArray.push(postInstance);
+		postArray.push(postInstance);
 
-    postInstance.save(function (err, prod) {
+		postInstance.save(function (err, prod) {
 			if (err) return console.log(err);
 		});
-  }
+	}
 }
 
 function insertTestMedias(num) {
-  for (i = 0; i < num; i++) {
-    var mediaInstance = new media({
+	var imagePathArray = []
+	for(var x = 1; x < 13; x++){
+		imagePathArray.push('/test/images/' + x + '.jpg');
+	}
+	
+  	for (var i = 0; i < num; i++) {
+		var artistID = faker.random.number(entityArray.length);
+		var mediaData = {
 			id: i,
 			
 			title: faker.random.word(),
-			primaryArtist: faker.random.number(entityArray.length),
+			primaryArtist: artistID,
 			primaryType: faker.random.word(),
-			mediaTypes: [
-				faker.random.word(),
-				faker.random.word(),
-				faker.random.word()
-			],
+			mediaTypes: [],
 			body: faker.random.words(),
-			filePath: faker.system.filePath(),
+			filePath: imagePathArray[faker.random.number(imagePathArray.length)],
 			url: faker.internet.url(),
 			embed: faker.image.imageUrl()
-    });
+		};
+    
+		for (var x = 0; x < 4; x++) {
+			mediaData.mediaTypes.push(faker.random.word());
+		}
+		var mediaInstance = new media(mediaData);
+		mediaArray.push(mediaInstance);
 
-    mediaArray.push(mediaInstance);
-
-    mediaInstance.save(function (err, prod) {
+		mediaInstance.save(function (err, prod) {
 			if (err) return console.log(err);
 		});
-  }
+  	}
 }
 
 function insertTestEntities(num) {
-  for (i = 0; i < num; i++) {
-    var entityInstance = new entity({
+	for (var i = 0; i < num; i++) {
+		var entityInstance = new entity({
 			id: i,
-			
-    	name: faker.name.findName(),
+				
+			name: faker.name.findName(),
 			firstName: faker.name.firstName(),
 			lastName: faker.name.lastName(),
 			artistName: faker.name.findName(),
 			affilitation: [faker.random.word()]
-    });
+		});
 
-    entityArray.push(entityInstance);
+		entityArray.push(entityInstance);
 
-    entityInstance.save(function (err, prod) {
+		entityInstance.save(function (err, prod) {
 			if (err) return console.log(err);
 		});
-  }
+	}
 }
 
 function insertTestUsers(num) {
-  for (i = 0; i < num; i++) {
-    var userInstance = new user({
+  	for (var i = 0; i < num; i++) {
+		var userInstance = new user({
 			id: i,
-			
+				
 			email: faker.internet.email(),
 			userName: faker.internet.userName(),
 			password: faker.internet.password(),
-    	firstName: faker.name.firstName(),
+			firstName: faker.name.firstName(),
 			lastName: faker.name.lastName(),
 			artistName: faker.name.findName(),
 			affilitation: [faker.random.word()]
-    });
+		});
 
-    userArray.push(userInstance);
+		userArray.push(userInstance);
 
-    userInstance.save(function (err, prod) {
+		userInstance.save(function (err, prod) {
 			if (err) return console.log(err);
 		});
-  }
+  	}
 }
 
 module.exports = {

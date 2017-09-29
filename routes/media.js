@@ -29,4 +29,28 @@ router.get('/:mediaId', function(req, res){
 	});
 });
 
+router.post('/insert', function(req, res){
+	// parse through data from form
+	var mediaData = {
+		id: 1,
+		title: req.body.title,
+		primaryArtist: req.body.primaryArtist,
+		primaryType: req.body.primaryType,
+		mediaTypes: req.body.mediaTypes,
+		body: req.body.body,
+		filePath: req.body.filePath,
+		url: req.body.url,
+		embed: req.body.embed
+	};
+
+	console.log(mediaData);
+
+	var data = new media(mediaData);
+	data.save(function (err, prod) {
+		if (err) return console.log(err);
+	});
+
+	res.redirect('/');
+});
+
 module.exports = router;
