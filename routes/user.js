@@ -1,7 +1,39 @@
 var express = require('express');
 var router = express.Router();
 
+var bcrypt = require('bcrypt-nodejs');
+
 var user = require('../app/models/user');
+
+router.post('/login', function(req, res) {
+	var userName = req.body.userName;
+	var password = req.body.password;
+  
+	user.findOne({
+		userName: userName
+	}, function(err, data) {
+		if (err | data === null) {
+			return res.send(401, "User Doesn't exist");
+		} else {
+			var usr = data;
+	
+			if (userName === usr.userName && bcrypt.compareSync(password, usr.password)) {
+				req.session.regenerate(function() {
+					req.session.user = userName;
+					return res.send(userName);
+				});
+			} else {
+				return res.send(401, "Bad Username or Password");
+			}
+		}
+	});
+});
+
+router.get('/logout', function(req, res) {
+    req.session.destroy(function() {
+        return res.send(401, 'User logged out');
+    });
+});
 
 // get all users
 router.get('/', function (req, res){
@@ -29,13 +61,17 @@ router.get('/:userId', function(req, res){
 	});
 });
 
-router.post('/insert', function(req, res){
-	// parse through data from form
+router.post('/insert', sessionCheck, function(req, res){
+	var salt, hash, password;
+    password = req.body.password;
+    salt = bcrypt.genSaltSync(10);
+	hash = bcrypt.hashSync(password, salt);
+	
 	var userData = {
 		id: 1,
 		email: req.body.email,
 		userName: req.body.userName,
-		password: req.body.password,
+		password: hash,
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		artistName: req.body.artistName,
@@ -52,7 +88,7 @@ router.post('/insert', function(req, res){
 	res.redirect('/');
 });
 
-router.put('/update', function(req, res, next){
+router.put('/update', sessionCheck, function(req, res, next){
 	var id = req.body.id;
 
 	// maybe change to findByIdAndUpdate once _ids are setup
@@ -75,7 +111,7 @@ router.put('/update', function(req, res, next){
 	});
 });
 
-router.delete('/delete', (req, res, next) => {
+router.delete('/delete', sessionCheck, (req, res, next) => {
 	var id = req.body.id;
 	user.remove({'id': id},function(err){
 		if (err){
@@ -84,5 +120,13 @@ router.delete('/delete', (req, res, next) => {
 		res.json({message: 'Document successfully deleted'});
 	});
 });
+
+function sessionCheck(req,res,next){
+	if(req.session.user) {
+		next();
+	} else {
+		res.send(401,'authorization failed');
+	}
+}
 
 module.exports = router;

@@ -16,7 +16,7 @@ router.get('/', function (req, res){
 	});
 });
 
-router.post('/insert', function(req, res){
+router.post('/insert', sessionCheck, function(req, res){
 	// parse through data from form
 	var postData = {
 		id: 1,
@@ -53,7 +53,7 @@ router.get('/:postId', function(req, res){
 	});
 });
 
-router.put('/update', function(req, res, next){
+router.put('/update', sessionCheck, function(req, res, next){
 	var id = req.body.id;
 
 	// maybe change to findByIdAndUpdate once _ids are setup
@@ -78,7 +78,7 @@ router.put('/update', function(req, res, next){
 	});
 });
 
-router.delete('/delete', (req, res, next) => {
+router.delete('/delete', sessionCheck, (req, res, next) => {
 	var id = req.body.id;
 	post.remove({'id': id},function(err){
 		if (err){
@@ -87,5 +87,13 @@ router.delete('/delete', (req, res, next) => {
 		res.json({message: 'Document successfully deleted'});
 	});
 });
+
+function sessionCheck(req,res,next){
+	if(req.session.user) {
+		next();
+	} else {
+		res.send(401,'authorization failed');
+	}
+}
 
 module.exports = router;
