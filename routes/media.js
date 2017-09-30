@@ -53,4 +53,38 @@ router.post('/insert', function(req, res){
 	res.redirect('/');
 });
 
+router.put('/update', function(req, res, next){
+	var id = req.body.id;
+
+	// maybe change to findByIdAndUpdate once _ids are setup
+	media.findOneAndUpdate({'id': id}, {
+		title: req.body.title,
+		primaryArtist: req.body.primaryArtist,
+		primaryType: req.body.primaryType,
+		mediaTypes: req.body.mediaTypes,
+		body: req.body.body,
+		filePath: req.body.filePath,
+		url: req.body.url,
+		embed: req.body.embed
+	}, {new: true}, function(err, doc){
+		if(err){
+			console.error('error, post not found');
+		} else {
+			console.log('Document ' + id + ' has been updated successfully');
+		}
+		
+		res.json({message:  'Document ' + id + ' has been updated successfully'});
+	});
+});
+
+router.delete('/delete', (req, res, next) => {
+	var id = req.body.id;
+	media.remove({'id': id},function(err){
+		if (err){
+			console.error('error deleting document');
+		}
+		res.json({message: 'Document successfully deleted'});
+	});
+});
+
 module.exports = router;

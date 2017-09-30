@@ -50,4 +50,35 @@ router.post('/insert', function(req, res){
 	res.redirect('/');
 });
 
+router.put('/update', function(req, res, next){
+	var id = req.body.id;
+
+	// maybe change to findByIdAndUpdate once _ids are setup
+	entity.findOneAndUpdate({'id': id}, {
+		name: req.body.name,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		artistName: req.body.artistName,
+		affilitation: req.body.affilitation
+	}, {new: true}, function(err, doc){
+		if(err){
+			console.error('error, post not found');
+		} else {
+			console.log('Document ' + id + ' has been updated successfully');
+		}
+		
+		res.json({message:  'Document ' + id + ' has been updated successfully'});
+	});
+});
+
+router.delete('/delete', (req, res, next) => {
+	var id = req.body.id;
+	entity.remove({'id': id},function(err){
+		if (err){
+			console.error('error deleting document');
+		}
+		res.json({message: 'Document successfully deleted'});
+	});
+});
+
 module.exports = router;
