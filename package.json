@@ -1,7 +1,7 @@
 {
   "name": "diadoz-1.0",
   "version": "1.0.0",
-  "description": "First version of the DIADOZ website",
+  "description": "First version of the DIADOZ website.",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
