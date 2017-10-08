@@ -31,7 +31,8 @@ function count (MongoDBURI, collectionName) {
     })
 }
 
-count("mongodb://localhost:27017/myproject", "posts");
+//count("mongodb://localhost:27017/myproject", "posts");
+count("http://localhost:27017/myproject", "posts");
 
 
 

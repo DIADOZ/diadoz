@@ -19,12 +19,12 @@
   "homepage": "https://github.com/DIADOZ/diadoz-1.0#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
-    "express": "^4.15.3",
+    "express": "^4.16.1",
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "mongodb": "^2.2.26",
-    "mongoose": "^4.11.5"
+    "mongoose": "^4.11.14"
   }
 }

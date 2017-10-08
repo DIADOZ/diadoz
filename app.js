@@ -40,11 +40,11 @@ app.get('/admin', (req, res) => {
   console.log('get admin.html success');
 });
 
-// var createTestData = function(){
-// 	test.insertTestUsers(5);
-// 	test.insertTestEntities(5);
-// 	test.insertTestMedias(5);
-// 	test.insertTestPosts(5);
-// }
+var createTestData = function(){
+	test.insertTestUsers(5);
+	test.insertTestEntities(5);
+	test.insertTestMedias(5);
+	test.insertTestPosts(5);
+};
 
-// createTestData();
+createTestData();

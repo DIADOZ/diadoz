@@ -1,0 +1,102 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default*/
+
+html{
+  width: 100%
+}
+body{
+  margin: 0px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container{
+  display: block;
+  position: relative;
+  padding: 8px;
+  width: auto;
+  height: 100%;
+  background-color: white;
+  /*padding: 10px;*/
+
+}
+
+.header{
+  position: relative;
+  width: 100%;
+  /*background-color: black;*/
+  margin: 10px 0px 50px 0px;
+
+}
+.logo-container{
+  width: 250px;
+  height: auto;
+  margin: 0 auto;
+  /*background-color: yellow;*/
+  position: relative;
+
+}
+
+.logo-container img {
+  width: 100%;
+  /*background-color: red;*/
+
+}
+
+.column-body{
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  background-color: white;
+}
+
+.sound-wrapper {
+  margin: 20px 0px 20px 0px;
+}
+
+.photo-header-wrapper {
+  width: 100%;
+  margin: 20px 0px 20px 0px;
+}
+
+
+
+.sound-wrapper {
+  margin: 20px 0px 20px 0px;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+  .container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+  }
+
+  .column-body{
+    padding: 8px;
+    margin: 0 auto;
+    max-width: 750px;
+    background-color: white;
+  }
+
+  .sound-wrapper {
+    margin: 20px 0px 20px 0px;
+  }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+
+}

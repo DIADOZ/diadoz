@@ -178,6 +178,7 @@ a {
     margin: 0 auto;
     display: block;
     overflow: hidden;
+    white-space: nowrap;
     /*padding: 0px;*/
 
     /*Sizing*/

@@ -4,11 +4,16 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { CardComponent } from './components/card/card.component';
+import { HeaderComponent } from './components/header/header.component';
 
 import { DataService } from './services/data.service';
 
 import { RouterModule, Routes } from '@angular/router';
-import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { MousewheelComponent } from './components/mousewheel/mousewheel.component';
+
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -21,7 +26,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    PostDetailsComponent
+    PostDetailsComponent,
+    CardComponent,
+    HeaderComponent,
+    MousewheelComponent
   ],
   imports: [
     BrowserModule,
