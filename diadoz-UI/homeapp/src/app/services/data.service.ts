@@ -12,7 +12,7 @@ export class DataService {
   }
 
   getPosts(){
-    return this.http.get('./assets/data/posts')
+    return this.http.get('http://localhost:3000/api/post/')
     // return this.http.get('http://localhost:3000/api/post/')
       .map(res => res.json());
   }

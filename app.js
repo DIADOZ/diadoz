@@ -23,12 +23,17 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(bodyParser.json());
 app.use(cookieParser('secret'));
 app.use(session());
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+  });
 
 app.use('/api/post', post);
 app.use('/api/media', media);
 app.use('/api/entity', entity);
 app.use('/api/user', user);
-app.use('/', index);
+app.use('*', index);
 
 //port goes in config file later
 app.listen(3000, () => {
@@ -36,7 +41,7 @@ app.listen(3000, () => {
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(__dirname + '/public0/admin/html/admin.html');
+  res.sendFile(__dirname + '/public/admin/html/admin.html');
   console.log('get admin.html success');
 });
 
