@@ -8,7 +8,7 @@ var entitySchema = new Schema({
 	firstName: String,
 	lastName: String,
 	artistName: String,
-	affilitation: [String]
+	affiliation: [String]
 });
 
 module.exports = mongoose.model('Entity', entitySchema);

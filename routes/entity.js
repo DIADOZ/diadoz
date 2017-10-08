@@ -37,7 +37,7 @@ router.post('/insert', sessionCheck, function(req, res){
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		artistName: req.body.artistName,
-		affilitation: req.body.affilitation
+		affiliation: req.body.affilitation
 	};
 
 	console.log(entityData);
@@ -59,7 +59,7 @@ router.put('/update', sessionCheck, function(req, res, next){
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		artistName: req.body.artistName,
-		affilitation: req.body.affilitation
+		affiliation: req.body.affilitation
 	}, {new: true}, function(err, doc){
 		if(err){
 			console.error('error, post not found');

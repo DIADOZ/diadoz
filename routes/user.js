@@ -69,13 +69,13 @@ router.post('/insert', sessionCheck, function(req, res){
 	
 	var userData = {
 		id: 1,
-		email: req.body.email,
 		userName: req.body.userName,
 		password: hash,
+		email: req.body.email,
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		artistName: req.body.artistName,
-		affilitation: req.body.affilitation
+		affiliation: req.body.affilitation
 	};
 
 	console.log(userData);
@@ -93,13 +93,13 @@ router.put('/update', sessionCheck, function(req, res, next){
 
 	// maybe change to findByIdAndUpdate once _ids are setup
 	user.findOneAndUpdate({'id': id}, {
-		email: req.body.email,
 		userName: req.body.userName,
-		password: req.body.password,
+		password: req.body.password, //hash this?
+		email: req.body.email,
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		artistName: req.body.artistName,
-		affilitation: req.body.affilitation
+		affiliation: req.body.affilitation
 	}, {new: true}, function(err, doc){
 		if(err){
 			console.error('error, post not found');
