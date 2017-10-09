@@ -2,11 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var mediaSchema = new Schema({
-	id: {required: true, type: Number},
-
-
 	title: {required: true, type: String},
-	primaryArtist: {required: true, type: Number}, // will be Entity _id
+	primaryArtist: {required: true, type: Schema.Types.ObjectId, ref: 'Entity'}, // will be Entity _id
 	primaryType: {required: true, type: String},
 	mediaTypes: [String],
 	body: String,

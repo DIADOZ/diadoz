@@ -13,19 +13,17 @@ var userArray = [];
 function insertTestPosts(num) {
 	for (var i = 0; i < num; i++) {
 		var postInstance = new post({
-			id: i,
-			
 			headline: faker.random.words(),
 			subHeadline: faker.random.words(),
 			postType: faker.random.word(),
-			primaryImage: faker.random.number(mediaArray.length),
+			primaryImage: mediaArray[faker.random.number(mediaArray.length - 1)]._id,
 			publishDate: faker.date.recent(),
 			published: faker.random.boolean(),
-			publishedBy: faker.random.number(userArray.length),
+			publishedBy: userArray[faker.random.number(userArray.length - 1)]._id,
 			media: [
-				faker.random.number(mediaArray.length),
-				faker.random.number(mediaArray.length),
-				faker.random.number(mediaArray.length)
+				mediaArray[faker.random.number(mediaArray.length - 1)]._id,
+				mediaArray[faker.random.number(mediaArray.length - 1)]._id,
+				mediaArray[faker.random.number(mediaArray.length - 1)]._id
 			],
 			body: [
 				faker.random.word(),
@@ -49,16 +47,14 @@ function insertTestMedias(num) {
 	}
 	
   	for (var i = 0; i < num; i++) {
-		var artistID = faker.random.number(entityArray.length);
+		var artistID = entityArray[faker.random.number(entityArray.length - 1)]._id;
 		var mediaData = {
-			id: i,
-			
 			title: faker.random.word(),
 			primaryArtist: artistID,
 			primaryType: faker.random.word(),
 			mediaTypes: [],
 			body: faker.random.words(),
-			filePath: imagePathArray[faker.random.number(imagePathArray.length)],
+			filePath: imagePathArray[faker.random.number(imagePathArray.length - 1)],
 			url: faker.internet.url(),
 			embed: faker.image.imageUrl()
 		};
@@ -78,8 +74,6 @@ function insertTestMedias(num) {
 function insertTestEntities(num) {
 	for (var i = 0; i < num; i++) {
 		var entityInstance = new entity({
-			id: i,
-				
 			name: faker.name.findName(),
 			firstName: faker.name.firstName(),
 			lastName: faker.name.lastName(),
@@ -98,8 +92,6 @@ function insertTestEntities(num) {
 function insertTestUsers(num) {
   	for (var i = 0; i < num; i++) {
 		var userInstance = new user({
-			id: i,
-				
 			email: faker.internet.email(),
 			userName: faker.internet.userName(),
 			password: faker.internet.password(),

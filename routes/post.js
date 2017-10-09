@@ -1,10 +1,42 @@
 var express = require('express');
 var router = express.Router();
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 var post = require('../app/models/post');
 
 // Get Home Page
 router.get('/', function (req, res){
+	//get all Posts
+	//need to add limit and stream based get
+	var cursor = post
+		.find()
+		.populate('primaryImage', 'filePath')
+		.select({headline: 1, subHeadline: 1, postType:1, primaryImage: 1, publishDate:1, published: 1})
+		.exec(function(err, data){
+			if (err){
+				res.send(err);
+			}
+
+			res.json(data);
+		});
+});
+
+router.get('/:postId', function(req, res){
+	var cursor = post
+		.find({_id: new ObjectId(req.params.postId)})
+		.populate('primaryImage')
+		.populate('publishedBy')
+		.populate('media')
+		.exec(function(err, data){
+		if (err){
+			res.send(err);
+		}
+
+        res.json(data);
+	});
+});
+
+router.get('/all', function (req, res){
 	//get all Posts
 	//need to add limit and stream based get
 	var cursor = post.find(function(err, data){
@@ -19,7 +51,6 @@ router.get('/', function (req, res){
 router.post('/insert', sessionCheck, function(req, res){
 	// parse through data from form
 	var postData = {
-		id: 1,
 		headline: req.body.headline,
 		subHeadline: req.body.subHeadline,
 		postType: req.body.postType,
@@ -41,7 +72,7 @@ router.post('/insert', sessionCheck, function(req, res){
 	res.redirect('/');
 });
 
-router.get('/:postId', function(req, res){
+router.get('/data/:postId', function(req, res){
 	var cursor = post.find({
 		id: req.params.postId
 	}, function(err, data){
