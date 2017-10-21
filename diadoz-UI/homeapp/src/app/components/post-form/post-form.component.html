@@ -1,0 +1,103 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>Post Form</h1>
+        <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+            <!-- TODO: Remove once implementation done -->
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="headline">Headline</label>
+                <input type="text" class="form-control" id="headline" required
+                [(ngModel)] = 'model.headline' name='headline' #headline='ngModel'
+                #spy>
+                <div [hidden]="headline.valid || headline.pristine"
+                class="alert alert-danger">
+                    Headline is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="subHeadline">Sub-Headline</label>
+                <input type="text" class="form-control" id="subHeadline"
+                [(ngModel)]='model.subHeadline' name='subHeadline'>
+            </div>
+
+            <div class="form-group">
+                <label for="postType">Post Type</label>
+                <select class="form-control" id="postType" required
+                [(ngModel)]='model.postType' name='postType'>
+                    <option *ngFor="let type of postTypes" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="primaryImage">Primary Image</label>
+                <mat-button-toggle (click)='newMedia()'>
+                    New Media Entry
+                </mat-button-toggle>
+                <mat-button-toggle>
+                    <i class="material-icons md-18">file_upload</i>
+                </mat-button-toggle>
+            </div>
+
+            <media-form [hidden]="!showMedia"></media-form>
+
+            <div class="form-group">
+                <label for="publishDate">Publish Date</label>
+                <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                </mat-form-field>
+                
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+
+            <div class="form-group">
+                <label for="published">Published</label>
+                <mat-checkbox></mat-checkbox>
+            </div>
+
+            <div class="form-group">
+                <label for="publishedBy">Published By</label>
+                {{model.publishedBy}}
+            </div>
+
+            <div class="form-group">
+                <label for="body">Post Body</label>
+                <mat-button-toggle (click)="toggleBody()">
+                    <i class="material-icons">note add</i>
+                </mat-button-toggle>
+                <!-- <mat-button-toggle>
+                    <i class="material-icons">add circle</i>
+                </mat-button-toggle> -->
+            </div>
+            <div id='bodyData' class='hide'>
+                    <textarea id='tiny'></textarea>
+                <mat-button-toggle (click)="addBody()">
+                        <i class="material-icons">add</i>
+                </mat-button-toggle>
+            </div>
+            
+            
+            <button type="button" class="btn btn-default" (click)="newPost(); postForm.reset()">Reset</button>
+            <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">Submit</button>
+        
+        </form>
+    </div>
+    <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Headline</div>
+            <div class="col-xs-9  pull-left">{{ model.headline }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Sub-Headline</div>
+            <div class="col-xs-9 pull-left">{{ model.subHeadline }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Post Type</div>
+            <div class="col-xs-9 pull-left">{{ model.postType }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    </div>
+</div>

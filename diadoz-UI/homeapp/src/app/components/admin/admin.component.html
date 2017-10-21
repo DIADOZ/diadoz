@@ -1,0 +1,22 @@
+<div id='logo-container'>
+  <img id='logo' width="400" src="../,,/../assets/img/logo/diadoz-black-logo-2017.svg">
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+        <mat-list-item (click)='postForm()'> Post </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)='mediaForm()'> Media </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)='entityForm()'> Entity </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-button-toggle (click)="sidenav.toggle()">
+      <i class="material-icons md-18 md-dark">menu</i>
+  </mat-button-toggle>
+  <div>
+    <post-form [hidden]="!showPost"></post-form>
+    <media-form [hidden]="!showMedia"></media-form>
+  </div>
+</mat-sidenav-container>

@@ -1,0 +1,58 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1>Media Form</h1>
+        <form (ngSubmit)="onSubmit()" #mediaForm="ngForm">
+            <!-- TODO: Remove once implementation done -->
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" required
+                [(ngModel)] = 'model.title' name='title' #title='ngModel'
+                #spy>
+                <div [hidden]="title.valid || title.pristine"
+                class="alert alert-danger">
+                    Title is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="primaryArtist">Primary Artist</label>
+                <input type="text" class="form-control" id="primaryArtist" required
+                [(ngModel)] = 'model.primaryArtist' name='primaryArtist' #primaryArtist='ngModel'
+                #spy>
+                <div [hidden]="primaryArtist.valid || primaryArtist.pristine"
+                class="alert alert-danger">
+                    primaryArtist is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="primaryType">Primary Type</label>
+                <select class="form-control" id="primaryType" required
+                [(ngModel)]='model.primaryType' name='primaryType'>
+                    <option *ngFor="let type of primaryType" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-default" (click)="newMedia(); mediaForm.reset()">Reset</button>
+            <button type="submit" class="btn btn-success" [disabled]="!mediaForm.form.valid">Submit</button>
+        </form>
+    </div>
+    <!-- <div [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">Headline</div>
+            <div class="col-xs-9  pull-left">{{ model.headline }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Sub-Headline</div>
+            <div class="col-xs-9 pull-left">{{ model.subHeadline }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Post Type</div>
+            <div class="col-xs-9 pull-left">{{ model.postType }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+    </div> -->
+</div>
