@@ -9,9 +9,9 @@ import { Media }    from './media';
   styleUrls:['./media.css']
 })
 export class MediaFormComponent implements AfterViewInit {
-    postTypes = ['Article', 'Media', 'Gallery'];
+    primaryType = ['Video', 'Photography', 'Audio'];
     bodyArea = '';
-
+    currentType = '';
     todayDate = new Date();
     model = new Media('', '', '', [], '', '', '', '');
     // title, primaryArtist, primaryType, mediaTypes, body, filePath, url, embed
@@ -20,27 +20,23 @@ export class MediaFormComponent implements AfterViewInit {
     onSubmit() { 
         this.submitted = true; 
     }
-    newPost() {
-        var today = new Date();
+    newMedia() {
+        tinymce.activeEditor.setContent('');
         this.model = new Media('', '', '', [], '', '', '', '');
     }
 
     ngAfterViewInit() {
         tinymce.init({
-            selector: '#tiny',
+            selector: '#mediaTiny',
             plugins: ['link', 'paste', 'table'],
             skin_url: 'assets/skins/lightgray',
             branding: false
         });
     }
-    
-    toggleBody(){
-        var body = document.getElementById('bodyData'); 
-        body.classList.toggle('hide');
-    }
-    addBody(){
-        this.toggleBody();
-        tinymce.activeEditor.setContent('');
+
+    addMediaType(){ 
+        this.model.mediaTypes.push(this.currentType);
+        this.currentType = '';
     }
 
     

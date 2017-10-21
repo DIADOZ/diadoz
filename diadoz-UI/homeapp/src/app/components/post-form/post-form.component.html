@@ -37,14 +37,17 @@
                 <mat-button-toggle>
                     <i class="material-icons md-18">file_upload</i>
                 </mat-button-toggle>
+
+                <media-form [hidden]="!showMedia"></media-form>
             </div>
 
-            <media-form [hidden]="!showMedia"></media-form>
+            
 
             <div class="form-group">
                 <label for="publishDate">Publish Date</label>
                 <mat-form-field class="example-full-width">
-                        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date" name='publishDate'
+                        [(ngModel)]="model.publishDate">
                 </mat-form-field>
                 
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -52,8 +55,9 @@
             </div>
 
             <div class="form-group">
-                <label for="published">Published</label>
-                <mat-checkbox></mat-checkbox>
+                <!-- <label for="published">Published</label> -->
+                <mat-checkbox class="form-control" name='published'
+                [(ngModel)]="model.published">Published</mat-checkbox>
             </div>
 
             <div class="form-group">
@@ -71,7 +75,7 @@
                 </mat-button-toggle> -->
             </div>
             <div id='bodyData' class='hide'>
-                    <textarea id='tiny'></textarea>
+                <textarea id='tiny'></textarea>
                 <mat-button-toggle (click)="addBody()">
                         <i class="material-icons">add</i>
                 </mat-button-toggle>

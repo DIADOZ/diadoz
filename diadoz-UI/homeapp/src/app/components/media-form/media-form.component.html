@@ -22,7 +22,7 @@
                 #spy>
                 <div [hidden]="primaryArtist.valid || primaryArtist.pristine"
                 class="alert alert-danger">
-                    primaryArtist is required
+                    Primary Artist is required
                 </div>
             </div>
 
@@ -33,6 +33,40 @@
                     <option *ngFor="let type of primaryType" [value]="type">{{type}}</option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label  for="mediaTypes">Media Types</label>
+                <input type="text" id="mediaTypes" [(ngModel)] = 'currentType' name='currentType'>
+                <button type="button" class="btn btn-default" (click)="addMediaType()">Add</button>
+            </div>
+
+            <div class="form-group">
+                <label for="body">Post Body</label>
+                <textarea id='mediaTiny'
+                [(ngModel)]='model.body' name='body'></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="filePath">File Path</label>
+                <input type="text" class="form-control" id="filePath"
+                [(ngModel)] = 'model.filePath' name='filePath' #filePath='ngModel'
+                #spy>
+            </div>
+
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url"
+                [(ngModel)] = 'model.url' name='url' #url='ngModel'
+                #spy>
+            </div>
+
+            <div class="form-group">
+                <label for="embed">Embed</label>
+                <input type="text" class="form-control" id="embed"
+                [(ngModel)] = 'model.embed' name='embed' #embed='ngModel'
+                #spy>
+            </div>
+            
 
             <button type="button" class="btn btn-default" (click)="newMedia(); mediaForm.reset()">Reset</button>
             <button type="submit" class="btn btn-success" [disabled]="!mediaForm.form.valid">Submit</button>
