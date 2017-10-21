@@ -1,6 +1,8 @@
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default*/
 
+
+/*:root{}*/
 a {
   text-decoration: none;
   color: white;
@@ -182,7 +184,7 @@ a {
     /*padding: 0px;*/
 
     /*Sizing*/
-    height: 100vh;
+    height: 92vh;
   }
 
   .tile-container {
@@ -201,7 +203,7 @@ a {
 
     /*Sizing*/
     min-width: 100px;
-    height: 100vh;
+    height: 92vh;
 
     /*Color*/
     /*background-color: darkgreen;*/
@@ -210,7 +212,7 @@ a {
   .tile {
     /*Positioning*/
     float: left;
-    height: 100vh;
+    height: 92vh;
     position: relative;
     display: inline-flex;
 
