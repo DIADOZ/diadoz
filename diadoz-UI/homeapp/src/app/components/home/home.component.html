@@ -1,25 +1,26 @@
+<app-header></app-header>
 <div class="body-container">
   <div class="tile-container">
-    <div class="tile" *ngFor="let post of posts" id="tile{{post.id}}">
+    <div class="tile" *ngFor="let post of posts" id="tile{{post._id}}">
       <header class="tile-overlay">
         <p class="tile-text">
-          <a routerLink="/home/{{post.id}}">
-            <strong>{{post.title}}</strong>
-            <br>{{post.artist}}
+          <a routerLink="/home/{{post._id}}">
+            <strong>{{post.headline}}</strong>
+            <br>{{post.subHeadline}}
           </a>
         </p>
       </header>
-      <img class="tile-photo" src="{{ post.image }}" />
+      <img class="tile-photo" src=" ../../../{{post.primaryImage.filePath}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
     </div>
   </div>
 </div>
-<div class="footer-banner">
-<div class="logo-container">
-  <a routerLink="/home" routerLinkActive="active">
-    <img src="{{logo}}" />
-  </a>
-</div>
-</div>
+<!--<div class="footer-banner">-->
+<!--<div class="logo-container">-->
+  <!--<a routerLink="/home" routerLinkActive="active">-->
+    <!--<img src="{{logo}}" />-->
+  <!--</a>-->
+<!--</div>-->
+<!--</div>-->
 
 
 

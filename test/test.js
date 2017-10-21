@@ -40,7 +40,7 @@ function insertTestPosts(num) {
 function insertTestMedias(num) {
 	var imagePathArray = []
 	for(var x = 1; x < 13; x++){
-		imagePathArray.push('/test/images/' + x + '.jpg');
+		imagePathArray.push('assets/img/test-images/' + x + '.jpg');
 	}
 	
   	for (var i = 0; i < num; i++) {

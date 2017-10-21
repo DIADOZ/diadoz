@@ -10,8 +10,9 @@ declare var $: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  posts: Posts[];
+  // posts: Posts[];
   logo = './assets/img/logo/diadoz-white-logo-2017.svg';
+  posts: any = {};
 
   constructor(private dataService: DataService ) { }
 
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.dataService.getPosts().subscribe((posts) => {
+      console.log(posts);
       this.posts = posts;
     });
 
@@ -59,6 +61,7 @@ export class HomeComponent implements OnInit {
 
 }
 
+// hard coded test data
 // interface Posts {
 //   userId:number,
 //   id:number,
@@ -70,16 +73,17 @@ export class HomeComponent implements OnInit {
 // }
 
 interface Posts {
-  __id:string,
-  id:number,
+  _id:string,
   headline:string,
   subHeadline:string,
   postType:string,
-  primaryImage:number,
-  publishDate:string,
-  publishedBy:string,
-  body:string,
-  media:string,
+  primaryImage:string[],
+  publishDate: string,
+  publishedBy:number,
+  body: string[],
+  media:string[],
   published:boolean,
   __v:number
 }
+
+
