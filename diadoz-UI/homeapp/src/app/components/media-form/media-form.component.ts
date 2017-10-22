@@ -16,7 +16,7 @@ export class MediaFormComponent implements AfterViewInit {
     model = new Media('', '', '', [], '', '', '', '');
     // title, primaryArtist, primaryType, mediaTypes, body, filePath, url, embed
     submitted = false;
-
+    showMain = true;
     onSubmit() { 
         this.submitted = true; 
     }
@@ -39,6 +39,10 @@ export class MediaFormComponent implements AfterViewInit {
         this.currentType = '';
     }
 
+    addMedia(){
+
+
+    }
     
     //TODO: Remove this when we're done
     get diagnostic() {

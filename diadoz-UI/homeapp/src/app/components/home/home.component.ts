@@ -12,7 +12,7 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   // posts: Posts[];
   logo = './assets/img/logo/diadoz-white-logo-2017.svg';
-  posts: any = {};
+  posts = [];
 
   constructor(private dataService: DataService ) { }
 

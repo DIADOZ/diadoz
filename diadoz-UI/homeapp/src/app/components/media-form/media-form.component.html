@@ -68,8 +68,10 @@
             </div>
             
 
-            <button type="button" class="btn btn-default" (click)="newMedia(); mediaForm.reset()">Reset</button>
-            <button type="submit" class="btn btn-success" [disabled]="!mediaForm.form.valid">Submit</button>
+            <button *ngIf='showMain' type="button" class="btn btn-default" (click)="newMedia(); mediaForm.reset()">Reset</button>
+            <button *ngIf='showMain' type="submit" class="btn btn-success" [disabled]="!mediaForm.form.valid">Submit</button>
+            <button *ngIf='!showMain' type="submit" class="btn btn-success" [disabled]="!mediaForm.form.valid" (click)="addMedia()">Submit</button>
+
         </form>
     </div>
     <!-- <div [hidden]="!submitted">
