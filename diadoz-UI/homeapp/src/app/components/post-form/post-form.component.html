@@ -83,8 +83,15 @@
                     <input type="text" class="form-control" id="embed"
                     [(ngModel)]="media.embed" name=embed>
                     <label for="width">Width</label>
-                    <input type="text" class="form-control" id="width"
-                    [(ngModel)]="media.width" name=width>
+                    <mat-radio-group [(ngModel)]="media.width" name='width'>
+                        <mat-radio-button value="fullWidth">Full-Width</mat-radio-button>
+                        <mat-radio-button value="semiFullWidth">Semi-Full-Width</mat-radio-button>
+                        <mat-radio-button value="columnWidth">Column-Width</mat-radio-button>
+                        <mat-radio-button value="halfColumnWidth">Half-Column-Width</mat-radio-button>
+                        <mat-radio-button value="miniColumnWidth">Mini-Column-Width</mat-radio-button>
+                    </mat-radio-group>
+                    <!-- <input type="text" class="form-control" id="width"
+                    [(ngModel)]="media.width" name=width> -->
                 <mat-button-toggle (click)="addMedia()">
                         <i class="material-icons">add</i>
                 </mat-button-toggle>
@@ -152,7 +159,32 @@
             <div class="col-xs-3">Post Type</div>
             <div class="col-xs-9 pull-left">{{ model.postType }}</div>
         </div>
+        <div class="row">
+            <div class="col-xs-3">Featured Image</div>
+            <div class="col-xs-9 pull-left">{{ model.featuredImage }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Publish Date</div>
+            <div class="col-xs-9 pull-left">{{ model.publishDate }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Published</div>
+            <div class="col-xs-9 pull-left">{{ model.published }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Published By</div>
+            <div class="col-xs-9 pull-left">{{ model.publishedBy }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Sub-Headline</div>
+            <div class="col-xs-9 pull-left">{{ model.subHeadline }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Body</div>
+            <li class="col-xs-9 pull-left" *ngFor='let row of model.body'>{{ row }}</li>
+        </div>
         <br>
         <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+        <button class="btn btn-primary" (click)="sendData()">Submit</button>
     </div>
 </div>

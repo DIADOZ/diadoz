@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material';
 import { MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material';
+import {MatRadioModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule
   ],
   entryComponents: [
     PostFormComponent,
