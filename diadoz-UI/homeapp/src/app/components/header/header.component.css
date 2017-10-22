@@ -9,7 +9,7 @@
 
 }
 
-.navbar{
+.diadoz-navbar{
   position: relative;
   width: 100vw;
   height: var(--height);
@@ -19,22 +19,22 @@
 
 }
 
-.navbar .nav {
+.diadoz-navbar .diadoz-nav {
   text-align: center;
 
 }
-.nav{
+.diadoz-nav{
 
   margin: auto;
   padding: 0;
 
 }
 
-.nav > ul{
+.diadoz-nav > ul{
   height: var(--height);
 }
 
-.nav > li{
+.diadoz-nav > li{
   display: inline-block;
   float: none;
   vertical-align: middle;
@@ -44,7 +44,7 @@
 
 }
 
-.nav > li > a{
+.diadoz-nav > li > a{
   padding-left: 30px;
   padding-right: 30px;
   margin: auto;
