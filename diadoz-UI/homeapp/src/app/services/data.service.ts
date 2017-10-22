@@ -16,4 +16,10 @@ export class DataService {
     return this.http.get('http://localhost:3000/api/post/')
       .map(res => res.json());
   }
+
+  insertPost(data){
+    // return this.http.get('./assets/data/posts')
+    return this.http.post('http://localhost:3000/api/post/insert', data)
+      .map(res => res.json());
+  }
 }

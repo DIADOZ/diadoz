@@ -30,18 +30,12 @@
             </div>
 
             <div class="form-group">
-                <label for="primaryImage">Primary Image</label>
-                <mat-button-toggle (click)='newMedia()'>
-                    New Media Entry
-                </mat-button-toggle>
-                <mat-button-toggle>
-                    <i class="material-icons md-18">file_upload</i>
-                </mat-button-toggle>
-
-                <media-form [hidden]="!showMedia"></media-form>
+                <label for="featuredImage">Featured Image</label>
+                <input type="text" class="form-control" id="featuredImage"
+                [(ngModel)]='model.featuredImage' name='featuredImage'>
             </div>
 
-            
+            <!-- body -->
 
             <div class="form-group">
                 <label for="publishDate">Publish Date</label>
@@ -67,12 +61,69 @@
 
             <div class="form-group">
                 <label for="body">Post Body</label>
+                <mat-button-toggle (click)="toggleMedia()">
+                        Media
+                        <i class="material-icons">add</i>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="toggleArtCard()">
+                        Art Card
+                        <i class="material-icons">add</i>
+                    </mat-button-toggle>
                 <mat-button-toggle (click)="toggleBody()">
-                    <i class="material-icons">note add</i>
+                    Body
+                    <i class="material-icons">add</i>
                 </mat-button-toggle>
-                <!-- <mat-button-toggle>
-                    <i class="material-icons">add circle</i>
-                </mat-button-toggle> -->
+            </div>
+
+            <div id='mediaData' class='hide'>
+                    <label for="mediaTitle">Title</label>
+                    <input type="text" class="form-control" id="mediaTitle"
+                    [(ngModel)]="media.title" name=title>
+                    <label for="embed">Embed</label>
+                    <input type="text" class="form-control" id="embed"
+                    [(ngModel)]="media.embed" name=embed>
+                    <label for="width">Width</label>
+                    <input type="text" class="form-control" id="width"
+                    [(ngModel)]="media.width" name=width>
+                <mat-button-toggle (click)="addMedia()">
+                        <i class="material-icons">add</i>
+                </mat-button-toggle>
+            </div>
+            <div id='artCardData' class='hide'>
+                    <label for="artCardTitle">Title</label>
+                    <input type="text" class="form-control" id="artCardTitle"
+                    [(ngModel)]="artCard.title" name=title>
+                    <label for="primaryContributor">Primary Contributor</label>
+                    <input type="text" class="form-control" id="primaryContributor"
+                    [(ngModel)]="artCard.primaryContributor" name=primaryContributor>
+                    <label for="secondarContributor">Secondar Contributor</label>
+                    <input type="text" class="form-control" id="secondarContributor"
+                    [(ngModel)]="artCard.secondarContributor" name=secondarContributor>
+                    <label for="primaryType">Primary Type</label>
+                    <input type="text" class="form-control" id="primaryType"
+                    [(ngModel)]="artCard.primaryType" name=primaryType>
+                    <label for="summary">Summary</label>
+                    <input type="text" class="form-control" id="summary"
+                    [(ngModel)]="artCard.summary" name=summary>
+                    <label for="support">Support</label>
+                    <input type="text" class="form-control" id="support"
+                    [(ngModel)]="artCard.support" name=support>
+                    <label for="sources">Sources</label>
+                    <input type="text" class="form-control" id="sources"
+                    [(ngModel)]="source" name=source>
+                    <mat-button-toggle (click)="addSource()">
+                        <i class="material-icons">add</i>
+                    </mat-button-toggle>
+                    <label for="contributingArtists">Contributing Artists</label>
+                    <input type="text" class="form-control" id="contributingArtists"
+                    [(ngModel)]="artist" name=artist>
+                    <mat-button-toggle (click)="addArtist()">
+                        <i class="material-icons">add</i>
+                    </mat-button-toggle>
+                    <br>
+                <mat-button-toggle (click)="addArtCard()">
+                        <i class="material-icons">add</i>
+                </mat-button-toggle>
             </div>
             <div id='bodyData' class='hide'>
                 <textarea id='tiny'></textarea>

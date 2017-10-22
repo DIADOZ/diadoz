@@ -48,17 +48,17 @@ router.get('/all', function (req, res){
 	});
 });
 
-router.post('/insert', sessionCheck, function(req, res){
+//insert session once done testing
+router.post('/insert', function(req, res){
 	// parse through data from form
 	var postData = {
 		headline: req.body.headline,
 		subHeadline: req.body.subHeadline,
 		postType: req.body.postType,
-		primaryImage: req.body.primaryImage,
+		featuredImage: req.body.featuredImage,
 		publishDate: new Date(),
 		published: req.body.published,
 		publishedBy: req.body.publishedBy,
-		media: req.body.media,
 		body: req.body.body
 	};
 
