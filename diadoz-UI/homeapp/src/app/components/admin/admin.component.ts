@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ComponentFactoryResolver, ViewChild, ViewContainerRef} from '@angular/core';
-
+// import "~bootstrap/dist/css/bootstrap.min.css";
 import {PostFormComponent} from "../post-form/post-form.component";
 import {MediaFormComponent} from "../media-form/media-form.component";
 
@@ -12,16 +12,16 @@ export class AdminComponent {
 
   showPost: boolean = true;
   showMedia: boolean = false;
-  
+
   postForm(){
     this.showMedia = false;
     this.showPost = true;
-    
+
   }
   mediaForm(){
     this.showPost = false;
     this.showMedia = true;
-    
+
   }
     entityForm(){
     }
