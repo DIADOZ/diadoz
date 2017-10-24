@@ -22,4 +22,9 @@ export class DataService {
     return this.http.post('http://localhost:3000/api/post/insert', data)
       .map(res => res.json());
   }
+  logIn(data){
+    // return this.http.get('./assets/data/posts')
+    return this.http.post('http://localhost:3000/api/user/login', data)
+      .map(res => res.json());
+  }
 }

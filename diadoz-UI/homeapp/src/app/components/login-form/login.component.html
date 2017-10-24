@@ -1,0 +1,30 @@
+<div class="container">
+    <div>
+        <h1>Login</h1>
+        <form (ngSubmit)="onSubmit()" #login="ngForm">
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" id="userName" required
+                [(ngModel)] = 'model.userName' name='userName' #userName='ngModel'
+                #spy>
+                <div [hidden]="userName.valid || userName.pristine"
+                class="alert alert-danger">
+                    Username is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" required
+                [(ngModel)] = 'model.password' name='password' #password='ngModel'
+                #spy>
+                <div [hidden]="password.valid || password.pristine"
+                class="alert alert-danger">
+                    password is required
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" [disabled]="!login.form.valid">Submit</button>
+        </form>
+    </div>
+</div>  

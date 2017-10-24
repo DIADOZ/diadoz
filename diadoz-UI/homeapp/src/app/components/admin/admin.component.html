@@ -4,11 +4,11 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" opened="true">
     <mat-nav-list>
-        <mat-list-item (click)='postForm()'> Post </mat-list-item>
+        <!-- <mat-list-item routerLink="post" routerLinkActive="active"> Post </mat-list-item> -->
+        <!-- <mat-divider></mat-divider>
+        <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Media </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item (click)='mediaForm()'> Media </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item (click)='entityForm()'> Entity </mat-list-item>
+        <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Entity </mat-list-item> -->
     </mat-nav-list>
   </mat-sidenav>
 
@@ -16,7 +16,6 @@
       <i class="material-icons md-18 md-dark">menu</i>
   </mat-button-toggle>
   <div>
-    <post-form [hidden]="!showPost"></post-form>
-    <media-form [hidden]="!showMedia"></media-form>
+    <post-form></post-form>
   </div>
 </mat-sidenav-container>

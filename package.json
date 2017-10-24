@@ -25,6 +25,7 @@
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "mongodb": "^2.2.26",
-    "mongoose": "^4.11.14"
+    "mongoose": "^4.11.14",
+    "mongoose-paginate": "^5.0.3"
   }
 }

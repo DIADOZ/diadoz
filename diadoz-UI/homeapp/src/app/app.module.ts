@@ -19,19 +19,25 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { CardComponent } from './components/card/card.component';
 import { HeaderComponent } from './components/header/header.component';
 
+
 import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 import { MousewheelComponent } from './components/mousewheel/mousewheel.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MediaFormComponent } from "./components/media-form/media-form.component";
-
+import { LoginComponent } from './components/login-form/login.component';
 
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  // re-add canActivate: [AuthGuard] to admin path
+  
+  { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'home/:id', component: PostDetailsComponent},
-  { path: '', component: HomeComponent},
-  { path: 'admin', component: AdminComponent}
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -45,7 +51,8 @@ const appRoutes: Routes = [
     MousewheelComponent,
     PostFormComponent,
     AdminComponent,
-    MediaFormComponent
+    MediaFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,9 @@ const appRoutes: Routes = [
     MediaFormComponent
   ],
   providers: [
-    DataService
+    DataService,
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

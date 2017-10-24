@@ -40,9 +40,6 @@ export class PostFormComponent implements AfterViewInit {
 
     onSubmit() { 
         this.submitted = true;
-        this.dataService.insertPost(this.model).subscribe((model) => {
-            console.log(model);
-        });
     }
 
     sendData() {
@@ -50,6 +47,7 @@ export class PostFormComponent implements AfterViewInit {
         this.newPost();
         this.dataService.insertPost(this.model).subscribe((model) => {
             console.log(model);
+            //redirect to when successful post
         });
     }
 
