@@ -126,11 +126,10 @@ interface Posts {
   headline:string,
   subHeadline:string,
   postType:string,
-  primaryImage:string[],
+  featuredImage:string,
   publishDate: string,
   publishedBy:number,
   body: string[],
-  media:string[],
   published:boolean,
   __v:number
 }

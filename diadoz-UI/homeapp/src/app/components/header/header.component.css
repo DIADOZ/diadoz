@@ -4,23 +4,21 @@
   /*position: fixed;*/
   /*top: 0;*/
 /*}*/
-:root{
-  --height: 8vh;
-
-}
 
 .diadoz-navbar{
   position: relative;
   width: 100vw;
-  height: var(--height);
-  background-color: white;
+  height: 46px;
+  /*background-color: #ff1312;*/
   /*margin-top: 10px;*/
   display: block;
+  overflow: hidden;
 
 }
 
 .diadoz-navbar .diadoz-nav {
   text-align: center;
+  /*background-color: red;*/
 
 }
 .diadoz-nav{
@@ -31,24 +29,23 @@
 }
 
 .diadoz-nav > ul{
-  height: var(--height);
+  height: 30px;
 }
 
 .diadoz-nav > li{
   display: inline-block;
   float: none;
   vertical-align: middle;
-  height: var(--height);
+  height: 46px;
   /*line-height:35px;*/
 
 
 }
 
 .diadoz-nav > li > a{
-  padding-left: 30px;
-  padding-right: 30px;
-  margin: auto;
-
+  /*padding-left: 30px;*/
+  /*padding-right: 30px;*/
+  /*margin: auto;*/
 }
 
 /*.logo-container{*/
@@ -64,9 +61,9 @@
 
 .logo-container img {
   /*width: 100%;*/
-  display: block;
-  height: 5vh;
-  margin-top: auto;
+  display: inline-block;
+  height: 30px;
+  margin-top: 9px;
   margin-bottom: auto;
 
   /*background-color: red;*/
@@ -75,6 +72,18 @@
 
 
 @media screen and (orientation: portrait) {
+
+  .diadoz-navbar{
+    background-color: rgba(255, 255, 255, 0.58);
+    position: fixed;
+    z-index: 1;
+
+
+  }
+  .header-filler{
+    position: relative;
+    height: 46px;
+  }
 
 }
 
@@ -91,4 +100,9 @@
 
 @media screen and (orientation: landscape){
 
+  .header-filler{
+    display: none;
+    height: 0;
+
+  }
 }

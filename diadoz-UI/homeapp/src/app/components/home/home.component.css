@@ -123,6 +123,7 @@ a {
     height: 100%;
     margin: 0 auto;
     padding: 0px;
+    background-color: deepskyblue;
   }
 
   .tile-container {
@@ -142,6 +143,7 @@ a {
     display: flex;
     /*margin: 0;*/
   }
+
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -184,7 +186,9 @@ a {
     /*padding: 0px;*/
 
     /*Sizing*/
-    height: 92vh;
+    height: calc(100vh - 46px);
+
+    background-color: #649d71;
   }
 
   .tile-container {
@@ -203,7 +207,7 @@ a {
 
     /*Sizing*/
     min-width: 100px;
-    height: 92vh;
+    height: calc(100vh - 46px);
 
     /*Color*/
     /*background-color: darkgreen;*/
@@ -212,7 +216,7 @@ a {
   .tile {
     /*Positioning*/
     float: left;
-    height: 92vh;
+    height: calc(100vh - 46px);
     position: relative;
     display: inline-flex;
 
