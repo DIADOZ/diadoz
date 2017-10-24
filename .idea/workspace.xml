@@ -4,7 +4,6 @@
     <list id="af6d89aa-54d7-4a43-b7cd-7a49d41ca951" name="Media querie fix" comment="" />
     <list default="true" id="22ce3133-41e4-4e87-91cc-d64282cec447" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css" />
     </list>
     <ignored path="diadoz-1.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -664,7 +663,7 @@
       <workItem from="1506025418150" duration="798000" />
       <workItem from="1506052295136" duration="27774000" />
       <workItem from="1508025307429" duration="24298000" />
-      <workItem from="1508559000427" duration="22491000" />
+      <workItem from="1508559000427" duration="22515000" />
     </task>
     <task id="LOCAL-00001" summary="trying a cleaner code for main page">
       <created>1482566720563</created>
@@ -799,11 +798,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508815813047</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixed header+body to be responsive">
+      <created>1508816858003</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1508816858003</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280150000" />
+    <option name="totallyTimeSpent" value="280174000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -928,7 +934,8 @@
     <MESSAGE value="changed class names in header component" />
     <MESSAGE value="fixed scrolling to be responsive" />
     <MESSAGE value="fixed header to be responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed header to be responsive" />
+    <MESSAGE value="fixed header+body to be responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed header+body to be responsive" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
