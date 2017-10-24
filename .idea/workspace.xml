@@ -5,12 +5,6 @@
     <list default="true" id="22ce3133-41e4-4e87-91cc-d64282cec447" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.html" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.css" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.html" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.ts" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/services/data.service.ts" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/app/services/data.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/diadoz-UI/homeapp/src/assets/data/posts" afterPath="$PROJECT_DIR$/diadoz-UI/homeapp/src/assets/data/posts" />
     </list>
     <ignored path="diadoz-1.0.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -79,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.component.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="header.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="47" />
+            <state relative-caret-position="318">
+              <caret line="77" column="20" lean-forward="true" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -670,7 +664,7 @@
       <workItem from="1506025418150" duration="798000" />
       <workItem from="1506052295136" duration="27774000" />
       <workItem from="1508025307429" duration="24298000" />
-      <workItem from="1508559000427" duration="22245000" />
+      <workItem from="1508559000427" duration="22491000" />
     </task>
     <task id="LOCAL-00001" summary="trying a cleaner code for main page">
       <created>1482566720563</created>
@@ -798,11 +792,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508802420482</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fixed header to be responsive">
+      <created>1508815813047</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1508815813047</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279904000" />
+    <option name="totallyTimeSpent" value="280150000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -926,7 +927,8 @@
     <MESSAGE value="changed nav bar and changed component compositions" />
     <MESSAGE value="changed class names in header component" />
     <MESSAGE value="fixed scrolling to be responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed scrolling to be responsive" />
+    <MESSAGE value="fixed header to be responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed header to be responsive" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1304,14 +1306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1330,8 +1324,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/header/header.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="47" />
+        <state relative-caret-position="318">
+          <caret line="77" column="20" lean-forward="true" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diadoz-UI/homeapp/src/app/components/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
