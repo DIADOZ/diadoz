@@ -14,6 +14,10 @@
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
+mat-sidenav {
+  width: 150px;
+}
+
 body {
   margin: auto 0;
 }
