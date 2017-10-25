@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 var	index = require('./routes/index');
 var	post = require('./routes/post');

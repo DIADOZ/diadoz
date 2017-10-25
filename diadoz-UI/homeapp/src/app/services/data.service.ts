@@ -11,9 +11,9 @@ export class DataService {
     console.log("DataService is connected...");
   }
 
-  getPosts(){
-    return this.http.get('./assets/data/posts')
-    // return this.http.get('http://localhost:3000/api/post/')
+  getPosts(page){
+    //return this.http.get('./assets/data/posts')
+    return this.http.get('http://localhost:3000/api/post/', { params: {pageNumber: page}})
       .map(res => res.json());
   }
 

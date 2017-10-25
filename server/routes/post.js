@@ -6,18 +6,13 @@ var post = require('../models/post');
 
 // Get Home Page
 router.get('/', function (req, res){
+	var pageNumber = parseInt(req.query.pageNumber);
 	//get all Posts
 	//need to add limit and stream based get
-	var cursor = post
-		.find()
-		.select({headline: 1, subHeadline: 1, postType:1, featuredImage: 1, publishDate:1, published: 1})
-		.exec(function(err, data){
-			if (err){
-				res.send(err);
-			}
-
-			res.json(data);
-		});
+	var cursor = post.paginate({}, {page: pageNumber, limit: 5})
+	.then(function(result){
+		res.json(result.docs);
+	});
 });
 
 router.get('/:postId', function(req, res){

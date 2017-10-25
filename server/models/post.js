@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var mongoosePaginate = require('mongoose-paginate');
 
 // Only for test with created id and relationships
 
@@ -13,5 +14,7 @@ var postSchema = new Schema({
 	publishedBy: {required: true, type: String}, // will be User _id 
 	body: []
 });
+
+postSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Post', postSchema);

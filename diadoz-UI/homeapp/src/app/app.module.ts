@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material';
 import {MatRadioModule} from '@angular/material';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
 
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'home/:id', component: PostDetailsComponent},
+  { path: ':id', component: PostDetailsComponent},
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    InfiniteScrollModule
   ],
   entryComponents: [
     PostFormComponent,

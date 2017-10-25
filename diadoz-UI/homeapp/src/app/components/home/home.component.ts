@@ -14,15 +14,32 @@ export class HomeComponent implements OnInit {
   logo = './assets/img/logo/diadoz-white-logo-2017.svg';
   posts: any = [];
 
-  constructor(private dataService: DataService ) { }
+  postArray = [];
+  scrollDistance = 2;
+  throttle = 300;
+  pageNumber = 1;
+  constructor(private dataService: DataService ) { 
+    this.addPosts(this.pageNumber);
+  }
 
+  addPosts(page){
+    this.dataService.getPosts(page).subscribe((posts) => {
+      console.log(posts);
+      this.postArray = this.postArray.concat(posts);
+      this.pageNumber++;
+    });
+  }
+
+  onScroll(){
+    this.addPosts(this.pageNumber)
+  }
 
   ngOnInit() {
 
-    this.dataService.getPosts().subscribe((posts) => {
-      console.log(posts);
-      this.posts = posts;
-    });
+    // this.dataService.getPosts(##).subscribe((posts) => {
+    //   console.log(posts);
+    //   this.posts = posts;
+    // });
 
     // Find matches
     var mql = window.matchMedia("(orientation: landscape)");

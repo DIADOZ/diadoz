@@ -29,6 +29,7 @@
     "jquery": "^3.2.1",
     "jquery-browserify": "^1.8.1",
     "jquery-mousewheel": "^3.1.13",
+    "ngx-infinite-scroll": "^0.6.1",
     "rxjs": "^5.5.0",
     "tinymce": "^4.7.1",
     "zone.js": "^0.8.18"

@@ -1,17 +1,25 @@
 <app-header></app-header>
 <div class="body-container">
-  <div class="tile-container">
-    <div class="tile" *ngFor="let post of posts" id="tile{{post._id}}">
-      <header class="tile-overlay">
-        <p class="tile-text">
-          <a routerLink="/home/{{post._id}}">
-            <strong>{{post.headline}}</strong>
-            <br>{{post.subHeadline}}
-          </a>
-        </p>
-      </header>
-      <img class="tile-photo" src=" ../../../{{post.featuredImage}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
-    </div>
+  <!-- <div class="tile-container"> -->
+    <!-- ngx -->
+    <div class="tile-container"
+        infiniteScroll
+        [infiniteScrollDistance]="scrollDistance"
+        [infiniteScrollThrottle]="throttle"
+        [scrollWindow]="false"
+        (scrolled)="onScroll()">
+      <div class="tile" *ngFor="let post of postArray" id="tile{{post._id}}">
+        <header class="tile-overlay">
+          <p class="tile-text">
+            <a routerLink="">
+              <strong>{{post.headline}}</strong>
+              <br>{{post.subHeadline}}
+            </a>
+          </p>
+        </header>
+        <img class="tile-photo" src=" ../../assets/{{post.featuredImage}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
+      </div>
+    <!-- </div> -->
   </div>
 </div>
 <!--<div class="footer-banner">-->
