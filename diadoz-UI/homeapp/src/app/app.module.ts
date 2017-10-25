@@ -32,9 +32,9 @@ import { LoginComponent } from './components/login-form/login.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'admin', component: AdminComponent},
   // re-add canActivate: [AuthGuard] to admin path
-  
+
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'home/:id', component: PostDetailsComponent},
