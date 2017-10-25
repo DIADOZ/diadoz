@@ -10,7 +10,6 @@ router.get('/', function (req, res){
 	//need to add limit and stream based get
 	var cursor = post
 		.find()
-		.populate('primaryImage', 'filePath')
 		.select({headline: 1, subHeadline: 1, postType:1, featuredImage: 1, publishDate:1, published: 1})
 		.exec(function(err, data){
 			if (err){
