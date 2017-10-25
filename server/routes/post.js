@@ -69,7 +69,7 @@ router.post('/insert', sessionCheck, function(req, res){
 		if (err) return console.log(err);
 	});
 
-	res.redirect('/');
+	res.send('');
 });
 
 router.get('/data/:postId', function(req, res){

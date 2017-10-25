@@ -20,7 +20,7 @@ export class DataService {
   insertPost(data){
     // return this.http.get('./assets/data/posts')
     return this.http.post('http://localhost:3000/api/post/insert', data)
-      .map(res => res.json());
+      .map(res => res);
   }
   logIn(data){
     // return this.http.get('./assets/data/posts')

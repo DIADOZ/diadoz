@@ -44,11 +44,12 @@ export class PostFormComponent implements AfterViewInit {
 
     sendData() {
         this.submitted = false;
-        this.newPost();
+        
         this.dataService.insertPost(this.model).subscribe((model) => {
             console.log(model);
             //redirect to when successful post
         });
+        this.newPost();
     }
 
     newPost() {
