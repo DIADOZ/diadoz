@@ -51,4 +51,4 @@ var createTestData = function(){
 	test.insertTestPosts(5);
 };
 
-createTestData();
+//createTestData();

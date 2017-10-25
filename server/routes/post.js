@@ -23,9 +23,6 @@ router.get('/', function (req, res){
 router.get('/:postId', function(req, res){
 	var cursor = post
 		.find({_id: new ObjectId(req.params.postId)})
-		.populate('featuredImage')
-		.populate('publishedBy')
-		.populate('media')
 		.exec(function(err, data){
 		if (err){
 			res.send(err);
