@@ -21,11 +21,13 @@ export class PostFormComponent implements AfterViewInit {
     model = new Post('', this.postTypes[1],'filePath', this.todayDate, false, 'Mauro Doza', '', []);
     // headline, postType, primaryImage, publishDate, published, publishedBy, subHeadline, body
     media = {
+        class:'media',
         title: '',
         embed: '',
         width: ''
     };
     artCard = {
+        class: 'card',
         title: '',
         primaryContributor: '',
         secondaryContributor: '',
@@ -125,7 +127,10 @@ export class PostFormComponent implements AfterViewInit {
         //clear art card input
     }
     addBody(){
-        this.model.body.push({ text: tinymce.activeEditor.getContent()});
+        this.model.body.push({ 
+            class: 'text',
+            text: tinymce.activeEditor.getContent()
+        });
         this.toggleBody();
         
     }

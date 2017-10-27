@@ -9,16 +9,16 @@ router.get('/', function (req, res){
 	var pageNumber = parseInt(req.query.pageNumber);
 	//get all Posts
 	//need to add limit and stream based get
-	var cursor = post.paginate({}, {page: pageNumber, limit: 5})
+	var cursor = post.paginate({}, {page: pageNumber, limit: 3})
 	.then(function(result){
 		res.json(result.docs);
 	});
 });
 
 router.get('/:postId', function(req, res){
-	var cursor = post
-		.find({_id: new ObjectId(req.params.postId)})
-		.exec(function(err, data){
+	var cursor = post.findOne({
+		_id: req.params.postId
+	}, function(err, data){
 		if (err){
 			res.send(err);
 		}
