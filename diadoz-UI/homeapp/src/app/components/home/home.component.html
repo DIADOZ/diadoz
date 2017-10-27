@@ -1,16 +1,14 @@
 <app-header></app-header>
-<div class="body-container">
+<div class="body-container"
+  [scrollLeft]="initScrollLeft"
+  infiniteScroll
+  [scrollWindow]="false"
+  [horizontal]="true"
+  [alwaysCallback]="true"
+  (scrolled)="onScroll()">
   <!-- <div class="tile-container"> -->
     <!-- ngx -->
-    <div class="tile-container"
-    [scrollLeft]="initScrollLeft"
-        infiniteScroll
-        [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="50"
-        [horizontal]="true"
-        [alwaysCallback]="true"
-        [scrollWindow]="false"
-        (scrolled)="onScroll()">
+    <div class="tile-container">
       <div class="tile" *ngFor="let post of postArray" id="tile{{post._id}}">
         <header class="tile-overlay">
           <p class="tile-text">
