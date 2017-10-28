@@ -9,6 +9,7 @@ var postSchema = new Schema({
 	subHeadline: String,
 	postType: {required: true, type: String},
 	featuredImage: {required: true, type: String}, // will be Media _id
+	customURL: {required: true, type: String},
 	publishDate: {required: true, type: Date},
 	published: {required: true, type: Boolean, default: false},
 	publishedBy: {required: true, type: String}, // will be User _id 

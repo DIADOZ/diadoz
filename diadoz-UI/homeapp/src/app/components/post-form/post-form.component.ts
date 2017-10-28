@@ -18,7 +18,7 @@ export class PostFormComponent implements AfterViewInit {
     todayDate = new Date();
     submitted = false;
 
-    model = new Post('', this.postTypes[1],'filePath', this.todayDate, false, 'Mauro Doza', '', []);
+    model = new Post('', this.postTypes[1],'filePath', '', this.todayDate, false, 'Mauro Doza', '', []);
     // headline, postType, primaryImage, publishDate, published, publishedBy, subHeadline, body
     media = {
         class:'media',
@@ -56,7 +56,7 @@ export class PostFormComponent implements AfterViewInit {
 
     newPost() {
         var today = new Date();
-        this.model = new Post('', '', '', today, false, '', '', []);
+        this.model = new Post('', '', '', '',today, false, 'Mauro Doza', '', []);
     }
 
     ngAfterViewInit() {

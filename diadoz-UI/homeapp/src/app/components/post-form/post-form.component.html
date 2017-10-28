@@ -35,6 +35,12 @@
                 [(ngModel)]='model.featuredImage' name='featuredImage'>
             </div>
 
+            <div class="form-group">
+                    <label for="customURL">Custom URL</label>
+                    <input type="text" class="form-control" id="customURL"
+                    [(ngModel)]='model.customURL' name='customURL'>
+                </div>
+
             <!-- body -->
 
             <div class="form-group">
@@ -86,6 +92,7 @@
                     <mat-radio-group [(ngModel)]="media.width" name='width'>
                         <mat-radio-button value="fullWidth">Full-Width</mat-radio-button>
                         <mat-radio-button value="semiFullWidth">Semi-Full-Width</mat-radio-button>
+                        <mat-radio-button value="halfWidth">Half-Width</mat-radio-button>
                         <mat-radio-button value="columnWidth">Column-Width</mat-radio-button>
                         <mat-radio-button value="halfColumnWidth">Half-Column-Width</mat-radio-button>
                         <mat-radio-button value="miniColumnWidth">Mini-Column-Width</mat-radio-button>

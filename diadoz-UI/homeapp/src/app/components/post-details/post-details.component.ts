@@ -16,6 +16,7 @@ export class PostDetailsComponent implements OnInit {
     headline: '',
     subHeadline: '',
     featuredImage: '',
+    customURL: '',
     postType: '',
     publishDate: '',
     published: false,
@@ -31,7 +32,7 @@ export class PostDetailsComponent implements OnInit {
   ngOnInit() {
     this.post$ = this.route.params
       .switchMap((params: ParamMap) =>
-        this.dataService.getPost(params['id'])
+        this.dataService.getPost(params['customURL'])
       )
       .subscribe((post)  =>
         this.post = post

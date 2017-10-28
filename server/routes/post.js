@@ -15,9 +15,32 @@ router.get('/', function (req, res){
 	});
 });
 
-router.get('/:postId', function(req, res){
+//get post by id
+// router.get('/:postId', function(req, res){
+// 	var cursor = post.findOne({
+// 		_id: req.params.postId
+// 	}, function(err, data){
+// 		if (err){
+// 			res.send(err);
+// 		}
+
+//         res.json(data);
+// 	});
+// });
+
+function slugify(text) {
+	return text.toString().toLowerCase()
+		.replace(/\s+/g, '-')        // Replace spaces with -
+		.replace(/[^\w\-]+/g, '')   // Remove all non-word chars
+		.replace(/\-\-+/g, '-')      // Replace multiple - with single -
+		.replace(/^-+/, '')          // Trim - from start of text
+		.replace(/-+$/, '');         // Trim - from end of text
+}
+
+//get post by URL
+router.get('/:customURL', function(req, res){
 	var cursor = post.findOne({
-		_id: req.params.postId
+		customURL: req.params.customURL
 	}, function(err, data){
 		if (err){
 			res.send(err);
@@ -47,11 +70,14 @@ router.post('/insert', sessionCheck, function(req, res){
 		subHeadline: req.body.subHeadline,
 		postType: req.body.postType,
 		featuredImage: req.body.featuredImage,
+		customURL: req.body.customURL,
 		publishDate: new Date(),
 		published: req.body.published,
 		publishedBy: req.body.publishedBy,
 		body: req.body.body
 	};
+
+	postData.customURL = slugify(postData.customURL);
 
 	console.log(postData);
 
@@ -63,33 +89,21 @@ router.post('/insert', sessionCheck, function(req, res){
 	res.send('');
 });
 
-router.get('/data/:postId', function(req, res){
-	var cursor = post.find({
-		id: req.params.postId
-	}, function(err, data){
-		if (err){
-			res.send(err);
+router.put('/update', function(req, res, next){
+	var id = req.body._id;
+	var updateData = {};
+	var fields = {};
+
+	for (var prop in req.body) {
+		if (req.body.hasOwnProperty(prop)) {
+			updateData[prop] = req.body[prop];
+			fields[prop] = 1;
 		}
-
-        res.json(data);
-	});
-});
-
-router.put('/update', sessionCheck, function(req, res, next){
-	var id = req.body.id;
+	}
 
 	// maybe change to findByIdAndUpdate once _ids are setup
-	post.findOneAndUpdate({'id': id}, {
-		headline: req.body.headline,
-		subHeadline: req.body.subHeadline,
-		postType: req.body.postType,
-		featuredImage: req.body.featuredImage,
-		publishDate: new Date(),
-		published: req.body.published,
-		publishedBy: req.body.publishedBy,
-		media: req.body.media,
-		body: req.body.body
-	}, {new: true}, function(err, doc){
+	post.findOneAndUpdate({'_id': id}, 
+	updateData, {new: true, fields: fields}, function(err, doc){
 		if(err){
 			console.error('error, post not found');
 		} else {

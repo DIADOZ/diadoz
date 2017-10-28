@@ -17,9 +17,9 @@ export class DataService {
       .map(res => res.json());
   }
 
-  getPost(postID){
+  getPost(customURL){
     //return this.http.get('./assets/data/posts')
-    return this.http.get(`http://localhost:3000/api/post/${postID}`)
+    return this.http.get(`http://localhost:3000/api/post/${customURL}`)
       .map(res => res.json());
   }
 

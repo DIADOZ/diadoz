@@ -12,7 +12,7 @@
       <div class="tile" *ngFor="let post of postArray" id="tile{{post._id}}">
         <header class="tile-overlay">
           <p class="tile-text">
-            <a [routerLink]="['/post', post._id]">
+            <a [routerLink]="['/post', post.customURL]" routerLinkActive="active">
               <strong>{{post.headline}}</strong>
               <br>{{post.subHeadline}}
             </a>

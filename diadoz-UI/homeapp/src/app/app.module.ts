@@ -38,7 +38,7 @@ const appRoutes: Routes = [
 
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'post/:id', component: PostDetailsComponent},
+  { path: 'post/:customURL', component: PostDetailsComponent},
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
