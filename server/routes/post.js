@@ -63,7 +63,7 @@ router.get('/all', function (req, res){
 });
 
 //insert session once done testing
-router.post('/insert', sessionCheck, function(req, res){
+router.post('/insert', function(req, res){
 	// parse through data from form
 	var postData = {
 		headline: req.body.headline,
@@ -114,7 +114,7 @@ router.put('/update', function(req, res, next){
 	});
 });
 
-router.delete('/delete', sessionCheck, (req, res, next) => {
+router.delete('/delete', (req, res, next) => {
 	var id = req.body.id;
 	post.remove({'id': id},function(err){
 		if (err){
