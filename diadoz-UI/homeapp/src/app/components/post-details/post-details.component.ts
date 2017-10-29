@@ -23,6 +23,7 @@ export class PostDetailsComponent implements OnInit {
     publishedBy: '',
     body: []
   };
+  
   private selectedId: number;
   constructor(
     private route: ActivatedRoute,

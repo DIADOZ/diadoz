@@ -5,11 +5,12 @@
     <div class="sound-wrapper">
       <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/167333035&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
     </div>
-    <app-card></app-card>
   </div>
-  <div *ngFor="let body of post.body" class="{{body.class}}">
-    <div *ngIf="body.class == 'card'">
-      <app-card>send info to card</app-card>
+  <div *ngFor="let data of post.body">
+    <div *ngIf="data.class === 'card'">
+      <app-card
+        [card]='data'
+      ></app-card>
     </div>
   </div>
 </div>
