@@ -22,14 +22,14 @@ export class LoginComponent{
     };
 
     onSubmit() { 
-        this.authService.login(this.model).subscribe(() => {
+        this.authService.login(this.model).subscribe((user) => {
             if (this.authService.isLoggedIn) {
-              // Get the redirect URL from our auth service
-              // If no redirect has been set, use the default
-              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
-       
-              // Redirect the user
-              this.router.navigate([redirect]);
+                // Get the redirect URL from our auth service
+                // If no redirect has been set, use the default
+                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+                let userHandle = user.firstName.trim() + ' ' + user.lastName.trim();
+                // Redirect the user
+                this.router.navigate([redirect], { queryParams:{ user: userHandle } });
             }
         });
 

@@ -47,7 +47,7 @@ router.post('/authenticate', function(req, res) {
 				req.session.regenerate(function() {
 					req.session.user = userName;
 					//add a token to session unless it already adds one on its own
-					return res.send({userName: userName});
+					return res.send({userName: userName, firstName: usr.firstName, lastName: usr.lastName});
 				});
 			} else {
 				res.status(400).send('Username or password is incorrect');
@@ -85,7 +85,7 @@ router.post('/insert', function(req, res){
 		if (err) return console.log(err);
 	});
 
-	res.redirect('/');
+	res.send('User added');
 });
 
 router.put('/update', sessionCheck, function(req, res, next){

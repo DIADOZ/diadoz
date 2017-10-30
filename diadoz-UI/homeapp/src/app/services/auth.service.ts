@@ -31,5 +31,6 @@ constructor(private http: Http) { }
 
   logout(): void {
     this.isLoggedIn = false;
+    this.http.get('http://localhost:3000/api/user/logout');
   }
 }

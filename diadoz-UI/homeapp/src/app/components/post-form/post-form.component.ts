@@ -1,4 +1,5 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DateAdapter, NativeDateAdapter } from '@angular/material';
 import { DatePipe } from '@angular/common';
 
@@ -11,15 +12,14 @@ import { Post }    from './post';
   templateUrl: './post-form.component.html',
   styleUrls:['./forms.css']
 })
-export class PostFormComponent implements AfterViewInit {
-    constructor(private dataService: DataService ) { }
-
-    postTypes = ['Article', 'Media', 'Gallery'];
+export class PostFormComponent implements OnInit, AfterViewInit {
+    constructor(private dataService: DataService, private route: ActivatedRoute) {}
+    postTypes = ['Article', 'Gallery'];
     todayDate = new Date();
+    
     submitted = false;
-
-    model = new Post('', this.postTypes[1],'filePath', '', this.todayDate, false, 'Mauro Doza', '', []);
-    // headline, postType, primaryImage, publishDate, published, publishedBy, subHeadline, body
+    model = new Post('', this.postTypes[0],'', '', this.todayDate, false, '', '', []);
+    // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
     media = {
         class:'media',
         title: '',
@@ -40,8 +40,25 @@ export class PostFormComponent implements AfterViewInit {
     source = '';
     artist = '';
 
+    ngOnInit(){
+        this.route.queryParams.subscribe((params: Params) => {
+            this.model.publishedBy = params['user'];
+            console.log(this.model.publishedBy + ' is using the post form');
+          });
+    }
+    slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')        // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')   // Remove all non-word chars
+            .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+            .replace(/^-+/, '')          // Trim - from start of text
+            .replace(/-+$/, '');         // Trim - from end of text
+    }
     onSubmit() { 
         this.submitted = true;
+        if(!this.model.customURL || this.model.customURL === ''){
+            this.model.customURL = this.slugify(this.model.headline);
+        }
     }
 
     sendData() {
@@ -56,7 +73,7 @@ export class PostFormComponent implements AfterViewInit {
 
     newPost() {
         var today = new Date();
-        this.model = new Post('', '', '', '',today, false, 'Mauro Doza', '', []);
+        this.model = new Post('', this.postTypes[0], '', '',today, false, this.model.publishedBy, '', []);
     }
 
     ngAfterViewInit() {
@@ -140,4 +157,5 @@ export class PostFormComponent implements AfterViewInit {
     get diagnostic() {
         return JSON.stringify(this.model);
     }
+    
 }
