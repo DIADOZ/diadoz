@@ -12,13 +12,13 @@ declare var $: any;
 export class HomeComponent implements OnInit {
   // posts: Posts[];
   logo = './assets/img/logo/diadoz-white-logo-2017.svg';
-  posts: any = [];
+  // posts: any = [];
 
   postArray = [];
   scrollDistance = 2;
   throttle = 300;
   pageNumber = 1;
-  constructor(private dataService: DataService ) { 
+  constructor(private dataService: DataService ) {
     this.addPosts(this.pageNumber);
   }
 
@@ -125,30 +125,7 @@ export class HomeComponent implements OnInit {
 
   }
 
+
+
 }
-
-// hard coded test data
-// interface Posts {
-//   userId:number,
-//   id:number,
-//   title:string,
-//   artist:string,
-//   type:string,
-//   image:string,
-//   link:string
-// }
-
-interface Posts {
-  _id:string,
-  headline:string,
-  subHeadline:string,
-  postType:string,
-  featuredImage:string,
-  publishDate: string,
-  publishedBy:number,
-  body: string[],
-  published:boolean,
-  __v:number
-}
-
 

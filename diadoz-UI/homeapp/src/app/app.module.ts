@@ -30,6 +30,10 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MediaFormComponent } from "./components/media-form/media-form.component";
 import { LoginComponent } from './components/login-form/login.component';
+import { GalleryPostComponent } from './components/gallery-post/gallery-post.component';
+// import { PipesComponent } from './components/pipes/pipes.component';
+
+import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -53,7 +57,9 @@ const appRoutes: Routes = [
     PostFormComponent,
     AdminComponent,
     MediaFormComponent,
-    LoginComponent
+    LoginComponent,
+    GalleryPostComponent,
+    EscapeHtmlPipe
   ],
   imports: [
     BrowserModule,
