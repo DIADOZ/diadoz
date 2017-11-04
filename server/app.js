@@ -15,9 +15,9 @@ var	user = require('./routes/user');
 var test = require('./test');
 
 var app = express();
-
+var mongoDB = process.env.MONGODB_URI || 'mongodb://root:PkRMwezh6s34@dia.diadoz.com:27017/diadoz';
 //connect to db and start server
-mongoose.connect('mongodb://localhost:27017/diadoz');
+mongoose.connect(mongoDB);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 

@@ -1,7 +1,13 @@
 {
         "version": "0.2.0",
         "configurations": [
-
+            {
+                "type": "chrome",
+                "request": "attach",
+                "name": "Attach to Chrome",
+                "port": 9222,
+                "webRoot": "${workspaceRoot}"
+            },
             {
                 "type": "node",
                 "request": "launch",
@@ -13,6 +19,7 @@
                 "request": "attach",
                 "name": "Attach to Process",
                 "port": 3000
-            }
+            },
+
         ]
     }

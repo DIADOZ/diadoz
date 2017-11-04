@@ -28,11 +28,10 @@ import { AuthGuard } from './services/auth-guard.service';
 import { MousewheelComponent } from './components/mousewheel/mousewheel.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { MediaFormComponent } from "./components/media-form/media-form.component";
+import { MediaFormComponent } from './components/media-form/media-form.component';
 import { LoginComponent } from './components/login-form/login.component';
 import { GalleryPostComponent } from './components/gallery-post/gallery-post.component';
-// import { PipesComponent } from './components/pipes/pipes.component';
-
+import { PageNotFoundComponent } from './components/404-page/not-found.component';
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 const appRoutes: Routes = [
@@ -43,7 +42,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent},
   { path: 'post/:customURL', component: PostDetailsComponent},
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -58,6 +57,7 @@ const appRoutes: Routes = [
     AdminComponent,
     MediaFormComponent,
     LoginComponent,
+    PageNotFoundComponent,
     GalleryPostComponent,
     EscapeHtmlPipe
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import {DataService} from "../../services/data.service";
+import {DataService} from '../../services/data.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -23,7 +23,7 @@ export class PostDetailsComponent implements OnInit {
     publishedBy: '',
     body: []
   };
-  
+
   private selectedId: number;
   constructor(
     private route: ActivatedRoute,
