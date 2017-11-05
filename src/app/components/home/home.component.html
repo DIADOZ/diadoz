@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="body-container"
+  infiniteScroll
+  [scrollWindow]="false"
+  [horizontal]="true"
+  [alwaysCallback]="true"
+  (scrolled)="onScroll()">
+  <!-- <div class="tile-container"> -->
+    <!-- ngx -->
+    <div class="tile-container">
+      <div class="tile" *ngFor="let post of postArray" id="tile{{post._id}}">
+        <header class="tile-overlay">
+          <p class="tile-text">
+            <a [routerLink]="['/post', post.customURL]" routerLinkActive="active">
+              <strong>{{post.headline}}</strong>
+              <br>{{post.subHeadline}}
+            </a>
+          </p>
+        </header>
+        <img class="tile-photo" src="/assets{{post.featuredImage}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
+      </div>
+    <!-- </div> -->
+  </div>
+</div>
+<!--<div class="footer-banner">-->
+<!--<div class="logo-container">-->
+  <!--<a routerLink="/home" routerLinkActive="active">-->
+    <!--<img src="{{logo}}" />-->
+  <!--</a>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+
+<!--<script type='text/javascript' src='../../../../../../public/main/js/jquery.mousewheel.min.js'></script>-->
+<!--<script src="../../../../../main/js/wheel-indicator.js"></script>-->
+<!--<script src="../../../../../main/js/Horizontal-Scroll.js"></script>-->
+<!--<script src="../js/Image-Resize.js"></script>-->
