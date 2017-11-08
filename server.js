@@ -32,20 +32,20 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-// app.use(function(req, res, next) {
-// 	res.header("Access-Control-Allow-Origin", "*");
-// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-// 	next();
-//   });
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+ 	next();
+  });
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 app.use('/api/post', post);
 app.use('/api/media', media);
 app.use('/api/entity', entity);
 app.use('/api/user', user);
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'dist/index.html'));
+	res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 //port goes in config file later
