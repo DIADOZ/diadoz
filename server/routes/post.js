@@ -9,7 +9,7 @@ router.get('/', function (req, res){
 	var pageNumber = parseInt(req.query.pageNumber);
 	//get all Posts
 	//need to add limit and stream based get
-	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 3})
+	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 3, sort: { publishDate: -1 }})
 	.then(function(result){
 		res.json(result.docs);
 	});
