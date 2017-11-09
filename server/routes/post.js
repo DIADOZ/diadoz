@@ -115,8 +115,8 @@ router.put('/update', function(req, res, next){
 });
 
 router.delete('/delete', (req, res, next) => {
-	var id = req.body.id;
-	post.remove({'id': id},function(err){
+	var id = req.body._id;
+	post.remove({'_id': id},function(err){
 		if (err){
 			console.error('error deleting document');
 		}
