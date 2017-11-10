@@ -15,7 +15,7 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" required
+                <input type="password" class="form-control" id="password" required
                 [(ngModel)] = 'model.password' name='password' #password='ngModel'
                 #spy>
                 <div [hidden]="password.valid || password.pristine"

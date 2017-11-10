@@ -13,6 +13,7 @@
                 class="alert alert-danger">
                     Headline is required
                 </div>
+                {{spy.className}}
             </div>
 
             <div class="form-group">
@@ -36,10 +37,13 @@
             </div>
 
             <div class="form-group">
-                    <label for="customURL">Custom URL</label>
-                    <input type="text" class="form-control" id="customURL"
-                    [(ngModel)]='model.customURL' name='customURL'>
-                </div>
+                <label for="customURL">Custom URL</label>
+                <input type="text" class="form-control" id="customURL"
+                [(ngModel)]='model.customURL' name='customURL' #url #customURL="ngModel"
+                [value]='customURL.untouched ? slugify(model.headline) : model.customURL'
+                >
+                {{url.className}}
+            </div>
 
             <!-- body -->
 
@@ -80,7 +84,8 @@
                     <i class="material-icons">add</i>
                 </mat-button-toggle>
             </div>
-
+            
+            <!-- media section -->
             <div id='mediaData' class='hide'>
                     <label for="mediaTitle">Title</label>
                     <input type="text" class="form-control" id="mediaTitle"
@@ -88,6 +93,13 @@
                     <label for="embed">Embed</label>
                     <input type="text" class="form-control" id="embed"
                     [(ngModel)]="media.embed" name=embed>
+                    <label for="mediaType">Embed Type</label>
+
+                    <select class="form-control" id="mediaType"
+                    [(ngModel)]='media.type' name='mediaType'>
+                        <option *ngFor="let type of mediaTypes" [value]="type">{{type}}</option>
+                    </select>
+
                     <label for="width">Width</label>
                     <mat-radio-group [(ngModel)]="media.width" name='width'>
                         <mat-radio-button value="fullWidth">Full-Width</mat-radio-button>
@@ -103,6 +115,8 @@
                         <i class="material-icons">add</i>
                 </mat-button-toggle>
             </div>
+
+            <!-- art card section -->
             <div id='artCardData' class='hide'>
                     <label for="artCardTitle">Title</label>
                     <input type="text" class="form-control" id="artCardTitle"
@@ -139,6 +153,8 @@
                         <i class="material-icons">add</i>
                 </mat-button-toggle>
             </div>
+
+            <!-- body section -->
             <div id='bodyData' class='hide'>
                 <textarea id='tiny'></textarea>
                 <mat-button-toggle (click)="addBody()">

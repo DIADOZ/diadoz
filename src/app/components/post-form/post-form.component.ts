@@ -5,18 +5,17 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { DataService } from "../../services/data.service";
 
-import { Post }    from "./post";
+import { Post } from "./post";
 
 @Component({
   selector: "post-form",
-  templateUrl: "./post-form.component.html",
   styleUrls: ["./forms.css"],
+  templateUrl: "./post-form.component.html",
 })
 export class PostFormComponent implements OnInit, AfterViewInit {
-    constructor(private dataService: DataService, private route: ActivatedRoute) {}
     postTypes = ["Article", "Gallery"];
+    mediaTypes = ["Video", "Image", "Tweet", "Other"];
     todayDate = new Date();
-
     submitted = false;
     model = new Post("", this.postTypes[0], "", "", this.todayDate, false, "", "", []);
     // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
@@ -24,6 +23,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         class: "media",
         title: "",
         embed: "",
+        type: "",
         width: "",
     };
     artCard = {
@@ -40,20 +40,15 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     source = "";
     artist = "";
 
+    constructor(private dataService: DataService, private route: ActivatedRoute) {}
+
     ngOnInit() {
         this.route.queryParams.subscribe((params: Params) => {
             this.model.publishedBy = params.user;
             console.log(this.model.publishedBy + " is using the post form");
-          });
+        });
     }
-    slugify(text) {
-        return text.toString().toLowerCase()
-            .replace(/\s+/g, "-")        // Replace spaces with -
-            .replace(/[^\w\-]+/g, "")   // Remove all non-word chars
-            .replace(/\-\-+/g, "-")      // Replace multiple - with single -
-            .replace(/^-+/, "")          // Trim - from start of text
-            .replace(/-+$/, "");         // Trim - from end of text
-    }
+    
     onSubmit() {
         this.submitted = true;
         if (!this.model.customURL || this.model.customURL === "") {
@@ -66,7 +61,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
 
         this.dataService.insertPost(this.model).subscribe((model) => {
             console.log(model);
-            //redirect to when successful post
+            // redirect to when successful post
         });
         this.newPost();
     }
@@ -90,7 +85,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         const mediaDiv = document.getElementById("mediaData");
         mediaDiv.classList.toggle("hide");
 
-        //hide all other toggled divs
+        // hide all other toggled divs
         const bodyDiv = document.getElementById("bodyData");
         const artCardDiv = document.getElementById("artCardData");
         if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")){
@@ -154,6 +149,15 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     // TODO: Remove this when we're done
     get diagnostic() {
         return JSON.stringify(this.model);
+    }
+
+    private slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, "-")        // Replace spaces with -
+            .replace(/[^\w\-]+/g, "")   // Remove all non-word chars
+            .replace(/\-\-+/g, "-")      // Replace multiple - with single -
+            .replace(/^-+/, "")          // Trim - from start of text
+            .replace(/-+$/, "");         // Trim - from end of text
     }
 
 }
