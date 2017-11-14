@@ -5,10 +5,12 @@
       <p class="h1"><em>{{card.title}}</em>, 2017</p>
       <p class="h1">{{card.primaryType}}</p>
     </div>
+    <a href="{{card.support}}" class="support">Support</a>
+    <br />
     <p class="card-text-body">{{card.summary}}</p>
-    <!--<div class="support">{{card.support}}</div>-->
-    <!--<div *ngFor="let artist of post.body.contributingArtists" class="contributing-artists">-->
-      <!--<p>{{artist}}</p>-->
-    <!--</div>-->
+    <h4>Contributing Artists</h4>
+    <p *ngFor="let artist of card.contributingArtists" class="contributing-artists card-text-body">
+      {{artist}}
+    </p>
   </div>
 </div>
