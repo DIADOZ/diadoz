@@ -13,6 +13,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
+import { Md2DatepickerModule, MdNativeDateModule } from 'md2';
 
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./components/card/card.component";
@@ -61,6 +62,8 @@ const appRoutes: Routes = [
     EscapeHtmlPipe,
   ],
   imports: [
+    Md2DatepickerModule,
+    MdNativeDateModule,
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(
@@ -78,6 +81,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatRadioModule,
     InfiniteScrollModule,
+    
   ],
   entryComponents: [
     PostFormComponent,

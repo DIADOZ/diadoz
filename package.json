@@ -41,6 +41,7 @@
     "jquery": "^3.2.1",
     "jquery-browserify": "^1.8.1",
     "jquery-mousewheel": "^3.1.13",
+    "md2": "0.0.29",
     "mongodb": "^2.2.26",
     "mongoose": "^4.11.14",
     "mongoose-paginate": "^5.0.3",
