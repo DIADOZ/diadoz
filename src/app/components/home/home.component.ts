@@ -39,15 +39,15 @@ export class HomeComponent implements OnInit {
     //   console.log(posts);
     //   this.posts = posts;
     // });
+    $(document).ready(function($) {
+      // Find matches
+      const mql = window.matchMedia("(orientation: landscape)");
 
-    // Find matches
-    const mql = window.matchMedia("(orientation: landscape)");
-
-    // Add a media query change listener
-    mql.addListener(function(m) {
-      if (m.matches) {
-        // alert("Changed to landscape");
-          $(".body-container").mousewheel(function(event, delta) {
+      // Add a media query change listener
+      mql.addListener(function (m) {
+        if (m.matches) {
+          // alert("Changed to landscape");
+          $(".body-container").mousewheel(function (event, delta) {
             event.preventDefault();
 
             // variable to check if MAC
@@ -60,34 +60,35 @@ export class HomeComponent implements OnInit {
             }
 
           });
-      } else {
-        // alert("Changed to portrait");
-        $(".body-container").unbind();
-      }
-    });
+        } else {
+          // alert("Changed to portrait");
+          $(".body-container").unbind();
+        }
+      });
 
-    $(window).on("deviceorientation", function( event ) {
-      if (window.matchMedia("(orientation: portrait)").matches) {
-        // alert("Device is in portrait mode");
-        $(".body-container").unbind();
-      }
-      if (window.matchMedia("(orientation: landscape)").matches) {
-        // alert("Device is in landscape mode");
-        $(".body-container").mousewheel(function(event, delta) {
-          event.preventDefault();
+      $(window).on("deviceorientation", function (event) {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+          // alert("Device is in portrait mode");
+          $(".body-container").unbind();
+        }
+        if (window.matchMedia("(orientation: landscape)").matches) {
+          // alert("Device is in landscape mode");
+          $(".body-container").mousewheel(function (event, delta) {
+            event.preventDefault();
 
-          // variable to check if MAC
-          const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+            // variable to check if MAC
+            const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
 
-          if (isMac) {
-            this.scrollLeft -= (delta * .9);
-          } else {
-            this.scrollLeft -= (delta * 150);
-          }
+            if (isMac) {
+              this.scrollLeft -= (delta * .9);
+            } else {
+              this.scrollLeft -= (delta * 150);
+            }
 
-        });
+          });
 
-      }
+        }
+      });
     });
 
     // image fit code

@@ -48,7 +48,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
             console.log(this.model.publishedBy + " is using the post form");
         });
     }
-    
+
     onSubmit() {
         this.submitted = true;
         if (!this.model.customURL || this.model.customURL === "") {
@@ -151,7 +151,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         return JSON.stringify(this.model);
     }
 
-    private slugify(text) {
+    slugify(text) {
         return text.toString().toLowerCase()
             .replace(/\s+/g, "-")        // Replace spaces with -
             .replace(/[^\w\-]+/g, "")   // Remove all non-word chars

@@ -15,7 +15,7 @@
 }
 
 .art-card-header{
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-family: Georgia, serif;
   -webkit-font-smoothing: antialiased;
   font-size: 35px;
   line-height: 40px;
@@ -29,17 +29,41 @@
   padding: 0;
 }
 
-p.card-text-body {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  /*text-shadow: 0px 0px .01px gray;*/
+.card-body p {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: normal;
   word-spacing: .3px;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 16.5px;
+  line-height: 1.6em;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeSpeed;
   margin: 0;
 }
 
+.support{
+  float: right;
+  margin-bottom: 10px;
+}
 a {
+  border-bottom: black;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: normal;
+  word-spacing: .3px;
+  font-size: 16.5px;
+  line-height: 1.6em;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeSpeed;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+}
 
+a:visited {
+  border-bottom: 2px solid #ffcc00;
+  color: black;
+  text-decoration: none;
 }
 
 /* Small devices (tablets, 768px and up) */

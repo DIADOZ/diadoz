@@ -7,10 +7,12 @@
     </div>
     <a href="{{card.support}}" class="support">Support</a>
     <br />
-    <p class="card-text-body">{{card.summary}}</p>
+    <div class="card-body">
+    <p>{{card.summary}}</p>
     <h4>Contributing Artists</h4>
-    <p *ngFor="let artist of card.contributingArtists" class="contributing-artists card-text-body">
+    <p *ngFor="let artist of card.contributingArtists">
       {{artist}}
     </p>
+  </div>
   </div>
 </div>
