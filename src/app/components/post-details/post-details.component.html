@@ -1,17 +1,18 @@
 <app-header></app-header>
 
 <div class="container">
-  <!--<div class="column-body">-->
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
-      class="twitter-share-button" 
-      data-via="@diadoz_" 
-      data-hashtags="DIADOZ" 
-      data-related=""
-      data-show-count="false">
-      Tweet
-    </a>
-    <div class="fb-share-button" data-layout="button" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u&amp;src=sdkpreparse">Share</a></div>
-    
+  
+  <div class="column-body">
+    <div class='sb-outline-up shareButton'>
+        <button class="sb-wrapper sb-facebook" (click)="fbClick()">
+          <i aria-hidden="true" class="fa fa-facebook"></i>
+        </button>
+    </div>
+    <div class='sb-outline-up shareButton'>
+        <button class="sb-wrapper sb-twitter"(click)="twClick()">
+          <i aria-hidden="true" class="fa fa-twitter"></i>
+        </button>
+    </div>
     <div *ngFor="let data of post.body">
 
       <div *ngIf="data.class === 'card'" class="body-media">
@@ -29,6 +30,6 @@
           <div [innerHTML]="data.text | keepHtml"></div>
         </div>
       </div>
-    <!--</div>-->
+    </div>
   </div>
 </div>

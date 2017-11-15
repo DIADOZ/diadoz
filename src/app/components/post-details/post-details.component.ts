@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
+import { fbButton, tw } from "vanilla-sharing";
+
 import { DataService } from "../../services/data.service";
 
 import "rxjs/add/operator/switchMap";
@@ -38,5 +40,16 @@ export class PostDetailsComponent implements OnInit {
       .subscribe((post)  =>
         this.post = post,
       );
+  }
+  public fbClick() {
+    fbButton({
+      url: "diadoz.com/post/" + this.post.customURL, // TODO: remove hard coded diadoz.com
+    });
+  }
+  public twClick() {
+    tw({
+      url: "diadoz.com/post/" + this.post.customURL, // TODO: remove hard coded diadoz.com
+      title: this.post.headline,
+    });
   }
 }
