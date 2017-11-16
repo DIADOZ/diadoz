@@ -40,7 +40,7 @@
                 <label for="customURL">Custom URL</label>
                 <input type="text" class="form-control" id="customURL"
                 [(ngModel)]='model.customURL' name='customURL' #url #customURL="ngModel"
-                [value]='customURL.untouched ? slugify(model.headline) : model.customURL'
+                [value]='!customURL.untouched ? model.customURL : model.subHeadline? slugify(model.subHeadline) + "-" +  slugify(model.headline) : slugify(model.headline)'
                 >
                 {{url.className}}
             </div>
