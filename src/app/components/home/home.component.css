@@ -113,7 +113,7 @@ a {
     margin: 0;
     padding: 0;
     font-size: 62.5%;
-    background-color: red;
+    /*background-color: red;*/
   }
 
 
@@ -123,25 +123,32 @@ a {
     height: 100%;
     margin: 0 auto;
     padding: 0px;
-    background-color: deepskyblue;
+    /*background-color: deepskyblue;*/
   }
 
-  .tile-container {
+  .tiles-container {
     width: 100%;
 
+  }
+
+  .tile-wrapper {
+    width: 100vw;
+    height: calc((5/8)*100vw);
   }
 
   .tile { /*this is the this that is fucking up the resize*/
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
     position: relative;
+    overflow: hidden;
   }
 
   .tile-photo {
     width: 100%;
     display: flex;
     /*margin: 0;*/
+    object-fit: contain;
   }
 
 }
@@ -188,10 +195,10 @@ a {
     /*Sizing*/
     height: calc(100vh - 46px);
 
-    background-color: #649d71;
+    /*background-color: #649d71;*/
   }
 
-  .tile-container {
+  .tiles-container {
     /*Positioning*/
     position: absolute;
     top: 0;
@@ -213,11 +220,18 @@ a {
     /*background-color: darkgreen;*/
   }
 
+  .tile-wrapper{
+    height: calc(100vh - 46px);
+    width: calc((8/5)*calc(100vh - 46px));/*8:5 ratio*/
+    display: inline-flex;
+    position: relative;
+  }
+
   .tile {
     /*Positioning*/
     float: left;
     height: calc(100vh - 46px);
-    position: relative;
+    width: calc((8/5)*calc(100vh - 46px));
     display: inline-flex;
 
     /*Spacing*/
@@ -226,6 +240,7 @@ a {
 
     /*Sizing*/
     /*width: 100%;*/
+    top: 0; bottom: 0; left: 0; right: 0;
 
 
 
@@ -235,9 +250,13 @@ a {
 
   .tile-photo {
     height: 100%;
+    width: inherit;
   }
 
   .tile-overlay {
     width: 100%;
+  }
+  .tile-wrapper img{
+    object-fit: cover;
   }
 }

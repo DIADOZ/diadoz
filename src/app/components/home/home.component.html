@@ -7,8 +7,9 @@
   (scrolled)="onScroll()">
   <!-- <div class="tile-container"> -->
     <!-- ngx -->
-    <div class="tile-container">
-      <div class="tile" *ngFor="let post of postArray" id="tile{{post._id}}">
+    <div class="tiles-container">
+      <div class="tile-wrapper" *ngFor="let post of postArray" >
+      <div class="tile" id="tile{{post._id}}">
         <header class="tile-overlay">
           <p class="tile-text">
             <a [routerLink]="['/post', post.customURL]" routerLinkActive="active">
@@ -19,7 +20,7 @@
         </header>
         <img class="tile-photo" src="{{post.featuredImage}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
       </div>
-    <!-- </div> -->
+     </div>
   </div>
 </div>
 <!--<div class="footer-banner">-->
