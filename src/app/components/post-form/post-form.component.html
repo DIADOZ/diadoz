@@ -18,13 +18,7 @@
                 [(ngModel)]='model.subHeadline' name='subHeadline'>
             </div>
 
-            <div class="form-group">
-                <label for="postType">Post Type</label>
-                <select class="form-control" id="postType" required
-                [(ngModel)]='model.postType' name='postType'>
-                    <option *ngFor="let type of postTypes" [value]="type">{{type}}</option>
-                </select>
-            </div>
+            
 
             <div class="form-group">
                 <label for="featuredImage">Featured Image</label>
@@ -35,11 +29,12 @@
             <div class="form-group">
                 <label for="customURL">Custom URL</label>
                 <input type="text" class="form-control" id="customURL"
-                [(ngModel)]='model.customURL' name='customURL' #customURL="ngModel"
-                [value]='!customURL.untouched ? model.customURL : model.subHeadline? slugify(model.subHeadline) + "-" +  slugify(model.headline) : slugify(model.headline)'
+                [(ngModel)]='model.customURL' name='customURL' #customURL="ngModel" #spy
+                [value]='customURL.dirty ? model.customURL : model.subHeadline ? slugify(model.subHeadline) + "-" +  slugify(model.headline) : slugify(model.headline)'
                 >
+                {{spy.className}}
             </div>
-
+            <!-- : model.subHeadline?  : slugify(model.headline)' -->
             <!-- body -->
 
             <div class="form-group">
@@ -64,6 +59,14 @@
             </div>
 
             <div class="form-group">
+                <label for="postType">Post Type</label>
+                <select class="form-control" id="postType" required
+                [(ngModel)]='model.postType' name='postType' >
+                    <option *ngFor="let type of postTypes" [value]="type">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="body">Post Body</label>
                 <button type='button' type="button" class="btn btn-default" (click)="toggleMedia()">
                     Create Media
@@ -83,7 +86,7 @@
                     <input type="text" class="form-control" id="mediaTitle"
                     [(ngModel)]="media.title" name=title>
                 </div>
-                
+                 
                 <div class="form-group">
                     <label for="embed">Embed</label>
                     <input type="text" class="form-control" id="embed"
