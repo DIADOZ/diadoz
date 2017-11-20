@@ -5,8 +5,6 @@
   [horizontal]="true"
   [alwaysCallback]="true"
   (scrolled)="onScroll()">
-  <!-- <div class="tile-container"> -->
-    <!-- ngx -->
     <div class="tiles-container">
       <div class="tile-wrapper" *ngFor="let post of postArray" >
       <div class="tile" id="tile{{post._id}}">
@@ -18,23 +16,8 @@
             </a>
           </p>
         </header>
-        <img class="tile-photo" src="{{post.featuredImage}}" /><!--{{post.primaryImage.filePath}} /assets/1.jpg-->
+        <img class="tile-photo" src="{{post.featuredImage}}" /><!--<{{post.primaryImage.filePath}} /assets/1.jpg-->
       </div>
      </div>
   </div>
 </div>
-<!--<div class="footer-banner">-->
-<!--<div class="logo-container">-->
-  <!--<a routerLink="/home" routerLinkActive="active">-->
-    <!--<img src="{{logo}}" />-->
-  <!--</a>-->
-<!--</div>-->
-<!--</div>-->
-
-
-
-
-<!--<script type='text/javascript' src='../../../../../../public/main/js/jquery.mousewheel.min.js'></script>-->
-<!--<script src="../../../../../main/js/wheel-indicator.js"></script>-->
-<!--<script src="../../../../../main/js/Horizontal-Scroll.js"></script>-->
-<!--<script src="../js/Image-Resize.js"></script>-->
