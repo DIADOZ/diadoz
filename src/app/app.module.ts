@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { Md2DatepickerModule, MdNativeDateModule } from 'md2';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./components/card/card.component";
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true }, // <-- debugging purposes only
     ),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     FormsModule,
     BrowserAnimationsModule,
     MatSidenavModule,
@@ -81,7 +84,6 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatRadioModule,
     InfiniteScrollModule,
-    
   ],
   entryComponents: [
     PostFormComponent,

@@ -19,6 +19,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
     submitted = false;
     model = new Post("", this.postTypes[0], "", "", this.todayDate, false, "", "", []);
     // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
+
     media = {
         class: "media",
         title: "",
