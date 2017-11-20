@@ -34,11 +34,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    // this.dataService.getPosts(##).subscribe((posts) => {
-    //   console.log(posts);
-    //   this.posts = posts;
-    // });
     $(document).ready(function($) {
       // Find matches
       const mql = window.matchMedia("(orientation: landscape)");
@@ -86,41 +81,8 @@ export class HomeComponent implements OnInit {
             }
 
           });
-
         }
       });
     });
-
-    // image fit code
-//   .container {
-//       background-color: red;
-//       position: relative;
-//       width: 100%;
-//
-//       padding-top: 62.5%; /* 8:5 Aspect Ratio */
-//     }
-//
-// #im {
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       right: 0;
-//       bottom: 0;
-//       background-image: url("/img/path");
-//       background-repeat: no-repeat;
-//       background-size: cover;
-//     }
-//     </style>
-//     </head>
-//     <body>
-//
-//     <h2>Maintain Aspect Ratio 8:5</h2>
-//     <p>Resize the window to see the effect.</p>
-//
-//     <div class="container">
-//     <div id="im"></div>
-//       </div>
-
   }
-
 }

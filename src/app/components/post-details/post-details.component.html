@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="container">
-  
+
   <div class="column-body">
     <div class='sb-outline-up shareButton'>
         <button class="sb-wrapper sb-facebook" (click)="fbClick()">
@@ -21,7 +21,7 @@
 
       <div *ngIf="data.class === 'media'">
         <div class="{{data.width}} body-media">
-          <div [innerHTML]="data.embed | keepHtml"></div>
+          <div class="{{data.type}}-wrapper" [innerHTML]="data.embed | keepHtml"></div>
         </div>
       </div>
 
