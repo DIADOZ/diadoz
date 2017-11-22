@@ -74,7 +74,8 @@ router.post('/insert', function(req, res){
 		publishDate: new Date(),
 		published: req.body.published,
 		publishedBy: req.body.publishedBy,
-		body: req.body.body
+		body: req.body.body,
+		gallery: req.body.gallery,
 	};
 
 	postData.customURL = slugify(postData.customURL);

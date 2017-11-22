@@ -12,12 +12,12 @@ import { Post } from "./post";
   styleUrls: ["./forms.css"],
   templateUrl: "./post-form.component.html",
 })
-export class PostFormComponent implements OnInit, AfterViewInit {
+export class PostFormComponent implements OnInit {
     postTypes = ["Article", "Gallery"];
     mediaTypes = ["Video", "Image", "Tweet", "Other"];
     todayDate = new Date();
     submitted = false;
-    model = new Post("", this.postTypes[0], "", "", this.todayDate, false, "", "", []);
+    model = new Post("", this.postTypes[0], "", "", this.todayDate, false, "", "", [], {});
     // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
 
     media = {
@@ -38,11 +38,45 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         sources: [],
         contributingArtists: [],
     };
+    gallery = {
+        title: "",
+        curatedBy: {
+            name: "",
+            url: "",
+        },
+        summary: "",
+        media: [],
+        endInfo: "",
+    };
     source = "";
     artist = "";
+    showGallery = false;
+    bodyText = "";
 
     constructor(private dataService: DataService, private route: ActivatedRoute) {}
-
+    public changeSelect(e) {
+        if (e === "Gallery") {
+            this.showGallery = true;
+            tinymce.init({
+                selector: "#gallerySummary",
+                plugins: ["link", "paste", "table"],
+                skin_url: "assets/skins/lightgray",
+                branding: false,
+            });
+            tinymce.init({
+                selector: "#galleryEndInfo",
+                plugins: ["link", "paste", "table"],
+                skin_url: "assets/skins/lightgray",
+                branding: false,
+            });
+            // hide body and art card buttons
+            // show gallery inputs
+            // erase post body info
+        } else {
+            // erase post body and article info
+            this.showGallery = false;
+        }
+    }
     ngOnInit() {
         this.route.queryParams.subscribe((params: Params) => {
             this.model.publishedBy = params.user;
@@ -52,6 +86,12 @@ export class PostFormComponent implements OnInit, AfterViewInit {
 
     onSubmit() {
         this.submitted = true;
+        if (this.model.postType === "Gallery") {
+            this.gallery.summary = tinymce.get("gallerySummary").getContent();
+            this.gallery.endInfo = tinymce.get("galleryEndInfo").getContent();
+
+            this.model.gallery = this.gallery;
+        }
         if (!this.model.customURL || this.model.customURL === "") {
             this.model.customURL = this.slugify(this.model.headline);
         }
@@ -72,17 +112,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
         this.model = new Post("", this.postTypes[0], "", "", today, false, this.model.publishedBy, "", []);
     }
 
-    ngAfterViewInit() {
-        tinymce.init({
-            selector: "#tiny",
-            plugins: ["link", "paste", "table"],
-            skin_url: "assets/skins/lightgray",
-            branding: false,
-        });
-
-    }
-
-    toggleMedia(){
+    toggleMedia() {
         const mediaDiv = document.getElementById("mediaData");
         mediaDiv.classList.toggle("hide");
 
@@ -94,7 +124,7 @@ export class PostFormComponent implements OnInit, AfterViewInit {
             bodyDiv.classList.add("hide");
         }
     }
-    toggleArtCard(){
+    toggleArtCard() {
         const artCardDiv = document.getElementById("artCardData");
         artCardDiv.classList.toggle("hide");
 
@@ -106,45 +136,55 @@ export class PostFormComponent implements OnInit, AfterViewInit {
             mediaDiv.classList.add("hide");
         }
     }
-    toggleBody(){
+    toggleBody() {
         const bodyDiv = document.getElementById("bodyData");
         bodyDiv.classList.toggle("hide");
-        tinymce.activeEditor.setContent("");
+        tinymce.init({
+            selector: "#articleText",
+            plugins: ["link", "paste", "table"],
+            skin_url: "assets/skins/lightgray",
+            branding: false,
+        });
+
+        tinymce.get("articleText").setContent("");
         // hide all other toggled divs
         const artCardDiv = document.getElementById("artCardData");
         const mediaDiv = document.getElementById("mediaData");
-        if (!artCardDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")){
+        if (!artCardDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")) {
             artCardDiv.classList.add("hide");
             mediaDiv.classList.add("hide");
         }
     }
 
-    addSource(){
+    addSource() {
         this.artCard.sources.push(this.source);
         this.source = "";
     }
-    addArtist(){
+    addArtist() {
         this.artCard.contributingArtists.push(this.artist);
         this.artist = "";
     }
 
-    addMedia(){
-        this.model.body.push(this.media);
+    addMedia() {
+        if (this.model.postType === "Gallery") {
+            this.gallery.media.push(this.media);
+        } else {
+            this.model.body.push(this.media);
+        }
         this.toggleMedia();
         // clear media input
     }
-    addArtCard(){
+    addArtCard() {
         this.model.body.push(this.artCard);
         this.toggleArtCard();
         // clear art card input
     }
-    addBody(){
+    addBody() {
         this.model.body.push({
             class: "text",
-            text: tinymce.activeEditor.getContent(),
+            text: tinymce.get("articleText").getContent(),
         });
         this.toggleBody();
-
     }
 
     // TODO: Remove this when we're done
