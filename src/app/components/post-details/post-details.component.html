@@ -3,15 +3,17 @@
 <div class="container">
 
   <div class="column-body">
-    <div class='sb-outline-up shareButton'>
+    <div class="social">
+      <div class='sb-outline-up shareButton'>
         <button class="sb-wrapper sb-facebook" (click)="fbClick()">
           <i aria-hidden="true" class="fa fa-facebook"></i>
         </button>
-    </div>
-    <div class='sb-outline-up shareButton'>
+      </div>
+      <div class='sb-outline-up shareButton'>
         <button class="sb-wrapper sb-twitter"(click)="twClick()">
           <i aria-hidden="true" class="fa fa-twitter"></i>
         </button>
+      </div>
     </div>
     <div *ngFor="let data of post.body">
 

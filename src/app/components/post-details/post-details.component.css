@@ -112,6 +112,61 @@ body{
 }
 
 
+.social{
+  display: block;
+}
+
+.shareButton {
+  /*position: relative;*/
+  /*left: -50px;*/
+  top: 30px;
+  display: inline;
+}
+.sb-outline-up .sb-wrapper{
+  -webkit-transition:.25s;
+  transition:.25s;
+  background:none;
+  border: none;
+  font:inherit;
+  line-height:1;
+  height:2.5em;
+  width: 40px;
+  /*margin: auto;*/
+}
+.sb-outline-up .sb-wrapper.sb-facebook{
+  color:#4267b2
+}
+.sb-outline-up .sb-wrapper.sb-facebook:hover{
+  /*yo*/
+  color: white;
+  border-color:#4267b2;
+  -webkit-box-shadow:inset 0 -3.25em 0 0 #4267b2;
+  box-shadow:inset 0 -3.25em 0 0 #4267b2
+}
+.sb-outline-up .sb-wrapper.sb-twitter{
+  color:#00acee
+}
+.sb-outline-up .sb-wrapper.sb-twitter:hover{
+  color: white;
+  border-color:#00acee;
+  -webkit-box-shadow:inset 0 -3.25em 0 0 #00acee;
+  box-shadow:inset 0 -3.25em 0 0 #00acee
+}
+.sb-outline-up .sb-wrapper.sb-copy{
+  color:#607d8b
+}
+.sb-outline-up .sb-wrapper.sb-copy:hover{
+  border-color:#607d8b;
+  -webkit-box-shadow:inset 0 -3.25em 0 0 #607d8b;
+  box-shadow:inset 0 -3.25em 0 0 #607d8b
+}
+.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-count,
+.sb-count,.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-template,
+.sb-template,.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-text .sb-text{
+  padding-right:1em;padding-left:0
+}
+
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 
@@ -190,51 +245,4 @@ body{
 
 }
 
-.shareButton {
-  position: relative;
-  /*left: -50px;*/
-  top: 30px;
-  display: inline;
-}
-.sb-outline-up .sb-wrapper{
-  -webkit-transition:.25s;
-  transition:.25s;
-  background:none;
-  border: none;
-  font:inherit;
-  line-height:1;
-  height:2.5em;
-  width: 40px;
-}
-.sb-outline-up .sb-wrapper.sb-facebook{
-  color:#4267b2
-}
-.sb-outline-up .sb-wrapper.sb-facebook:hover{
-/*yo*/
-  color: white;
-  border-color:#4267b2;
-  -webkit-box-shadow:inset 0 -3.25em 0 0 #4267b2;
-  box-shadow:inset 0 -3.25em 0 0 #4267b2
-}
-.sb-outline-up .sb-wrapper.sb-twitter{
-  color:#00acee
-}
-.sb-outline-up .sb-wrapper.sb-twitter:hover{
-  color: white;
-  border-color:#00acee;
-  -webkit-box-shadow:inset 0 -3.25em 0 0 #00acee;
-  box-shadow:inset 0 -3.25em 0 0 #00acee
-}
-.sb-outline-up .sb-wrapper.sb-copy{
-  color:#607d8b
-}
-.sb-outline-up .sb-wrapper.sb-copy:hover{
-  border-color:#607d8b;
-  -webkit-box-shadow:inset 0 -3.25em 0 0 #607d8b;
-  box-shadow:inset 0 -3.25em 0 0 #607d8b
-}
-.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-count,
-.sb-count,.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-template,
-.sb-template,.sb-outline-up .sb-wrapper.sb-show-icon.sb-show-text .sb-text{
-  padding-right:1em;padding-left:0
-}
+
