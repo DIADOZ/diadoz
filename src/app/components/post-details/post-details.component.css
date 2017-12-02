@@ -15,7 +15,7 @@ body{
   box-sizing: border-box;
   display: block;
   position: relative;
-  padding: 4px;
+  padding: 0px;
   width: auto;
   height: 100%;
   background-color: white;
@@ -111,6 +111,10 @@ body{
   width: 100%;
 }
 
+.Image-wrapper img{
+  width: 100%;
+}
+
 
 .social{
   display: block;
@@ -178,13 +182,14 @@ body{
 
   .container{
     position: relative;
+    /*padding: 0px;*/
     width: 100%;
     height: 100%;
     background-color: white;
   }
 
   .column-body{
-    padding: 8px;
+    padding: 0px;
     margin: 0 auto;
     /*max-width: 750px;*/
     background-color: white;
