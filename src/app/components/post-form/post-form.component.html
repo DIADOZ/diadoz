@@ -159,7 +159,7 @@
                     </mat-radio-group>
                 </div>
                 <div class="form-group">
-                    <button type='button' type="button" class="btn btn-default" (click)="addMedia()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addMedia(media)">
                             Add Media
                     </button>
                 </div>
@@ -207,7 +207,7 @@
                     <label for="sources">Sources</label>
                     <input type="text" class="form-control" id="sources"
                     [(ngModel)]="source" name=source>
-                    <button type='button' type="button" class="btn btn-default" (click)="addSource()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addSource(source)">
                         Add Source
                     </button>
                 </div>
@@ -216,13 +216,13 @@
                     <label for="contributingArtists">Contributing Artists</label>
                     <input type="text" class="form-control" id="contributingArtists"
                     [(ngModel)]="artist" name="artist">
-                    <button type='button' type="button" class="btn btn-default" (click)="addArtist()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addArtist(artist)">
                         Add Artist
                     </button>
                 </div>
                 
                 <div class="form-group">
-                    <button type='button' type="button" class="btn btn-default" (click)="addArtCard()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addArtCard(artCard)">
                         Add Art Card
                     </button>
                 </div>

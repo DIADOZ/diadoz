@@ -156,27 +156,50 @@ export class PostFormComponent implements OnInit {
         }
     }
 
-    addSource() {
-        this.artCard.sources.push(this.source);
+    addSource(sourceData) {
+        sourceData = this.source;
+        this.artCard.sources.push(sourceData);
         this.source = "";
     }
-    addArtist() {
-        this.artCard.contributingArtists.push(this.artist);
+    addArtist(artistData) {
+        artistData = this.artist;
+        this.artCard.contributingArtists.push(artistData);
         this.artist = "";
     }
 
-    addMedia() {
+    addMedia(mediaData) {
+        mediaData = {
+            class: "media",
+            title: this.media.title,
+            embed: this.media.embed,
+            type: this.media.type,
+            width: this.media.width,
+        };
         if (this.model.postType === "Gallery") {
-            this.gallery.media.push(this.media);
+            this.gallery.media.push(mediaData);
         } else {
-            this.model.body.push(this.media);
+            this.model.body.push(mediaData);
         }
         this.toggleMedia();
         // clear media input
     }
-    addArtCard() {
-        this.model.body.push(this.artCard);
+    addArtCard(artCardData) {
+        artCardData = {
+            class: "card",
+            title: this.artCard.title,
+            primaryContributor: this.artCard.primaryContributor,
+            secondaryContributor: this.artCard.secondaryContributor,
+            primaryType: this.artCard.primaryType,
+            summary: this.artCard.summary,
+            support: this.artCard.support,
+            sources: this.artCard.sources.slice(0),
+            contributingArtists: this.artCard.contributingArtists.slice(0),
+        }
+
+        this.model.body.push(artCardData);
         this.toggleArtCard();
+        this.artCard.sources.length = 0;
+        this.artCard.contributingArtists.length = 0;
         // clear art card input
     }
     addBody() {
