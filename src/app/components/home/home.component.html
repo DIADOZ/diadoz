@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="body-container"
   infiniteScroll
-  [scrollWindow]="false"
-  [horizontal]="true"
+  [scrollWindow]="scrollWindowValue"
+  [horizontal]="horizontalValue"
   [alwaysCallback]="true"
   (scrolled)="onScroll()">
     <div class="tiles-container">
