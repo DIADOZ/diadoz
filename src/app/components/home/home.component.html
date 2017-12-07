@@ -3,7 +3,8 @@
   infiniteScroll
   [scrollWindow]="scrollWindowValue"
   [horizontal]="horizontalValue"
-  [alwaysCallback]="true"
+  [infiniteScrollDistance]="1"
+  [alwaysCallback]="false"
   (scrolled)="onScroll()">
     <div class="tiles-container">
       <div class="tile-wrapper" *ngFor="let post of postArray" >

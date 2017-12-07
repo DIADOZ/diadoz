@@ -50,7 +50,7 @@ typings/
 .node_repl_history
 
 # Output of 'npm pack'
-*.tgz
+node_modules/*.tgz
 
 # Yarn Integrity file
 .yarn-integrity
