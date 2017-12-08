@@ -14,7 +14,7 @@ import {PostFormComponent} from "../post-form/post-form.component";
 export class AdminComponent {
   constructor(public authService: AuthService, public router: Router) {}
   loggedIn = false;
-
+  postPage = true;
   logOut() {
     this.authService.logout();
     if (!this.authService.isLoggedIn) {
@@ -29,6 +29,11 @@ export class AdminComponent {
   //     // }
   // });
   }
+
+  activatePost(){
+    this.postPage = true;
+  }
+  
   mediaForm() {
     // this.showPost = false;
     // this.showMedia = true;

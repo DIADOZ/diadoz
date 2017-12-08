@@ -10,6 +10,12 @@ export class DataService {
     console.log("DataService is connected...");
   }
 
+  getAllPosts() {
+    // return this.http.get('./assets/data/posts')
+    return this.http.get("/api/post/all")
+      .map((res) => res.json());
+  }
+
   getPosts(page) {
     // return this.http.get('./assets/data/posts')
     return this.http.get("/api/post/", { params: {pageNumber: page}})

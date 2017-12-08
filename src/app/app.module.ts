@@ -5,6 +5,7 @@ import { MatSidenavModule } from "@angular/material";
 import { MatCheckboxModule } from "@angular/material";
 import { MatRadioModule } from "@angular/material";
 import { MatListModule } from "@angular/material";
+import {MatButtonModule} from "@angular/material";
 import { MatButtonToggleModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material";
 import { MatNativeDateModule } from "@angular/material";
@@ -12,10 +13,10 @@ import { MatInputModule } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from "@angular/router";
+import { Angulartics2Module } from "angulartics2";
+import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
+import { Md2DatepickerModule, MdNativeDateModule } from "md2";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-import { Md2DatepickerModule, MdNativeDateModule } from 'md2';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { AppComponent } from "./app.component";
 import { CardComponent } from "./components/card/card.component";
@@ -34,6 +35,7 @@ import { LoginComponent } from "./components/login-form/login.component";
 import { MediaFormComponent } from "./components/media-form/media-form.component";
 import { MousewheelComponent } from "./components/mousewheel/mousewheel.component";
 import { PostFormComponent } from "./components/post-form/post-form.component";
+import { PostListComponent } from "./components/post-list/post-list.component";
 import { EscapeHtmlPipe } from "./pipes/keep-html.pipe";
 
 const appRoutes: Routes = [
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     GalleryPostComponent,
     EscapeHtmlPipe,
+    PostListComponent,
   ],
   imports: [
     Md2DatepickerModule,
@@ -84,6 +87,7 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatRadioModule,
     InfiniteScrollModule,
+    MatButtonModule,
   ],
   entryComponents: [
     PostFormComponent,

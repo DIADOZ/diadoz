@@ -13,7 +13,8 @@ var postSchema = new Schema({
 	publishDate: {required: true, type: Date},
 	published: {required: true, type: Boolean, default: false},
 	publishedBy: {required: true, type: String}, // will be User _id 
-	body: []
+	body: [],
+	gallery: {}
 });
 
 postSchema.plugin(mongoosePaginate);

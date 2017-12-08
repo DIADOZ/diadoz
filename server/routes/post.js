@@ -4,6 +4,16 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var post = require('../models/post');
 
+router.get('/all', function (req, res){
+	post.find({}, function(err, docs){
+		if (err){
+			res.send(err);
+		}
+
+        res.json(docs);
+	});
+});
+
 // Get Home Page
 router.get('/', function (req, res){
 	var pageNumber = parseInt(req.query.pageNumber);
@@ -50,17 +60,7 @@ router.get('/:customURL', function(req, res){
 	});
 });
 
-router.get('/all', function (req, res){
-	//get all Posts
-	//need to add limit and stream based get
-	var cursor = post.find(function(err, data){
-		if (err){
-			res.send(err);
-		}
 
-        res.json(data);
-	});
-});
 
 //insert session once done testing
 router.post('/insert', function(req, res){

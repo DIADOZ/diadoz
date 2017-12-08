@@ -2,6 +2,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" opened="true">
     <mat-nav-list>
+        <mat-list-item (click)='activatePost()'> Posts </mat-list-item>
         <mat-list-item (click)='logOut()'> Log Out </mat-list-item>
         <!-- <mat-divider></mat-divider>
         <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Media </mat-list-item>
@@ -9,12 +10,8 @@
         <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Entity </mat-list-item> -->
     </mat-nav-list>
   </mat-sidenav>
-
-  <mat-button-toggle (click)="sidenav.toggle()">
-      <i class="material-icons md-18 md-dark">menu</i>
-  </mat-button-toggle>
   <div>
-    <post-form></post-form>
+    <app-post-list *ngIf="postPage == true"></app-post-list>
   </div>
 
 </mat-sidenav-container>
