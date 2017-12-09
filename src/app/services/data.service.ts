@@ -29,9 +29,19 @@ export class DataService {
       .map((res) => res.json());
   }
 
+  deletePost(id) {
+    return this.http.delete(`/api/post/delete`, { params: {_id: id}})
+      .map((res) => res.json());
+  }
+
   insertPost(data) {
     // return this.http.get('./assets/data/posts')
     return this.http.post("/api/post/insert", data)
+      .map((res) => res);
+  }
+  updatePost(data) {
+    // return this.http.get('./assets/data/posts')
+    return this.http.put("/api/post/update", data)
       .map((res) => res);
   }
   logIn(data) {

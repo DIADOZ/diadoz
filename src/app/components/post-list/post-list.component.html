@@ -1,18 +1,29 @@
 <div>
   <h1>Post Page</h1>
-  <button mat-icon-button (click)='addPost()'>
-    <i class="material-icons md-24 md-dark">add_circle_outline</i>
-  </button>
+  <div *ngIf="!formDisplay">
+    <button mat-icon-button (click)='showForm()'>
+      <i class="material-icons md-24 md-dark">add_circle_outline</i>
+    </button>
+  </div>
+  <div *ngIf="formDisplay">
+    <button mat-icon-button (click)='hideForm()'>
+      <i class="material-icons md-24 md-dark">remove</i>
+    </button>
+  </div>
 </div>
 
-<div>
+<div [hidden]="formDisplay">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let post of list">
       {{ post.headline }}
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" (click)='editPost()'>Edit</button>
-        <button type="button" class="btn btn-default" (click)='deletePost()'>Delete</button>
+        <button type="button" class="btn btn-default" (click)='editPost(post.customURL)'>Edit</button>
+        <button type="button" class="btn btn-default" (click)='deletePost(post._id)'>Delete</button>
       </div>
     </li>
   </ul>
-</div>  
+</div> 
+
+<div [hidden]="!formDisplay">
+  <app-post-form [formData]="formData" (sentSubmit)="sentSubmit($event)"></app-post-form>
+</div>

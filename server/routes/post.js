@@ -4,6 +4,17 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var post = require('../models/post');
 
+router.delete('/delete', (req, res, next) => {
+	var id = ObjectId(req.query._id);
+	post.remove({'_id': id}, function(err) {
+		if (err){
+			console.error('error deleting document');
+		}
+		res.json({message: 'Document successfully deleted'});
+	});
+});
+
+
 router.get('/all', function (req, res){
 	post.find({}, function(err, docs){
 		if (err){
@@ -14,40 +25,8 @@ router.get('/all', function (req, res){
 	});
 });
 
-// Get Home Page
-router.get('/', function (req, res){
-	var pageNumber = parseInt(req.query.pageNumber);
-	//get all Posts
-	//need to add limit and stream based get
-	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 3, sort: { publishDate: -1 }})
-	.then(function(result){
-		res.json(result.docs);
-	});
-});
 
-//get post by id
-// router.get('/:postId', function(req, res){
-// 	var cursor = post.findOne({
-// 		_id: req.params.postId
-// 	}, function(err, data){
-// 		if (err){
-// 			res.send(err);
-// 		}
 
-//         res.json(data);
-// 	});
-// });
-
-function slugify(text) {
-	return text.toString().toLowerCase()
-		.replace(/\s+/g, '-')        // Replace spaces with -
-		.replace(/[^\w\-]+/g, '')   // Remove all non-word chars
-		.replace(/\-\-+/g, '-')      // Replace multiple - with single -
-		.replace(/^-+/, '')          // Trim - from start of text
-		.replace(/-+$/, '');         // Trim - from end of text
-}
-
-//get post by URL
 router.get('/:customURL', function(req, res){
 	var cursor = post.findOne({
 		customURL: req.params.customURL
@@ -60,11 +39,8 @@ router.get('/:customURL', function(req, res){
 	});
 });
 
-
-
 //insert session once done testing
 router.post('/insert', function(req, res){
-	// parse through data from form
 	var postData = {
 		headline: req.body.headline,
 		subHeadline: req.body.subHeadline,
@@ -91,7 +67,7 @@ router.post('/insert', function(req, res){
 });
 
 router.put('/update', function(req, res, next){
-	var id = req.body._id;
+	var id = ObjectId(req.body._id);
 	var updateData = {};
 	var fields = {};
 
@@ -115,13 +91,14 @@ router.put('/update', function(req, res, next){
 	});
 });
 
-router.delete('/delete', (req, res, next) => {
-	var id = req.body._id;
-	post.remove({'_id': id},function(err){
-		if (err){
-			console.error('error deleting document');
-		}
-		res.json({message: 'Document successfully deleted'});
+
+
+router.get('/', function (req, res){
+	var pageNumber = parseInt(req.query.pageNumber);
+	
+	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 3, sort: { publishDate: -1 }})
+	.then(function(result){
+		res.json(result.docs);
 	});
 });
 
@@ -133,11 +110,15 @@ function sessionCheck(req,res,next){
 
 		next();
 	});
-	// if(req.session.user) {
-	// 	next();
-	// } else {
-	// 	res.send(401,'authorization failed');
-	// }
+}
+
+function slugify(text) {
+	return text.toString().toLowerCase()
+		.replace(/\s+/g, '-')        // Replace spaces with -
+		.replace(/[^\w\-]+/g, '')   // Remove all non-word chars
+		.replace(/\-\-+/g, '-')      // Replace multiple - with single -
+		.replace(/^-+/, '')          // Trim - from start of text
+		.replace(/-+$/, '');         // Trim - from end of text
 }
 
 module.exports = router;

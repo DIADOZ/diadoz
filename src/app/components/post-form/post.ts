@@ -1,5 +1,6 @@
 export class Post {
     constructor(
+      public _id: string,
       public headline: string,
       public postType: string,
       public featuredImage: string, //id

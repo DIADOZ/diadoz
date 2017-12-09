@@ -1,5 +1,5 @@
 import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnInit, SimpleChanges, OnChanges, EventEmitter, Output } from "@angular/core";
 import { DateAdapter, NativeDateAdapter } from "@angular/material";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
@@ -8,16 +8,16 @@ import { DataService } from "../../services/data.service";
 import { Post } from "./post";
 
 @Component({
-  selector: "post-form",
+  selector: "app-post-form",
   styleUrls: ["./forms.css"],
   templateUrl: "./post-form.component.html",
 })
-export class PostFormComponent implements OnInit {
+export class PostFormComponent implements OnInit, OnChanges {
+    @Output() sentSubmit = new EventEmitter<boolean>();
     postTypes = ["Article", "Gallery"];
     mediaTypes = ["Video", "Image", "Tweet", "Other"];
     todayDate = new Date();
     submitted = false;
-    model = new Post("", this.postTypes[0], "", "", this.todayDate, false, "", "", [], {});
     // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
 
     media = {
@@ -52,8 +52,17 @@ export class PostFormComponent implements OnInit {
     artist = "";
     showGallery = false;
     bodyText = "";
+    @Input() public formData: Post;
+    public model = new Post("", "", this.postTypes[0], "", "", this.todayDate, false, "", "", [], {});
+    constructor(private dataService: DataService, private route: ActivatedRoute) {
+    }
 
-    constructor(private dataService: DataService, private route: ActivatedRoute) {}
+    public ngOnChanges(changes: SimpleChanges) {
+        if (this.formData) {
+            this.model = this.formData;
+        }
+    }
+
     public changeSelect(e) {
         if (e === "Gallery") {
             this.showGallery = true;
@@ -99,17 +108,23 @@ export class PostFormComponent implements OnInit {
 
     sendData() {
         this.submitted = false;
-
-        this.dataService.insertPost(this.model).subscribe((model) => {
-            console.log(model);
-            // redirect to when successful post
-        });
-        this.newPost();
+        if (this.model._id) {
+            // update
+            this.dataService.updatePost(this.model).subscribe((model) => {
+                this.newPost();
+                this.sentSubmit.emit(true);
+            });
+        } else {
+            this.dataService.insertPost(this.model).subscribe((model) => {
+                this.newPost();
+                this.sentSubmit.emit(true);
+            });
+        }
     }
 
     newPost() {
         const today = new Date();
-        this.model = new Post("", this.postTypes[0], "", "", today, false, this.model.publishedBy, "", []);
+        this.model = new Post("","", this.postTypes[0], "", "", today, false, this.model.publishedBy, "", []);
     }
 
     toggleMedia() {
