@@ -1,5 +1,5 @@
 import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, Input, OnInit, SimpleChanges, OnChanges, EventEmitter, Output } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { DateAdapter, NativeDateAdapter } from "@angular/material";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
@@ -13,21 +13,21 @@ import { Post } from "./post";
   templateUrl: "./post-form.component.html",
 })
 export class PostFormComponent implements OnInit, OnChanges {
-    @Output() sentSubmit = new EventEmitter<boolean>();
-    postTypes = ["Article", "Gallery"];
-    mediaTypes = ["Video", "Image", "Tweet", "Other"];
-    todayDate = new Date();
-    submitted = false;
+    @Output() public sentSubmit = new EventEmitter<boolean>();
+    public postTypes = ["Article", "Gallery"];
+    public mediaTypes = ["Video", "Image", "Tweet", "Other"];
+    public todayDate = new Date();
+    public submitted = false;
     // headline, postType, featuredImage, customURL, publishDate, published, publishedBy, subHeadline, body
 
-    media = {
+    public media = {
         class: "media",
         title: "",
         embed: "",
         type: "",
         width: "",
     };
-    artCard = {
+    public artCard = {
         class: "card",
         title: "",
         primaryContributor: "",
@@ -38,7 +38,7 @@ export class PostFormComponent implements OnInit, OnChanges {
         sources: [],
         contributingArtists: [],
     };
-    gallery = {
+    public gallery = {
         title: "",
         curatedBy: {
             name: "",
@@ -48,10 +48,10 @@ export class PostFormComponent implements OnInit, OnChanges {
         media: [],
         endInfo: "",
     };
-    source = "";
-    artist = "";
-    showGallery = false;
-    bodyText = "";
+    public source = "";
+    public artist = "";
+    public showGallery = false;
+    public bodyText = "";
     @Input() public formData: Post;
     public model = new Post("", "", this.postTypes[0], "", "", this.todayDate, false, "", "", [], {});
     constructor(private dataService: DataService, private route: ActivatedRoute) {
@@ -86,14 +86,14 @@ export class PostFormComponent implements OnInit, OnChanges {
             this.showGallery = false;
         }
     }
-    ngOnInit() {
+    public ngOnInit() {
         this.route.queryParams.subscribe((params: Params) => {
             this.model.publishedBy = params.user;
             console.log(this.model.publishedBy + " is using the post form");
         });
     }
 
-    onSubmit() {
+    public onSubmit() {
         this.submitted = true;
         if (this.model.postType === "Gallery") {
             this.gallery.summary = tinymce.get("gallerySummary").getContent();
@@ -106,7 +106,7 @@ export class PostFormComponent implements OnInit, OnChanges {
         }
     }
 
-    sendData() {
+    public sendData() {
         this.submitted = false;
         if (this.model._id) {
             // update
@@ -122,36 +122,36 @@ export class PostFormComponent implements OnInit, OnChanges {
         }
     }
 
-    newPost() {
+    public newPost() {
         const today = new Date();
-        this.model = new Post("","", this.postTypes[0], "", "", today, false, this.model.publishedBy, "", []);
+        this.model = new Post("", "", this.postTypes[0], "", "", today, false, this.model.publishedBy, "", []);
     }
 
-    toggleMedia() {
+    public toggleMedia() {
         const mediaDiv = document.getElementById("mediaData");
         mediaDiv.classList.toggle("hide");
 
         // hide all other toggled divs
         const bodyDiv = document.getElementById("bodyData");
         const artCardDiv = document.getElementById("artCardData");
-        if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")){
+        if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")) {
             artCardDiv.classList.add("hide");
             bodyDiv.classList.add("hide");
         }
     }
-    toggleArtCard() {
+    public toggleArtCard() {
         const artCardDiv = document.getElementById("artCardData");
         artCardDiv.classList.toggle("hide");
 
         // hide all other toggled divs
         const bodyDiv = document.getElementById("bodyData");
         const mediaDiv = document.getElementById("mediaData");
-        if (!bodyDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")){
+        if (!bodyDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")) {
             bodyDiv.classList.add("hide");
             mediaDiv.classList.add("hide");
         }
     }
-    toggleBody() {
+    public toggleBody() {
         const bodyDiv = document.getElementById("bodyData");
         bodyDiv.classList.toggle("hide");
         tinymce.init({
@@ -171,18 +171,18 @@ export class PostFormComponent implements OnInit, OnChanges {
         }
     }
 
-    addSource(sourceData) {
+    public addSource(sourceData) {
         sourceData = this.source;
         this.artCard.sources.push(sourceData);
         this.source = "";
     }
-    addArtist(artistData) {
+    public addArtist(artistData) {
         artistData = this.artist;
         this.artCard.contributingArtists.push(artistData);
         this.artist = "";
     }
 
-    addMedia(mediaData) {
+    public addMedia(mediaData) {
         mediaData = {
             class: "media",
             title: this.media.title,
@@ -198,7 +198,7 @@ export class PostFormComponent implements OnInit, OnChanges {
         this.toggleMedia();
         // clear media input
     }
-    addArtCard(artCardData) {
+    public addArtCard(artCardData) {
         artCardData = {
             class: "card",
             title: this.artCard.title,
@@ -209,7 +209,7 @@ export class PostFormComponent implements OnInit, OnChanges {
             support: this.artCard.support,
             sources: this.artCard.sources.slice(0),
             contributingArtists: this.artCard.contributingArtists.slice(0),
-        }
+        };
 
         this.model.body.push(artCardData);
         this.toggleArtCard();
@@ -217,7 +217,7 @@ export class PostFormComponent implements OnInit, OnChanges {
         this.artCard.contributingArtists.length = 0;
         // clear art card input
     }
-    addBody() {
+    public addBody() {
         this.model.body.push({
             class: "text",
             text: tinymce.get("articleText").getContent(),
@@ -230,7 +230,7 @@ export class PostFormComponent implements OnInit, OnChanges {
         return JSON.stringify(this.model);
     }
 
-    slugify(text) {
+    public slugify(text) {
         return text.toString().toLowerCase()
             .replace(/\s+/g, "-")        // Replace spaces with -
             .replace(/[^\w\-]+/g, "")   // Remove all non-word chars

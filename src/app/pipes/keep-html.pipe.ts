@@ -6,7 +6,7 @@ export class EscapeHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  transform(content) {
+  public transform(content) {
     return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 }

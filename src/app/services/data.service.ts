@@ -10,41 +10,41 @@ export class DataService {
     console.log("DataService is connected...");
   }
 
-  getAllPosts() {
+  public getAllPosts() {
     // return this.http.get('./assets/data/posts')
     return this.http.get("/api/post/all")
       .map((res) => res.json());
   }
 
-  getPosts(page) {
+  public getPosts(page) {
     // return this.http.get('./assets/data/posts')
     return this.http.get("/api/post/", { params: {pageNumber: page}})
       .map((res) => res.json());
   }
 
-  getPost(data) {
+  public getPost(data) {
     const customURL = data.customURL;
     // return this.http.get('./assets/data/posts')
     return this.http.get(`/api/post/${customURL}`)
       .map((res) => res.json());
   }
 
-  deletePost(id) {
+  public deletePost(id) {
     return this.http.delete(`/api/post/delete`, { params: {_id: id}})
       .map((res) => res.json());
   }
 
-  insertPost(data) {
+  public insertPost(data) {
     // return this.http.get('./assets/data/posts')
     return this.http.post("/api/post/insert", data)
       .map((res) => res);
   }
-  updatePost(data) {
+  public updatePost(data) {
     // return this.http.get('./assets/data/posts')
     return this.http.put("/api/post/update", data)
       .map((res) => res);
   }
-  logIn(data) {
+  public logIn(data) {
     // return this.http.get('./assets/data/posts')
     return this.http.post("/api/user/login", data)
       .map((res) => res.json());

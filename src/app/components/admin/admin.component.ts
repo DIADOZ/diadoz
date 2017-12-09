@@ -13,9 +13,9 @@ import {PostFormComponent} from "../post-form/post-form.component";
 })
 export class AdminComponent {
   constructor(public authService: AuthService, public router: Router) {}
-  loggedIn = false;
-  postPage = true;
-  logOut() {
+  public loggedIn = false;
+  public postPage = true;
+  public logOut() {
     this.authService.logout();
     if (!this.authService.isLoggedIn) {
       this.router.navigate(["/login"]);
@@ -30,16 +30,16 @@ export class AdminComponent {
   // });
   }
 
-  activatePost(){
+  public activatePost() {
     this.postPage = true;
   }
-  
-  mediaForm() {
+
+  public mediaForm() {
     // this.showPost = false;
     // this.showMedia = true;
 
   }
-    entityForm() {
+    public entityForm() {
     }
     //TODO: Remove this when we're done
     // get diagnostic() {

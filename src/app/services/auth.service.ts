@@ -7,13 +7,14 @@ import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AuthService {
-constructor(private http: Http) { }
-  isLoggedIn = false;
+  public isLoggedIn = false;
 
   // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  public redirectUrl: string;
 
-  login(params) {
+  constructor(private http: Http) { }
+
+  public login(params) {
     // call server authentication (check to see if they are logged in)
     return this.http.post("/api/user/authenticate", { username: params.userName, password: params.password })
     .map((response) => {
@@ -29,7 +30,7 @@ constructor(private http: Http) { }
     });
   }
 
-  logout(): void {
+  public logout(): void {
     this.isLoggedIn = false;
     this.http.get("/api/user/logout");
   }

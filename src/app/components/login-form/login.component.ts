@@ -14,14 +14,14 @@ import { DataService } from "../../services/data.service";
 export class LoginComponent {
     constructor(public authService: AuthService, public router: Router) {}
 
-    submitted = false;
+    public submitted = false;
 
-    model = {
+    public model = {
         userName: "",
         password: "",
     };
 
-    onSubmit() {
+    public onSubmit() {
         this.authService.login(this.model).subscribe((user) => {
             if (this.authService.isLoggedIn) {
                 // Get the redirect URL from our auth service

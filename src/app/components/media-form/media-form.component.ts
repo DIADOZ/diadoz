@@ -9,23 +9,23 @@ import { Media }    from "./media";
   styleUrls: ["./media.css"],
 })
 export class MediaFormComponent implements AfterViewInit {
-    primaryType = ["Video", "Photography", "Audio"];
-    bodyArea = "";
-    currentType = "";
-    todayDate = new Date();
-    model = new Media("", "", "", [], "", "", "", "");
+    public primaryType = ["Video", "Photography", "Audio"];
+    public bodyArea = "";
+    public currentType = "";
+    public todayDate = new Date();
+    public model = new Media("", "", "", [], "", "", "", "");
     // title, primaryArtist, primaryType, mediaTypes, body, filePath, url, embed
-    submitted = false;
-    showMain = true;
-    onSubmit() {
+    public submitted = false;
+    public showMain = true;
+    public onSubmit() {
         this.submitted = true;
     }
-    newMedia() {
+    public newMedia() {
         tinymce.activeEditor.setContent("");
         this.model = new Media("", "", "", [], "", "", "", "");
     }
 
-    ngAfterViewInit() {
+    public ngAfterViewInit() {
         tinymce.init({
             selector: "#mediaTiny",
             plugins: ["link", "paste", "table"],
@@ -34,12 +34,12 @@ export class MediaFormComponent implements AfterViewInit {
         });
     }
 
-    addMediaType() {
+    public addMediaType() {
         this.model.mediaTypes.push(this.currentType);
         this.currentType = "";
     }
 
-    addMedia() {
+    public addMedia() {
 
     }
 

@@ -9,7 +9,7 @@ export class MousewheelComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }

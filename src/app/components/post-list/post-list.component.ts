@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../services/data.service";
 
-import { Post } from "../post-form/post";
 import { ActivatedRoute, Params } from "@angular/router";
+import { Post } from "../post-form/post";
 
 @Component({
   selector: "app-post-list",

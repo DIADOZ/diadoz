@@ -12,8 +12,8 @@ import "rxjs/add/operator/switchMap";
   styleUrls: ["./post-details.component.css"],
 })
 export class PostDetailsComponent implements OnInit {
-  post$;
-  post = {
+  public post$;
+  public post = {
     _id: 0,
     headline: "",
     subHeadline: "",
