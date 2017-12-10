@@ -1,5 +1,8 @@
+
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default*/
+
 
 html{
   width: 100%;
@@ -9,6 +12,13 @@ body{
   margin: 0;
   width: 100%;
   overflow: hidden;
+}
+
+:host ::ng-deep h1{
+  font-family: 'Fugaz One', cursive;
+  text-transform: uppercase;
+  font-size: 2em;
+  margin: 0;
 }
 
 .container{
@@ -57,33 +67,23 @@ body{
 }
 
 .editorial-body{
-  font-family: Georgia, serif;
-  font-size: 1.1em; /*1.063em = 17px*/
-  font-weight: 500; /*possibly < 300*/
+  font-family: proxima-nova, sans-serif;
+  font-size: 1.5em; /*1.063em = 17px*/
+  font-weight: 300; /*possibly < 300*/
   font-style: normal;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.025em;
 
-  line-height: 1.6em;
+  line-height: 1.58em;
 
   margin: 0 auto 20px auto;
-
+  padding: 0 10px 0 10px;
   max-width: 740px;
   color: black;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  color: rgba(0,0,0,.8);
 }
 
-.editorial-body {
-  /*margin: 0 auto;*/
-  font-size: 21px;
-  max-width: 740px;
-  color: rgba(0,0,0,.8);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.4;
-  font-weight: 400;
-  font-style: normal;
-}
 /*video*/
 
 .Video-wrapper{

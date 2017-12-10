@@ -14,23 +14,18 @@
   padding: 20px;
 }
 
-.art-card-header{
-  font-family: Georgia, serif;
+.card-header-text{
+  font-family: graphik-web, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-size: 35px;
-  line-height: 40px;
+  font-size: 3.5em;
+  line-height: 1em;
   font-weight: bolder;
-  margin: 0;
-  padding: 0px 0px 10px 0px;
-}
-
-.art-card-header .h1{
   margin: 0;
   padding: 0;
 }
 
-.card-body p {
-  font-family: Georgia, serif;
+.card-body-text {
+  font-family: proxima-nova, sans-serif;
   font-weight: 500;
   font-style: normal;
   word-spacing: .3px;
@@ -41,28 +36,51 @@
   margin: 0;
 }
 
-.support{
-  float: right;
-  margin-bottom: 10px;
+p.contributing-artist-header-text{
+  font-family: Harriet, serif;
+  font-style: italic;
+
+  font-size: 1.7em;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  /*text-transform: uppercase;*/
 }
-a {
+
+p.contributing-artist-text {
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  word-spacing: .3px;
+  font-size: 16.5px;
+  line-height: 1.6em;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeSpeed;
+  margin: 0;
+}
+
+
+a.support {
+  text-align: right;
+  position: inherit;
+  display: block;
   border-bottom: black;
-  font-family: Georgia, serif;
+  font-family: proxima-nova, sans-serif;
   font-weight: 500;
-  font-style: normal;
   word-spacing: .3px;
-  font-size: 16.5px;
-  line-height: 1.6em;
-  letter-spacing: 0.01em;
+  font-size: 1.2em;
   text-rendering: optimizeSpeed;
+  line-height: 0;
   margin: 0;
+  color: #3A6629;
   text-decoration: none;
-  color: black;
 }
 
-a:visited {
-  border-bottom: 2px solid #ffcc00;
-  color: black;
+a.support:visited {
+  text-decoration: none;
+}
+
+a.support:hover {
   text-decoration: none;
 }
 
@@ -88,29 +106,6 @@ a:visited {
     padding: 20px;
   }
 
-  .art-card-header{
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 35px;
-    line-height: 40px;
-    font-weight: bolder;
-    margin: 0;
-    padding: 0px 0px 10px 0px;
-  }
-
-  .art-card-header .h1{
-    margin: 0;
-    padding: 0;
-  }
-
-  p.card-text-body {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
-    text-shadow: 0px 0px .01px gray;
-    word-spacing: .3px;
-    font-size: 15px;
-    line-height: 24px;
-    margin: 0;
-  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
