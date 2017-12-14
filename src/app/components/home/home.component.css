@@ -1,6 +1,16 @@
+
+/*@import url('https://fonts.googleapis.com/css?family=Knewave');*/
+/*@import url('https://fonts.googleapis.com/css?family=Comfortaa');*/
+/*@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500');*/
+/*@import url('https://fonts.googleapis.com/css?family=Bungee');*/
+/*@import url('https://fonts.googleapis.com/css?family=Quicksand');*/
+/*@import url('https://fonts.googleapis.com/css?family=Chicle');*/
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One');
+/*https://fonts.google.com/specimen/Fredoka+One*/
+/*https://fonts.google.com/specimen/Passion+One*/
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default*/
-
 
 /*:root{}*/
 a {
@@ -50,15 +60,18 @@ a {
   /*font-family: Harriet, "Georgia", serif;*/
   /*width: 100%;*/
   display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 250%;
+  letter-spacing: 1.1px;
+  font-family: 'Fugaz One', cursive;
+  font-size: 300%;
+  line-height: 118%;
   font-weight: bolder;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   margin-top: 2%;
   margin-left: 2%;
   transition: text-shadow .5s;
   transition-timing-function: ease;
   text-transform: uppercase;
+  /*word-wrap: break-word;*/
 
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.03),
   0 0 2px rgba(255, 255, 255, 0.03),
@@ -97,6 +110,30 @@ a {
   width: 100%;
 }
 
+.tile{
+
+}
+
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /*.tile-text {*/
+    /*font-size: 350%;*/
+  /*}*/
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /*.tile-text {*/
+    /*font-size: 400%;*/
+  /*}*/
+}
 
 @media screen and (orientation: portrait) {
 
@@ -151,25 +188,11 @@ a {
     object-fit: cover;
   }
 
-}
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
+  .tile-text {
+    font-size: 200%;
+  }
 
 }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-
-
-}
-
 @media screen and (orientation: landscape){
 
   html {

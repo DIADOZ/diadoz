@@ -1,18 +1,22 @@
 <div class="art-card">
   <div class="art-card-containter">
     <div class="art-card-header">
-      <p class="h1">{{card.primaryContributor}}</p>
-      <p class="h1"><em>{{card.title}}</em>, 2017</p>
-      <p class="h1">{{card.primaryType}}</p>
+      <span class="card-header-text">
+        {{card.primaryContributor}}
+        <br>
+        <em>{{card.title}}</em>
+        <br>
+        {{card.primaryType}}</span>
     </div>
-    <a href="{{card.support}}" class="support">Support</a>
+
     <br />
-    <div class="card-body">
-    <p>{{card.summary}}</p>
-    <h4>Contributing Artists</h4>
-    <p *ngFor="let artist of card.contributingArtists">
+    <div class="card-body-wrapper">
+    <p class="card-body-text">{{card.summary}}</p>
+    <p class="contributing-artist-header-text">Contributing Artists</p>
+    <p *ngFor="let artist of card.contributingArtists" class="contributing-artist-text">
       {{artist}}
     </p>
-  </div>
+      <a href="{{card.support}}" target="_blank" class="support">$</a>
+    </div>
   </div>
 </div>

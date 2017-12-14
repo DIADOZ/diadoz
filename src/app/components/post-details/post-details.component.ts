@@ -40,6 +40,7 @@ export class PostDetailsComponent implements OnInit {
       .subscribe((post)  =>
         this.post = post,
       );
+
   }
   public fbClick() {
     fbButton({
