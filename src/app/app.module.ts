@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { MatSidenavModule } from "@angular/material";
 import { MatCheckboxModule } from "@angular/material";
@@ -88,6 +88,7 @@ const appRoutes: Routes = [
     MatRadioModule,
     InfiniteScrollModule,
     MatButtonModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     PostFormComponent,

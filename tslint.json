@@ -5,6 +5,5 @@
     ],
     "jsRules": {},
     "rules": {},
-    "rulesDirectory": [],
-    "autoFixOnSave": true
+    "rulesDirectory": []
 }
