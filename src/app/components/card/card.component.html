@@ -1,12 +1,15 @@
 <div class="art-card">
   <div class="art-card-containter">
     <div class="art-card-header">
-      <span class="card-header-text">
+      <div class="card-header-text-artist">
         {{card.primaryContributor}}
-        <br>
-        <em>{{card.title}}</em>
-        <br>
-        {{card.primaryType}}</span>
+      </div>
+      <div class="card-header-text-title">
+        {{card.title}}
+      </div>
+      <div class="card-header-text-type">
+        {{card.primaryType}}
+      </div>
     </div>
 
     <br />
@@ -16,7 +19,7 @@
     <p *ngFor="let artist of card.contributingArtists" class="contributing-artist-text">
       {{artist}}
     </p>
-      <a href="{{card.support}}" target="_blank" class="support">$</a>
+    <!-- <a href="{{card.support}}" target="_blank" class="support">$</a> -->
     </div>
   </div>
 </div>

@@ -1,24 +1,24 @@
-<app-header></app-header>
-<div class="body-container"
-  infiniteScroll
-  [scrollWindow]="scrollWindowValue"
-  [horizontal]="horizontalValue"
-  [infiniteScrollDistance]="1"
-  [alwaysCallback]="false"
-  (scrolled)="onScroll()">
-    <div class="tiles-container">
+<app-header [color]="color"></app-header>
+<div class="body-container">
+    <div class="tiles-container" 
+    infiniteScroll
+    [scrollWindow]="false"
+    [horizontal]="horizontalValue"
+    [infiniteScrollDistance]="3"
+    [alwaysCallback]="false"
+    (scrolled)="onScroll()">
       <div class="tile-wrapper" *ngFor="let post of postArray" >
-      <div class="tile" id="tile{{post._id}}">
-        <header class="tile-overlay">
-          <p class="tile-text">
-            <a [routerLink]="['/post', post.customURL]" routerLinkActive="active">
-              <strong>{{post.headline}}</strong>
-              <br>{{post.subHeadline}}
-            </a>
-          </p>
-        </header>
-        <img class="tile-photo" src="{{post.featuredImage}}" /><!--<{{post.primaryImage.filePath}} /assets/1.jpg-->
-      </div>
+        <a [routerLink]="['/post', post.customURL]" routerLinkActive="active">
+          <div class="tile" id="tile{{post._id}}">
+            <header class="tile-overlay">
+              <p class="tile-text">
+                  <strong>{{post.headline}}</strong>
+                  <br>{{post.subHeadline}}
+              </p>
+            </header>
+            <img class="tile-photo" src="{{post.featuredImage}}" /><!--<{{post.primaryImage.filePath}} /assets/1.jpg-->
+          </div>
+        </a>
      </div>
   </div>
 </div>

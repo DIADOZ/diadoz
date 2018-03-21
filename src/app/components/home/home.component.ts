@@ -10,8 +10,7 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
   public logo = "./assets/img/logo/diadoz-white-logo-2017.svg";
-
-  public scrollWindowValue: boolean;
+  color = 'white';
   public horizontalValue: boolean;
 
   public postArray = [];
@@ -24,35 +23,10 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit() {
-    const that = this;
-
     if (matchMedia) {
       const mql = window.matchMedia("(orientation: landscape)");
-      mql.addListener(orientationChange);
-      orientationChange(mql);
-    }
-
-    function orientationChange(m) {
-      if (m.matches) {
-        that.scrollWindowValue = false;
-        that.horizontalValue = true;
-        $(".body-container").mousewheel(function(event, delta) {
-          event.preventDefault();
-
-          const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-
-          if (isMac) {
-            this.scrollLeft -= (delta * .9);
-          } else {
-            this.scrollLeft -= (delta * 150);
-          }
-        });
-      } else {
-        that.scrollWindowValue = true;
-        that.horizontalValue = false;
-
-        $(".body-container").unbind();
-      }
+      mql.addListener(this.orientationChange);
+      this.orientationChange(mql);
     }
   }
 
@@ -65,5 +39,29 @@ export class HomeComponent implements OnInit {
 
   public onScroll() {
     this.addPosts(this.pageNumber);
+  }
+
+  private orientationChange(m) {
+    if (m.matches) {
+      // if landscape
+      this.horizontalValue = true;
+      $(".tiles-container").mousewheel(function(event, delta) {
+        event.preventDefault();
+
+        // Check navigator value, 'MAC' may involve other browsers
+        const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+
+        if (isMac) {
+          this.scrollLeft -= (delta * .9);
+        } else {
+          this.scrollLeft -= (delta * 100);
+        }
+      });
+    } else {
+      // if portrait
+      this.horizontalValue = false;
+
+      $(".tiles-container").unbind();
+    }
   }
 }

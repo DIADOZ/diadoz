@@ -59,10 +59,12 @@ a {
   /*from main.css BlockInfo*/
   /*font-family: Harriet, "Georgia", serif;*/
   /*width: 100%;*/
+  position: absolute;
+  bottom: .5em;
   display: inline-block;
   letter-spacing: 1.1px;
   font-family: 'Fugaz One', cursive;
-  font-size: 300%;
+  font-size: 80%;
   line-height: 118%;
   font-weight: bolder;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -83,10 +85,6 @@ a {
   0 0 2px rgba(255, 255, 255, 0.1);
 }
 
-.tile-text:hover {
-  text-shadow: none;
-}
-
 .tile-overlay {
   position: absolute;
   bottom: 0;
@@ -97,7 +95,7 @@ a {
   transition-timing-function: linear;
   margin: 0 auto;
   padding: 0;
-  width: 100vw;
+  width: 100%;
   display: block;
   /*color: yellow;*/
 }
@@ -108,91 +106,77 @@ a {
   left: 0;
   background-color: rgba(0, 0, 0, 0.12);
   width: 100%;
+  text-shadow: 2px 5px 5px white;
 }
 
-.tile{
-
+html {
+  overflow-y: hidden;
 }
 
-
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-
+body{
+  height: 100vh;
+  margin: 0 auto;
 }
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  /*.tile-text {*/
-    /*font-size: 350%;*/
-  /*}*/
+.body-container {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  white-space: nowrap;
+  width: 100vw;
+  height: 100vh;
+  
+  overflow-x: hidden;
+  /*background-color: deepskyblue;*/
 }
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  /*.tile-text {*/
-    /*font-size: 400%;*/
-  /*}*/
+.tiles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  overflow-x:hidden;
+  overflow-y:inherit;
 }
 
-@media screen and (orientation: portrait) {
+.tile-wrapper {
+  width: 100%;
+  height: calc((5/8)*100vw);
+}
 
-  html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    overflow-x: hidden;
-  }
+.tile { /*this is the this that is fucking up the resize*/
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
 
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
-    /*background-color: red;*/
-  }
+.tile-photo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  object-fit: cover;
+}
 
+@media only screen and (min-width: 550px) {
 
-
-  .body-container {
-    position: relative;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0px;
-    /*background-color: deepskyblue;*/
-  }
-
-  .tiles-container {
-    width: 100%;
-
-  }
-
-  .tile-wrapper {
-    width: 100vw;
-    height: calc((5/8)*100vw);
-  }
-
-  .tile { /*this is the this that is fucking up the resize*/
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .tile-photo {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    object-fit: cover;
-  }
-
-  .tile-text {
-    font-size: 200%;
+  .tile-text { 
+     font-size: 100%; 
   }
 
 }
+
+@media only screen and (min-width: 1000px) {
+
+  .tile-text { 
+     font-size: 200%;
+  }
+
+}
+
 @media screen and (orientation: landscape){
 
   html {
@@ -211,12 +195,13 @@ a {
     /*Spacing*/
     margin: 0 auto;
     display: block;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     white-space: nowrap;
     /*padding: 0px;*/
 
     /*Sizing*/
-    height: calc(100vh - 46px);
+    height: 100vh;
 
     /*background-color: #649d71;*/
   }
@@ -226,25 +211,26 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    right: auto;
+    right: 0;
     bottom: 0;
     float: left;
     display: inline-flex;
-
+    overflow-x:inherit;
+    overflow-y:hidden;
     /*Spacing*/
-    margin: auto;
+    margin: 0em;
     clear: both;
 
     /*Sizing*/
     min-width: 100px;
-    height: calc(100vh - 46px);
+    height: 100vh;
 
     /*Color*/
     /*background-color: darkgreen;*/
   }
 
   .tile-wrapper{
-    height: calc(100vh - 46px);
+    height: 100vh;
     width: calc((8/5)*calc(100vh - 46px));/*8:5 ratio*/
     display: inline-flex;
     position: relative;
@@ -253,21 +239,17 @@ a {
   .tile {
     /*Positioning*/
     float: left;
-    height: calc(100vh - 46px);
+    height: 100vh;
     width: calc((8/5)*calc(100vh - 46px));
     display: inline-flex;
 
     /*Spacing*/
-    margin: auto;
-    overflow-y: hidden;
+    margin: 0px;
+    overflow: hidden;
 
     /*Sizing*/
     /*width: 100%;*/
     top: 0; bottom: 0; left: 0; right: 0;
-
-
-
-
 
   }
 
@@ -283,3 +265,5 @@ a {
     object-fit: cover;
   }
 }
+
+

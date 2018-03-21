@@ -25,5 +25,5 @@
 </div> 
 
 <div [hidden]="!formDisplay">
-  <app-post-form [formData]="formData" (sentSubmit)="sentSubmit($event)"></app-post-form>
+  <app-post-form [postData]="postData" (sentSubmit)="sentSubmit($event)"></app-post-form>
 </div>

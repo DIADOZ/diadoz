@@ -1,11 +1,11 @@
-<app-header></app-header>
+<app-header [color]="color"></app-header>
 
 <div class="container">
 
   <div class="column-body">
 
     <!--Social Buttons-->
-    <div class="social">
+    <!-- <div class="social">
       <div class='sb-outline-up shareButton'>
         <button class="sb-wrapper sb-facebook" (click)="fbClick()">
           <i aria-hidden="true" class="fa fa-facebook"></i>
@@ -16,7 +16,7 @@
           <i aria-hidden="true" class="fa fa-twitter"></i>
         </button>
       </div>
-    </div>
+    </div> -->
 
     <div *ngFor="let data of post.body">
 

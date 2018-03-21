@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../../services/data.service";
 
 import { ActivatedRoute, Params } from "@angular/router";
-import { Post } from "../post-form/post";
+import { Post } from "../post-form/data-class";
 
 @Component({
   selector: "app-post-list",
@@ -11,7 +11,7 @@ import { Post } from "../post-form/post";
 })
 export class PostListComponent implements OnInit {
   public list = [];
-  public formData: Post;
+  public postData;
   public formDisplay = false;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
@@ -34,7 +34,7 @@ export class PostListComponent implements OnInit {
     let publishedBy;
     this.route.queryParams.subscribe((params: Params) => {
       publishedBy = params.user;
-      this.formData = new Post("", "", postTypes[0], "", "", new Date(), false, publishedBy, "", [], {});
+      this.postData = new Post();
       this.formDisplay = true;
     });
   }
@@ -71,7 +71,18 @@ export class PostListComponent implements OnInit {
     };
     this.dataService.getPost(data).subscribe((post) => {
       // populate edit form
-      this.formData = post;
+      this.postData = {
+        headline: post.headline,
+        subHeadline: post.subHeadline,
+        featuredImage: post.featuredImage,
+        customURL: post.customURL,
+        publishDate: post.publishDate,
+        published: post.published,
+        publishedBy: post.publishedBy,
+        postType: post.postType,
+        gallery: post.gallery,
+        body: post.body
+      };
     });
   }
 }

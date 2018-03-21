@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { fbButton, tw } from "vanilla-sharing";
 
@@ -12,6 +12,7 @@ import "rxjs/add/operator/switchMap";
   styleUrls: ["./post-details.component.css"],
 })
 export class PostDetailsComponent implements OnInit {
+  color = 'black';
   public post$;
   public post = {
     _id: 0,
