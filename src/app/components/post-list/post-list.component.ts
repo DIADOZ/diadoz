@@ -34,7 +34,18 @@ export class PostListComponent implements OnInit {
     let publishedBy;
     this.route.queryParams.subscribe((params: Params) => {
       publishedBy = params.user;
-      this.postData = new Post();
+      this.postData = {
+        headline: "",
+        subHeadline: "",
+        featuredImage: "",
+        customURL: "",
+        publishDate: new Date(),
+        published: true,
+        publishedBy: publishedBy,
+        postType: postTypes[0],
+        gallery: {},
+        body: []
+      }
       this.formDisplay = true;
     });
   }

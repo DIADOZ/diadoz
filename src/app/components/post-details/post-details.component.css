@@ -110,6 +110,11 @@ body{
   width: 100%;
 }
 
+
+/*image*/
+.Image-wrapper{
+  margin-top: 20px;  
+}
 .Image-wrapper img{
   width: 100%;
 }

@@ -14,9 +14,8 @@ router.delete('/delete', (req, res, next) => {
 	});
 });
 
-
 router.get('/all', function (req, res){
-	post.find({}, function(err, docs){
+	post.find({}).sort({ publishDate: -1 }).exec(function(err, docs){
 		if (err){
 			res.send(err);
 		}
@@ -24,8 +23,6 @@ router.get('/all', function (req, res){
         res.json(docs);
 	});
 });
-
-
 
 router.get('/:customURL', function(req, res){
 	var cursor = post.findOne({
@@ -90,8 +87,6 @@ router.put('/update', function(req, res, next){
 		res.json({message:  'Document ' + id + ' has been updated successfully'});
 	});
 });
-
-
 
 router.get('/', function (req, res){
 	var pageNumber = parseInt(req.query.pageNumber);
