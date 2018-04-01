@@ -99,6 +99,10 @@ export class PostFormComponent implements OnInit, OnChanges{
         });
     }
 
+    get headline(){
+        return this.postForm.get('headline');
+    }
+
     // Set customURL events
     // Set publishedBy
     public ngOnInit() {
@@ -186,7 +190,7 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.mediaForm.reset();
         const mediaDiv = document.getElementById("mediaData");
         mediaDiv.classList.toggle("hide");
-
+    
         // hide all other toggled divs
         const bodyDiv = document.getElementById("bodyData");
         const artCardDiv = document.getElementById("artCardData");

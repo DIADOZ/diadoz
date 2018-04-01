@@ -4,7 +4,7 @@
         <form (ngSubmit)="onSubmit()" [formGroup]="postForm">
             <div class="form-group">
                 <label for="headline">Headline</label>
-                <input type="text" class="form-control" id="headline" #headline formControlName="headline">
+                <input type="text" class="form-control" id="headline" formControlName="headline">
                 <div [hidden]="headline.valid || headline.pristine"
                 class="alert alert-danger">
                     Headline is required
