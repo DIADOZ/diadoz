@@ -91,7 +91,7 @@ router.put('/update', function(req, res, next){
 router.get('/', function (req, res){
 	var pageNumber = parseInt(req.query.pageNumber);
 	
-	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 3, sort: { publishDate: -1 }})
+	var cursor = post.paginate({published: true}, {page: pageNumber, limit: 4, sort: { publishDate: -1 }})
 	.then(function(result){
 		res.json(result.docs);
 	});

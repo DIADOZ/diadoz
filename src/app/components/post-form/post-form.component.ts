@@ -45,19 +45,6 @@ export class PostFormComponent implements OnInit, OnChanges{
     public artistArray = [];
     
     constructor(private dataService: DataService, private route: ActivatedRoute, private fb: FormBuilder) {
-        this.entityForm = fb.group({
-            'name': "",
-            'url': "",
-        });
-
-        this.galleryForm = fb.group({
-            'title': "",
-            'curatedBy': this.entityForm,
-            'summary': "",
-            'media': this.fb.array([]),
-            'endInfo': "",
-        });
-
         this.postForm = fb.group({
             'headline': [null, Validators.compose([Validators.required, Validators.maxLength(200)])],
             'subHeadline': [null, Validators.maxLength(200)],
@@ -67,7 +54,16 @@ export class PostFormComponent implements OnInit, OnChanges{
             'published': [true, Validators.required],
             'publishedBy': [null, Validators.required],
             'postType': [this.postTypes[0], Validators.required],
-            'gallery': this.galleryForm,
+            'gallery': fb.group({
+                'title': "",
+                'curatedBy': fb.group({
+                    'name': "",
+                    'url': "",
+                }),
+                'summary': "",
+                'media': this.fb.array([]),
+                'endInfo': "",
+            }),
         });
 
         this.mediaForm = fb.group({
@@ -88,14 +84,14 @@ export class PostFormComponent implements OnInit, OnChanges{
             'support': "",
         });
 
-        this.editForms = fb.group({
-            'editMedia': this.mediaForm,
-            'editArtCard': this.artCardForm
-        });
-        
         this.textForm = fb.group({
             'class': "text",
             'text': "",
+        });
+
+        this.editForms = fb.group({
+            'editMedia': this.mediaForm,
+            'editArtCard': this.artCardForm
         });
     }
 
