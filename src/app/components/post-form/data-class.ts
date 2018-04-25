@@ -1,5 +1,4 @@
 export class Post {
-  public _id: string;
   public headline: string;
   public postType: string;
   public featuredImage: string; //id
@@ -40,10 +39,10 @@ export class Media {
 
 export class ArtCard {
   class: "card";
-  title: "";
-  primaryContributor: "";
-  secondaryContributor: "";
-  primaryType: "";
+  title: String;
+  primaryContributor: String;
+  secondaryContributor: String;
+  primaryType: String;
   summary: "";
   support: "";
   sources = [];

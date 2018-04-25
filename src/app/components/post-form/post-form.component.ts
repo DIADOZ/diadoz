@@ -17,6 +17,7 @@ import { AbstractControl } from "@angular/forms/src/model";
 })
 export class PostFormComponent implements OnInit, OnChanges{
     @Input() postData;
+    @Output() public sentSubmit = new EventEmitter<boolean>();
     public postForm: FormGroup;
     public galleryForm: FormGroup;
     public mediaForm: FormGroup;
@@ -25,6 +26,8 @@ export class PostFormComponent implements OnInit, OnChanges{
     public entityForm: FormGroup;
     public editForms: FormGroup;
     //save this
+
+    public postID;
 
     public hideEditSource = true;
     public forReview = false;
@@ -64,6 +67,9 @@ export class PostFormComponent implements OnInit, OnChanges{
                 'media': this.fb.array([]),
                 'endInfo': "",
             }),
+            'body': this.fb.array([
+                this.fb.group([null])
+            ])
         });
 
         this.mediaForm = fb.group({
@@ -96,7 +102,11 @@ export class PostFormComponent implements OnInit, OnChanges{
     }
 
     get headline(){
-        return this.postForm.get('headline');
+        return this.postForm.get('headline') as FormControl;
+    }
+
+    get body(){
+        return this.postForm.get('body') as FormArray;
     }
 
     // Set customURL events
@@ -109,9 +119,14 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.populateCurrentUser();
     }
 
+    public initBody(){
+        return this.fb.group(new FormGroup(null));
+    }
+
     public ngOnChanges(changes){
         if(!changes.postData.firstChange){
             var data = changes.postData.currentValue;
+            data.id? this.postID = data.id : this.postID = null;
             this.postForm.setValue({
                 'headline': data.headline,
                 'subHeadline': data.subHeadline,
@@ -122,8 +137,8 @@ export class PostFormComponent implements OnInit, OnChanges{
                 'publishedBy': data.publishedBy,
                 'postType': data.postType,
                 'gallery': data.gallery ? data.gallery : null,
+                'body': data.body
             });
-            this.bodyArray = data.body;
         }
     }
 
@@ -139,15 +154,24 @@ export class PostFormComponent implements OnInit, OnChanges{
     }
 
     // Set forReview to false, prepare data and submit data, reset form
-    public onSubmit() {
+    public onSubmit(postID) {
         // add a "You are reviewing the following" OR sample post
         // use .setValue for editing existing posts
         var postData = this.prepareSaveForm();
         
-        this.dataService.insertPost(postData).subscribe((res) => {
-            this.onReset();
-            this.forReview = false;
-        });
+        if(postData._id){
+            this.dataService.updatePost(postData).subscribe((res) => {
+                this.onReset();
+                this.forReview = false;
+                this.sentSubmit.emit(true);
+            });
+        } else {
+            this.dataService.insertPost(postData).subscribe((res) => {
+                this.onReset();
+                this.forReview = false;
+                this.sentSubmit.emit(true);
+            });
+        }        
     }
 
     // Set forReview to false to edit
@@ -413,7 +437,7 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.artistArray.splice(index, 1);
     }
     public deleteEntry(index) {
-        this.bodyArray.splice(index, 1);
+        this.body.removeAt(index);
     }
 
     // Add bodyObject to postForm's body array
@@ -424,14 +448,20 @@ export class PostFormComponent implements OnInit, OnChanges{
     // Sets events to headline and subheadline to populate customURL
     // Only when customURL is untouched
     private createCustomURL(){
-        const headlineControl = this.postForm.get('headline');
+        const headlineControl = this.postForm.get('headline') as FormControl;
         const subHeadlineControl = this.postForm.get('subHeadline') as FormControl;
         const customURLControl = this.postForm.get('customURL') as FormControl;
 
         headlineControl.valueChanges.forEach((value) => {
             if(!customURLControl.touched){
                 // update
-                var updatedURL = subHeadlineControl.value ? subHeadlineControl.value + '-' : '' + value;
+                var updatedURL = '';
+                if(subHeadlineControl.value){
+                    updatedURL = subHeadlineControl.value + '-' + value;
+                } else {
+                    updatedURL = value;
+                }
+
                 updatedURL = this.slugify(updatedURL);
                 customURLControl.setValue(updatedURL);
             }
@@ -440,7 +470,13 @@ export class PostFormComponent implements OnInit, OnChanges{
         subHeadlineControl.valueChanges.forEach((value) => {
             if(!customURLControl.touched){
                 // update
-                var updatedURL = value + (headlineControl.value ? '-' + headlineControl.value : '');
+                var updatedURL = '';
+                if(headlineControl.value){
+                    updatedURL = value + '-' + headlineControl.value;
+                } else {
+                    updatedURL = value;
+                }
+
                 updatedURL = this.slugify(updatedURL);
                 customURLControl.setValue(updatedURL);
             }
@@ -474,6 +510,7 @@ export class PostFormComponent implements OnInit, OnChanges{
         const formModel = this.postForm.value;
         
         const savePost = {
+            _id: null,
             headline: formModel.headline as string,
             subHeadline: formModel.subHeadline as string,
             postType: formModel.postType as string,
@@ -486,6 +523,8 @@ export class PostFormComponent implements OnInit, OnChanges{
             body: this.bodyArray,
             gallery: formModel.gallery as Array<string>,
         };
+
+        this.postID ? savePost._id = this.postID: savePost._id = null;
 
         return savePost;
     }

@@ -80,9 +80,10 @@ export class PostListComponent implements OnInit {
     const data = {
       customURL: url,
     };
-    this.dataService.getPost(data).subscribe((post) => {
+    this.dataService.getPostByURL(data).subscribe((post) => {
       // populate edit form
       this.postData = {
+        id: post._id,
         headline: post.headline,
         subHeadline: post.subHeadline,
         featuredImage: post.featuredImage,

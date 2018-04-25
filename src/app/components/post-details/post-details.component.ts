@@ -36,7 +36,7 @@ export class PostDetailsComponent implements OnInit {
   public ngOnInit() {
     this.post$ = this.route.params
       .switchMap((params: ParamMap) =>
-        this.dataService.getPost(params),
+        this.dataService.getPostByURL(params),
       )
       .subscribe((post)  =>
         this.post = post,

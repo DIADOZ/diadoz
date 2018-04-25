@@ -22,7 +22,7 @@ export class DataService {
       .map((res) => res.json());
   }
 
-  public getPost(data) {
+  public getPostByURL(data) {
     const customURL = data.customURL;
     // return this.http.get('./assets/data/posts')
     return this.http.get(`/api/post/${customURL}`)
