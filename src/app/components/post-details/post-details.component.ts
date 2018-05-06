@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { fbButton, tw } from "vanilla-sharing";
 
+import { GalleryComponent } from "../gallery/gallery.component";
+
 import { DataService } from "../../services/data.service";
 
 import "rxjs/add/operator/switchMap";

@@ -30,13 +30,13 @@ import { DataService } from "./services/data.service";
 
 import { PageNotFoundComponent } from "./components/404-page/not-found.component";
 import { AdminComponent } from "./components/admin/admin.component";
-import { GalleryPostComponent } from "./components/gallery-post/gallery-post.component";
 import { LoginComponent } from "./components/login-form/login.component";
 import { MediaFormComponent } from "./components/media-form/media-form.component";
 import { MousewheelComponent } from "./components/mousewheel/mousewheel.component";
 import { PostFormComponent } from "./components/post-form/post-form.component";
 import { PostListComponent } from "./components/post-list/post-list.component";
 import { EscapeHtmlPipe } from "./pipes/keep-html.pipe";
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 const appRoutes: Routes = [
   { path: "login", component: LoginComponent},
@@ -62,9 +62,9 @@ const appRoutes: Routes = [
     MediaFormComponent,
     LoginComponent,
     PageNotFoundComponent,
-    GalleryPostComponent,
     EscapeHtmlPipe,
     PostListComponent,
+    GalleryComponent,
   ],
   imports: [
     Md2DatepickerModule,

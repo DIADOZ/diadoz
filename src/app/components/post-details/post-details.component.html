@@ -16,31 +16,37 @@
         </button>
       </div>
     </div> -->
+    <div *ngIf="post.postType === 'Gallery'">
+      <app-gallery [post]='post'></app-gallery>
+    </div>
+    
+    <div *ngIf="post.postType === 'Article'">
+      <div *ngFor="let data of post.body">
 
-    <div *ngFor="let data of post.body">
+        <!--Art Card-->
+        <div *ngIf="data.class === 'card'" class="body-media">
+          <app-card [card]='data'></app-card>
+        </div>
 
-      <!--Art Card-->
-      <div *ngIf="data.class === 'card'" class="body-media">
-        <app-card [card]='data'></app-card>
-      </div>
-
-      <!--Media-->
-      <div *ngIf="data.class === 'media'">
-        <div class="{{data.width}} body-media">
-          <div *ngIf="data.type != 'Image'" class="{{data.type}}-wrapper" [innerHTML]="data.embed | keepHtml"></div>
-          <div *ngIf="data.type == 'Image'" class="{{data.type}}-wrapper">
-            <img src="{{data.embed}}" />
+        <!--Media-->
+        <div *ngIf="data.class === 'media'">
+          <div class="{{data.width}} body-media">
+            <div *ngIf="data.type != 'Image'" class="{{data.type}}-wrapper" [innerHTML]="data.embed | keepHtml"></div>
+            <div *ngIf="data.type == 'Image'" class="{{data.type}}-wrapper">
+              <img src="{{data.embed}}" />
+            </div>
           </div>
         </div>
-      </div>
 
-      <!--Text Body-->
-      <div *ngIf="data.class === 'text'">
-        <div class="editorial-body body-media">
-          <div [innerHTML]="data.text | keepHtml"></div>
+        <!--Text Body-->
+        <div *ngIf="data.class === 'text'">
+          <div class="editorial-body body-media">
+            <div [innerHTML]="data.text | keepHtml"></div>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
+    
   </div>
 </div>
