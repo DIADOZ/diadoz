@@ -1,11 +1,11 @@
 export class Post {
   public headline: string;
-  public postType: string;
   public featuredImage: string; //id
   public customURL: string;
   public publishDate: Date;
   public published: boolean;
   public publishedBy: string; //id
+  public postType: string;
   public subHeadline?: string;
   public body?: any[];
   public gallery: Gallery;
@@ -13,11 +13,10 @@ export class Post {
 
 
 export class Gallery {
-  public title = "";
+  public title: string;
   public curatedBy: Entity;
-  public summary: string = "";
-  public media: any[];
-  public endInfo: "";
+  public summary: string;
+  public media: Media[];
 }
 
 export class Entity {
@@ -30,21 +29,19 @@ export class Media {
   public primaryArtist: string; //id
   public primaryType: string;
   public mediaTypes?: string[];
-  public body?: string;
-  public filePath?: string;
-  public url?: string;
+  public dateCreated: Date;
+  public summary: string;
   public embed?: string;
-
 }
 
 export class ArtCard {
   class: "card";
-  title: String;
-  primaryContributor: String;
-  secondaryContributor: String;
-  primaryType: String;
-  summary: "";
-  support: "";
+  title: string;
+  primaryContributor: string;
+  secondaryContributor: string;
+  primaryType: string;
+  summary: string;
+  support: string;
   sources = [];
   contributingArtists = [];
 }

@@ -10,7 +10,7 @@
     display: none;
 }
 
-.radio-form{
+.mat-radio-group{
     display: inline-flex;
     flex-direction: column;
 }

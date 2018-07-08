@@ -1,8 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 
-import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
-
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -15,11 +12,13 @@ export class GalleryComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
-    let images = [
-      { src: 'http://via.placeholder.com/600x400', w: 600, h: 400 },
-      { src: 'http://via.placeholder.com/800x600', w: 800, h: 600 }
-        // ...
-    ];
+    let images = [];
+    if(this.post.body.length > 0){
+      this.post.body.forEach(image => {
+        images.push({title: image.title, src: image.embed, w: 800, h: 800});
+      });
+    }
+    
 
     // define options (if needed)
     const options = {

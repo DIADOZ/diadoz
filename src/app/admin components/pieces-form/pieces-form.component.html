@@ -1,0 +1,32 @@
+<div [formGroup]="i">
+    <div class="form-group">
+        <label for="mediaTitle">Title</label>
+        <input type="text" class="form-control" id="mediaTitle" formControlName="title">
+    </div>
+    
+    <div class="form-group">
+        <label for="embed">Embed</label>
+        <input type="text" class="form-control" id="embed" formControlName="embed">
+    </div>
+    
+    <div class="form-group">
+        <label for="mediaType">Embed Type</label>
+        <!-- add either a default value or placeholder text -->
+        <select class="form-control" id="mediaType" formControlName="type">
+            <option *ngFor="let type of mediaTypes" [value]="type">{{type}}</option>
+        </select>
+    </div>
+    
+    
+    <div id='buttonContainer' class="form-group">
+        <button type='button' type="button" class="btn btn-default" (click)="addMedia()">
+                Add Media
+        </button>
+    </div>
+    
+    <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+        <button name="editButton" type="button" class="btn btn-default" (click)='editEntry(i, entry)'>Edit</button>
+        <button type="button" class="btn btn-default" (click)='deleteEntry(i)'>Delete</button>
+    </div>
+</div>
+

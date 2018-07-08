@@ -1,0 +1,78 @@
+<div [formGroup]="gallery">
+  <div class="form-group">
+    <label for="galleryTitle">Gallery Title</label>
+    <input type="text" class="form-control" id="galleryTitle" formControlName='name'>
+  </div>
+
+  <div class="form-group">
+    <label for="curatedBy">Curated By</label>
+    <input type="text" class="form-control" id="curatedBy" formControlName='curator'>
+  </div>
+
+  <div class="form-group">
+    <label for="summary">Summary</label>
+    <textarea></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="pieces">Pieces</label>
+    <div formArrayName="pieces">
+      <div *ngFor="let entry of pieces.controls; index as i" [formGroupName]="i">
+        <div *ngIf="!entry.hideForm">
+          <div class="form-group">
+            <label for="mediaTitle">Title</label>
+            <input type="text" class="form-control" id="mediaTitle" formControlName="title">
+          </div>
+
+          <div class="form-group">
+            <label for="embed">Piece Artist</label>
+            <input type="text" class="form-control" id="artist" formControlName="artist">
+          </div>
+
+          <div class="form-group">
+            <label for="mediaType">Type</label>
+            <!-- add either a default value or placeholder text -->
+            <select class="form-control" id="mediaType" formControlName="type">
+              <option *ngFor="let type of mediaTypes; let i = index" [value]="type" [selected]="">{{type}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="publishDate">Date Created</label>
+            <md2-datepicker type='datetime' name='dateCreated' formControlName="dateCreated"></md2-datepicker>
+          </div>
+
+          <div class="form-group">
+            <label for="summary">Info</label>
+            <textarea id='info'></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="embed">Embed</label>
+            <input type="text" class="form-control" id="embed" formControlName="embed">
+          </div>
+
+          <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+            <button name="saveButton" type="button" class="btn btn-default" (click)="entry.hideForm = true">Save</button>
+          </div>
+        </div>
+
+        <div *ngIf="entry.hideForm">
+          <div>
+            {{ piece[i].title }}
+          </div>
+          <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+            <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button>
+            <button type="button" class="btn btn-default" (click)='deletePiece(i)'>Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type='button' type="button" class="btn btn-default" (click)="addPiece()">
+          Add Piece
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

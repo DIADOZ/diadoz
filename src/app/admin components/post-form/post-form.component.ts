@@ -1,8 +1,9 @@
 import { DatePipe } from "@angular/common";
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
-import { FormControl, FormGroup, Validators, FormBuilder, FormArray } from "@angular/forms";
+import { FormControl, FormGroup, Validators, FormBuilder, FormArray, FormGroupDirective, ControlContainer } from "@angular/forms";
 import { DateAdapter, NativeDateAdapter } from "@angular/material";
 import { MatRadioGroup } from "@angular/material/radio";
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { DataService } from "../../services/data.service";
@@ -14,6 +15,10 @@ import { AbstractControl } from "@angular/forms/src/model";
   selector: "app-post-form",
   styleUrls: ["./forms.css"],
   templateUrl: "./post-form.component.html",
+  viewProviders: [{
+    provide: ControlContainer,
+    useExisting: FormGroupDirective
+  }]
 })
 export class PostFormComponent implements OnInit, OnChanges{
     @Input() postData;
@@ -41,6 +46,7 @@ export class PostFormComponent implements OnInit, OnChanges{
     public source = "";
     public artist =  "";
     public showGallery = false;
+    public showMedia = false;
     public bodyText = "";
      
     public bodyArray = [];
@@ -48,7 +54,38 @@ export class PostFormComponent implements OnInit, OnChanges{
     public artistArray = [];
     
     constructor(private dataService: DataService, private route: ActivatedRoute, private fb: FormBuilder) {
-        this.postForm = fb.group({
+        this.createForm();
+        // this.mediaForm = fb.group({
+        //     'class': "media",
+        //     'title': "",
+        //     'embed': "",
+        //     'type': "",
+        //     'width': "",
+        // });
+
+        // this.artCardForm = fb.group({
+        //     'class': "card",
+        //     'title': "",
+        //     'primaryContributor': "",
+        //     'secondaryContributor': "",
+        //     'primaryType': "",
+        //     'summary': "",
+        //     'support': "",
+        // });
+
+        // this.textForm = fb.group({
+        //     'class': "text",
+        //     'text': "",
+        // });
+
+        // this.editForms = fb.group({
+        //     'editMedia': this.mediaForm,
+        //     'editArtCard': this.artCardForm
+        // });
+    }
+
+    createForm(){
+        this.postForm = this.fb.group({
             'headline': [null, Validators.compose([Validators.required, Validators.maxLength(200)])],
             'subHeadline': [null, Validators.maxLength(200)],
             'featuredImage': [null, Validators.required],
@@ -57,47 +94,8 @@ export class PostFormComponent implements OnInit, OnChanges{
             'published': [true, Validators.required],
             'publishedBy': [null, Validators.required],
             'postType': [this.postTypes[0], Validators.required],
-            'gallery': fb.group({
-                'title': "",
-                'curatedBy': fb.group({
-                    'name': "",
-                    'url': "",
-                }),
-                'summary': "",
-                'media': this.fb.array([]),
-                'endInfo': "",
-            }),
-            'body': this.fb.array([
-                this.fb.group([null])
-            ])
-        });
-
-        this.mediaForm = fb.group({
-            'class': "media",
-            'title': "",
-            'embed': "",
-            'type': "",
-            'width': "",
-        });
-
-        this.artCardForm = fb.group({
-            'class': "card",
-            'title': "",
-            'primaryContributor': "",
-            'secondaryContributor': "",
-            'primaryType': "",
-            'summary': "",
-            'support': "",
-        });
-
-        this.textForm = fb.group({
-            'class': "text",
-            'text': "",
-        });
-
-        this.editForms = fb.group({
-            'editMedia': this.mediaForm,
-            'editArtCard': this.artCardForm
+            'gallery': this.fb.control({}),
+            'body': this.fb.array([])
         });
     }
 
@@ -183,18 +181,7 @@ export class PostFormComponent implements OnInit, OnChanges{
     public toggleType(e) {
         if (e === "Gallery") {
             this.showGallery = true;
-            tinymce.init({
-                selector: "#gallerySummary",
-                plugins: ["link", "paste", "table"],
-                skin_url: "assets/skins/lightgray",
-                branding: false,
-            });
-            tinymce.init({
-                selector: "#galleryEndInfo",
-                plugins: ["link", "paste", "table"],
-                skin_url: "assets/skins/lightgray",
-                branding: false,
-            });
+            
             // hide body and art card buttons
             // show gallery inputs
             // erase post body info
@@ -207,17 +194,17 @@ export class PostFormComponent implements OnInit, OnChanges{
     // MEDIA
     // On media button click
     public toggleMedia() {
-        this.mediaForm.reset();
-        const mediaDiv = document.getElementById("mediaData");
-        mediaDiv.classList.toggle("hide");
+        this.showMedia = !this.showMedia;
+        // const mediaDiv = document.getElementById("mediaData");
+        // mediaDiv.classList.toggle("hide");
     
-        // hide all other toggled divs
-        const bodyDiv = document.getElementById("bodyData");
-        const artCardDiv = document.getElementById("artCardData");
-        if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")) {
-            artCardDiv.classList.add("hide");
-            bodyDiv.classList.add("hide");
-        }
+        // // hide all other toggled divs
+        // const bodyDiv = document.getElementById("bodyData");
+        // const artCardDiv = document.getElementById("artCardData");
+        // if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")) {
+        //     artCardDiv.classList.add("hide");
+        //     bodyDiv.classList.add("hide");
+        // }
     }
     // TODO: add to gallery
     public addMedia() {
@@ -239,14 +226,14 @@ export class PostFormComponent implements OnInit, OnChanges{
     public toggleText() {
         const bodyDiv = document.getElementById("bodyData");
         bodyDiv.classList.toggle("hide");
-        tinymce.init({
-            selector: "#articleText",
-            plugins: ["link", "paste", "table"],
-            skin_url: "assets/skins/lightgray",
-            branding: false,
-        });
+        // tinymce.init({
+        //     selector: "#articleText",
+        //     plugins: ["link", "paste", "table"],
+        //     skin_url: "assets/skins/lightgray",
+        //     branding: false,
+        // });
 
-        tinymce.get("articleText").setContent("");
+        // tinymce.get("articleText").setContent("");
         // hide all other toggled divs
         const artCardDiv = document.getElementById("artCardData");
         const mediaDiv = document.getElementById("mediaData");
@@ -348,13 +335,13 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.artistArray = entry.contributingArtists;
     }
     public editTextEntry(index, entry) {
-        tinymce.init({
-            selector: "#article-text-" + index,
-            plugins: ["link", "paste", "table"],
-            skin_url: "assets/skins/lightgray",
-            branding: false,
-        });
-        tinymce.get("article-text-" + index).setContent(entry.text);
+        // tinymce.init({
+        //     selector: "#article-text-" + index,
+        //     plugins: ["link", "paste", "table"],
+        //     skin_url: "assets/skins/lightgray",
+        //     branding: false,
+        // });
+        // tinymce.get("article-text-" + index).setContent(entry.text);
     }
     public editArtist(index, entry){
         const editEntryArtist = document.querySelector("#artist-entry-" + index);
@@ -407,7 +394,7 @@ export class PostFormComponent implements OnInit, OnChanges{
     public saveTextEntry(index) {
         var textEntry = {
             class: "text",  
-            text: tinymce.get("article-text-" + index).getContent(),
+            // text: tinymce.get("article-text-" + index).getContent(),
         };
         this.bodyArray.splice(index, 1, textEntry);
     }
@@ -495,11 +482,11 @@ export class PostFormComponent implements OnInit, OnChanges{
 
     // Prepares text data to be submitted
     private prepareSaveText() {
-        const text = tinymce.get("articleText").getContent();
+        // const text = tinymce.get("articleText").getContent();
 
         const saveMedia = {
             class: "text",
-            text: text,
+            // text: text,
         };
 
         return saveMedia;

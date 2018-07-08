@@ -1,7 +1,7 @@
 <div>
   <h1>Post Page</h1>
   <div *ngIf="!formDisplay">
-    <button mat-icon-button (click)='showForm()'>
+    <button mat-icon-button routerLink="/admin/form">
       <i class="material-icons md-24 md-dark">add_circle_outline</i>
     </button>
   </div>
@@ -24,6 +24,6 @@
   </ul>
 </div> 
 
-<div [hidden]="!formDisplay">
+<!-- <div [hidden]="!formDisplay">
   <app-post-form [postData]="postData" (sentSubmit)="sentSubmit($event)"></app-post-form>
-</div>
+</div> -->

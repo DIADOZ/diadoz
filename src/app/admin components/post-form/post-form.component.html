@@ -1,0 +1,86 @@
+<div class="container">
+    <div>
+        <h1>Post Form</h1>
+        <form (ngSubmit)="onSubmit(postID)" [formGroup]="postForm">
+            <div class="form-group">
+                <label for="headline">Headline</label>
+                <input type="text" class="form-control" id="headline" formControlName="headline">
+                <div [hidden]="headline.valid || headline.pristine"
+                class="alert alert-danger">
+                    Headline is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="subHeadline">Sub-Headline</label>
+                <input type="text" class="form-control" id="subHeadline" formControlName="subHeadline">
+            </div>
+
+            <div class="form-group">
+                <label for="featuredImage">Featured Image</label>
+                <input type="text" class="form-control" id="featuredImage" formControlName="featuredImage">
+            </div>
+
+            <div class="form-group">
+                <label for="customURL">Custom URL</label>
+                <p>{{postForm.get('customURL').value}}</p>
+                <!-- <input type="text" class="form-control" id="customURL" formControlName="customURL"> -->
+            </div>
+
+            <div class="form-group">
+                <label for="publishDate">Publish Date</label>
+                <md2-datepicker type='datetime' name='publishDate' formControlName="publishDate"></md2-datepicker>
+            </div>
+
+            <mat-checkbox formControlName="published" labelPosition="before">Published</mat-checkbox>
+            
+            <mat-form-field>
+                <input matInput id="publishedBy" formControlName="publishedBy" placeholder="Published By">
+            </mat-form-field>
+            
+            <div class="form-group">
+                <label for="postType">Post Type</label>
+                <mat-radio-group class="form-control" id="postType" formControlName="postType" (ngModelChange)='toggleType($event)'>
+                    <mat-radio-button *ngFor="let type of postTypes" [value]="type">{{type}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <!-- GALLERY -->
+            <app-gallery-form *ngIf="showGallery" [showGallery]="showGallery" formControlName="gallery"></app-gallery-form>
+
+            <!-- Post Body -->
+            <div class="form-group" >
+                <label for="body">Post Body</label>
+                <div formArrayName="body">
+                    <div class="list-group-item" *ngFor="let entry of body.controls; let i = index;" [formGroupName]="i">
+                        {{ entry.class + " "  + entry.title + " " + entry.text}}
+                        <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+                            <button name="editButton" type="button" class="btn btn-default" (click)='editEntry(i, entry)'>Edit</button>
+                            <button type="button" class="btn btn-default" (click)='deleteEntry(i)'>Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type='button' type="button" class="btn btn-default" (click)="toggleMedia()">
+                        Create Media
+                    </button>
+                    <button type='button' type="button" class="btn btn-default" (click)="toggleArtCard()">
+                        Create Art Card
+                    </button>
+                    <button type='button' type="button" class="btn btn-default" (click)="toggleText()">
+                        Create Body
+                    </button>
+                </div>
+            </div>
+
+            <!-- <app-media-form [hidden]="!showMedia"></app-media-form> -->
+
+            <div class="form-group">
+                <button type="button" class="btn btn-default" (click)="postForm.reset()">Reset</button>
+                <button type="button" class="btn btn-success" [disabled]="!postForm.valid" (click)="onReview()">Review</button>
+            </div>
+            {{postForm.value | json}}
+        </form>
+    </div>
+</div>

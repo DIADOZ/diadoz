@@ -1,0 +1,42 @@
+<div [hidden]="!forReview">
+  <h2>Review the following before submittion:</h2>
+  <div class="row">
+      <div class="col-xs-3">Headline</div>
+      <div class="col-xs-9  pull-left">{{ postForm.get('headline').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Sub-Headline</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('subHeadline').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Post Type</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('postType').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Featured Image</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('featuredImage').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Custom URL</div>
+      <div class="col-xs-9 pull-left">/post/{{ postForm.get('customURL').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Publish Date</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('publishDate').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Published</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('published').value }}</div>
+  </div>
+  <div class="row">
+      <div class="col-xs-3">Published By</div>
+      <div class="col-xs-9 pull-left">{{ postForm.get('publishedBy').value }}</div>
+  </div>
+  <!-- <div class="row">
+      <div class="col-xs-3">Body</div>
+      <li class="col-xs-9 pull-left" *ngFor='let row of model.body'>{{ row }}</li>
+  </div> -->
+  <br>
+  <button class="btn btn-primary" (click)="onEdit()">Edit</button>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</div>
