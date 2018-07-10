@@ -52,23 +52,156 @@
             <div class="form-group" >
                 <label for="body">Post Body</label>
                 <div formArrayName="body">
-                    <div class="list-group-item" *ngFor="let entry of body.controls; let i = index;" [formGroupName]="i">
-                        {{ entry.class + " "  + entry.title + " " + entry.text}}
-                        <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
-                            <button name="editButton" type="button" class="btn btn-default" (click)='editEntry(i, entry)'>Edit</button>
-                            <button type="button" class="btn btn-default" (click)='deleteEntry(i)'>Delete</button>
+                    <div class="list-group-item" *ngFor="let entry of body.controls; index as i" [formGroupName]="i">
+                        <div *ngIf="!entry.hideForm">
+                            <div [ngSwitch]="bodyVal[i].class">
+                                <div *ngSwitchCase="'media'">  
+
+                                    <div class="form-group">
+                                        <label for="mediaTitle">Title</label>
+                                        <input type="text" class="form-control" id="mediaTitle" formControlName="title">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label for="embed">Embed</label>
+                                        <input type="text" class="form-control" id="embed" formControlName="embed">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="mediaType">Embed Type</label>
+                                        <!-- add either a default value or placeholder text -->
+                                        <select class="form-control" id="mediaType" formControlName="type">
+                                            <option *ngFor="let type of mediaTypes" [value]="type">{{type}}</option>
+                                        </select>
+                                    </div>
+                                
+                                    <!-- list them vertically -->
+                                    <div class="form-group">
+                                        <label for="width">Width</label>
+                                        <mat-radio-group id='mediaWidth' class='radio-form' formControlName="width">
+                                            <mat-radio-button name="media-width-radio" value="fullWidth">Full-Width</mat-radio-button>
+                                            <mat-radio-button name="media-width-radio" value="semiFullWidth">Semi-Full-Width</mat-radio-button>
+                                            <mat-radio-button name="media-width-radio" value="halfWidth">Half-Width</mat-radio-button>
+                                            <mat-radio-button name="media-width-radio" value="columnWidth">Column-Width</mat-radio-button>
+                                            <mat-radio-button name="media-width-radio" value="halfColumnWidth">Half-Column-Width</mat-radio-button>
+                                            <mat-radio-button name="media-width-radio" value="miniColumnWidth">Mini-Column-Width</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
+                                    <div id='buttonContainer' class="form-group">
+                                        <button type='button' type="button" class="btn btn-default" (click)="entry.hideForm = true">
+                                                Save Media
+                                        </button>
+                                    </div>
+                                </div>
+                                <div *ngSwitchCase="'card'"> 
+                                    <div class="form-group">
+                                        <label for="artCardTitle">Title</label>
+                                        <input type="text" class="form-control" id="artCardTitle" formControlName="title">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="primaryContributor">Primary Contributor</label>
+                                        <input type="text" class="form-control" id="primaryContributor" formControlName="primaryContributor">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="secondaryContributor">Secondary Contributor</label>
+                                        <input type="text" class="form-control" id="secondaryContributor" formControlName="secondaryContributor">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="primaryType">Primary Type</label>
+                                        <input type="text" class="form-control" id="primaryType" formControlName="primaryType">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="summary">Summary</label>
+                                        <input type="text" class="form-control" id="summary" formControlName="summary">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="support">Support</label>
+                                        <input type="text" class="form-control" id="support" formControlName="support">
+                                    </div>
+                                    
+                                    <!-- editable source list -->
+                                    
+                                    <div class="form-group">
+                                        <label for="sources">Sources</label>
+                                        <div class="list-group-item" *ngFor="let entry of sourcesArray; let i = index;">
+                                            <div class="form-group" id="source-entry-{{i}}">
+                                                {{ entry }}
+                                                <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+                                                    <button name="editButton" type="button" class="btn btn-default" (click)='editSource(i, entry)'>Edit</button>
+                                                    <button type="button" class="btn btn-default" (click)='deleteSource(i)'>Delete</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group hide" id="source-input-{{i}}">
+                                                <input type="text" class="form-control" id="sources" [(ngModel)]="source" [ngModelOptions]="{standalone: true}">
+                                                <button type='button' type="button" class="btn btn-default" (click)="saveSource(i)">
+                                                    Save Source
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" id="sources" [(ngModel)]="source" [ngModelOptions]="{standalone: true}">
+                                        <button type='button' type="button" class="btn btn-default" (click)="addSource()">
+                                            Add Source
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- editable artist list -->
+                                    
+                                    <div class="form-group">
+                                        <label for="contributingArtists">Contributing Artists</label>
+                                        <div class="list-group-item" *ngFor="let entry of artistArray; let i = index;">
+                                            <div class="form-group" id="artist-entry-{{i}}">
+                                                {{ entry }}
+                                                <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+                                                    <button name="editButton" type="button" class="btn btn-default" (click)='editArtist(i, entry)'>Edit</button>
+                                                    <button type="button" class="btn btn-default" (click)='deleteArtist(i)'>Delete</button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group hide" id="artist-input-{{i}}">
+                                                <input type="text" class="form-control" id="artist" [(ngModel)]="artist" [ngModelOptions]="{standalone: true}">
+                                                <button type='button' type="button" class="btn btn-default" (click)="saveArtist(i)">
+                                                    Save Artist
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" id="contributingArtists" [(ngModel)]="artist" [ngModelOptions]="{standalone: true}">
+                                        <button type='button' type="button" class="btn btn-default" (click)="addArtist()">
+                                            Add Artist
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <button type='button' type="button" class="btn btn-default" (click)="entry.hideForm = true">
+                                            Save Art Card
+                                        </button>
+                                    </div>
+                                </div>
+                                <div *ngSwitchCase="'text'"> This is a text switch case </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="entry.hideForm">
+                            {{ bodyVal[i].title }}
+                            <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+                                <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button>
+                                <button type="button" class="btn btn-default" (click)='deleteEntry(i)'>Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <button type='button' type="button" class="btn btn-default" (click)="toggleMedia()">
+                <div class="form-group">
+                    <button type='button' type="button" class="btn btn-default" (click)="addMedia()">
                         Create Media
                     </button>
-                    <button type='button' type="button" class="btn btn-default" (click)="toggleArtCard()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addArtCard()">
                         Create Art Card
                     </button>
-                    <button type='button' type="button" class="btn btn-default" (click)="toggleText()">
+                    <button type='button' type="button" class="btn btn-default" (click)="addText()">
                         Create Body
                     </button>
                 </div>

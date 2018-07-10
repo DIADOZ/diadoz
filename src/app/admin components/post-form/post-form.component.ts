@@ -106,6 +106,9 @@ export class PostFormComponent implements OnInit, OnChanges{
     get body(){
         return this.postForm.get('body') as FormArray;
     }
+    get bodyVal(){
+        return this.body.value;
+    }
 
     // Set customURL events
     // Set publishedBy
@@ -191,101 +194,47 @@ export class PostFormComponent implements OnInit, OnChanges{
         }
     }
 
-    // MEDIA
-    // On media button click
-    public toggleMedia() {
-        this.showMedia = !this.showMedia;
-        // const mediaDiv = document.getElementById("mediaData");
-        // mediaDiv.classList.toggle("hide");
-    
-        // // hide all other toggled divs
-        // const bodyDiv = document.getElementById("bodyData");
-        // const artCardDiv = document.getElementById("artCardData");
-        // if (!artCardDiv.classList.contains("hide") || !bodyDiv.classList.contains("hide")) {
-        //     artCardDiv.classList.add("hide");
-        //     bodyDiv.classList.add("hide");
-        // }
-    }
-    // TODO: add to gallery
     public addMedia() {
-        var mediaData = this.mediaForm.value;
-        mediaData.class = 'media';
-
-        if (this.postForm.get('postType').value !== "Gallery") {
-            this.addToBodyArray(mediaData);
-        } else {
-            // this would be added to the gallery instead of body
-            // this.model.body.push(mediaData);
-        }
-        this.toggleMedia();
-        // clear media input
+        this.body.push(this.fb.group({
+            'class': "media",
+            'title': "",
+            'embed': "",
+            'type': "",
+            'width': "",
+        }));
     }
 
-    // TEXT
-    // On body button click
-    public toggleText() {
-        const bodyDiv = document.getElementById("bodyData");
-        bodyDiv.classList.toggle("hide");
-        // tinymce.init({
-        //     selector: "#articleText",
-        //     plugins: ["link", "paste", "table"],
-        //     skin_url: "assets/skins/lightgray",
-        //     branding: false,
-        // });
-
-        // tinymce.get("articleText").setContent("");
-        // hide all other toggled divs
-        const artCardDiv = document.getElementById("artCardData");
-        const mediaDiv = document.getElementById("mediaData");
-        if (!artCardDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")) {
-            artCardDiv.classList.add("hide");
-            mediaDiv.classList.add("hide");
-        }
-    }
-    public addText() {
-        var savedText = this.prepareSaveText();
-        
-        this.addToBodyArray(savedText);
-        this.toggleText();
-    }
-
-
-    // ART CARD
-    public toggleArtCard() {
-        this.artCardForm.reset();
-        this.sourcesArray.length = 0;
-        this.artistArray.length = 0;
-        const artCardDiv = document.getElementById("artCardData");
-        artCardDiv.classList.toggle("hide");
-
-        // hide all other toggled divs
-        const bodyDiv = document.getElementById("bodyData");
-        const mediaDiv = document.getElementById("mediaData");
-        if (!bodyDiv.classList.contains("hide") || !mediaDiv.classList.contains("hide")) {
-            bodyDiv.classList.add("hide");
-            mediaDiv.classList.add("hide");
-        }
-    }
     public addArtCard() {
-        var artCardData = this.artCardForm.value;
-        artCardData.class = 'card';
-        artCardData.source = this.sourcesArray.splice(0);
-        artCardData.contributingArtists = this.artistArray.splice(0);
-        this.addToBodyArray(artCardData);
-        this.toggleArtCard();
+        this.body.push(this.fb.group({
+            'class': "card",
+            'title': "",
+            'primaryContributor': "",
+            'secondaryContributor': "",
+            'primaryType': "",
+            'summary': "",
+            'support': "",
+        }));
     }
-    public addSource() {
-        const sourceInput = this.source;
-        this.sourcesArray.push(sourceInput);
 
-        this.source = '';
+    public addText() {
+        this.body.push(this.fb.group({
+            'class': "text",
+            'text': "",
+        }));
     }
-    public addArtist() {
-        var artistData = this.artist;
-        this.artistArray.push(artistData);
+    
+    // public addSource() {
+    //     const sourceInput = this.source;
+    //     this.sourcesArray.push(sourceInput);
 
-        this.artist = "";
-    }
+    //     this.source = '';
+    // }
+    // public addArtist() {
+    //     var artistData = this.artist;
+    //     this.artistArray.push(artistData);
+
+    //     this.artist = "";
+    // }
     
 
 

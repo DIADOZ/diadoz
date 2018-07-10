@@ -7,7 +7,6 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
 })
 export class GalleryComponent implements OnInit {
   @Input() post;
-  @ViewChild('photoSwipe') photoSwipe: ElementRef;
 
   constructor() { }
 
@@ -27,9 +26,5 @@ export class GalleryComponent implements OnInit {
       index: 0 // start at first slide
     };
 
-    // Initializes and opens PhotoSwipe
-    var pswpElement = document.querySelectorAll('.pswp')[0];
-    const gallery = new PhotoSwipe(this.photoSwipe.nativeElement, PhotoSwipeUI_Default, images, options);
-    gallery.init();
   }
 }

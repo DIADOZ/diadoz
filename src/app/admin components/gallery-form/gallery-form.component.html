@@ -18,6 +18,7 @@
     <label for="pieces">Pieces</label>
     <div formArrayName="pieces">
       <div *ngFor="let entry of pieces.controls; index as i" [formGroupName]="i">
+        
         <div *ngIf="!entry.hideForm">
           <div class="form-group">
             <label for="mediaTitle">Title</label>
@@ -66,6 +67,7 @@
             <button type="button" class="btn btn-default" (click)='deletePiece(i)'>Delete</button>
           </div>
         </div>
+
       </div>
 
       <div class="form-group">

@@ -86,7 +86,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     Md2DatepickerModule,
-    HttpModule
+    HttpModule,
     MdNativeDateModule,
     BrowserModule,
     RouterModule.forRoot(
