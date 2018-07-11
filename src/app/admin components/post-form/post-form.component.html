@@ -54,7 +54,7 @@
                 <div formArrayName="body">
                     <div class="list-group-item" *ngFor="let entry of body.controls; index as i" [formGroupName]="i">
                         <div *ngIf="!entry.hideForm">
-                            <div [ngSwitch]="bodyVal[i].class">
+                            <div [ngSwitch]="entry.value.class">
                                 <div *ngSwitchCase="'media'">  
 
                                     <div class="form-group">
@@ -116,7 +116,7 @@
                                     
                                     <div class="form-group">
                                         <label for="summary">Summary</label>
-                                        <input type="text" class="form-control" id="summary" formControlName="summary">
+                                        <jodit-editor formControlName="summary"></jodit-editor>
                                     </div>
                                     
                                     <div class="form-group">
@@ -125,53 +125,41 @@
                                     </div>
                                     
                                     <!-- editable source list -->
-                                    
                                     <div class="form-group">
                                         <label for="sources">Sources</label>
-                                        <div class="list-group-item" *ngFor="let entry of sourcesArray; let i = index;">
-                                            <div class="form-group" id="source-entry-{{i}}">
-                                                {{ entry }}
-                                                <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
-                                                    <button name="editButton" type="button" class="btn btn-default" (click)='editSource(i, entry)'>Edit</button>
-                                                    <button type="button" class="btn btn-default" (click)='deleteSource(i)'>Delete</button>
-                                                </div>
-                                            </div>
-                                            <div class="form-group hide" id="source-input-{{i}}">
-                                                <input type="text" class="form-control" id="sources" [(ngModel)]="source" [ngModelOptions]="{standalone: true}">
-                                                <button type='button' type="button" class="btn btn-default" (click)="saveSource(i)">
-                                                    Save Source
-                                                </button>
+                                        <div class="list-group-item" *ngFor="let source of entry.controls['sources'].value; let sourceIndex = index;">
+                                            {{ source }}
+                                            <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
+                                                <!-- <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button> -->
+                                                <button type="button" class="btn btn-default" (click)='deleteSource(i)'>Delete</button>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" id="sources" [(ngModel)]="source" [ngModelOptions]="{standalone: true}">
-                                        <button type='button' type="button" class="btn btn-default" (click)="addSource()">
-                                            Add Source
-                                        </button>
+
+                                        <div>
+                                            <input type="text" class="form-control" #sourceInput>
+                                            <button type='button' type="button" class="btn btn-default" (click)="addSource(sourceInput, i)">
+                                                Add Source
+                                            </button>
+                                        </div>
                                     </div>
                                     
                                     <!-- editable artist list -->
-                                    
                                     <div class="form-group">
                                         <label for="contributingArtists">Contributing Artists</label>
-                                        <div class="list-group-item" *ngFor="let entry of artistArray; let i = index;">
-                                            <div class="form-group" id="artist-entry-{{i}}">
-                                                {{ entry }}
+                                        <div class="list-group-item" *ngFor="let artist of entry.controls['contributingArtists'].value; let artistIndex = index;">
+                                                {{ artist }}
                                                 <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
-                                                    <button name="editButton" type="button" class="btn btn-default" (click)='editArtist(i, entry)'>Edit</button>
-                                                    <button type="button" class="btn btn-default" (click)='deleteArtist(i)'>Delete</button>
+                                                    <!-- <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button> -->
+                                                    <button type="button" class="btn btn-default" (click)='deleteSource(i)'>Delete</button>
                                                 </div>
-                                            </div>
-                                            <div class="form-group hide" id="artist-input-{{i}}">
-                                                <input type="text" class="form-control" id="artist" [(ngModel)]="artist" [ngModelOptions]="{standalone: true}">
-                                                <button type='button' type="button" class="btn btn-default" (click)="saveArtist(i)">
-                                                    Save Artist
-                                                </button>
-                                            </div>
                                         </div>
-                                        <input type="text" class="form-control" id="contributingArtists" [(ngModel)]="artist" [ngModelOptions]="{standalone: true}">
-                                        <button type='button' type="button" class="btn btn-default" (click)="addArtist()">
-                                            Add Artist
-                                        </button>
+
+                                        <div>
+                                            <input type="text" class="form-control" #artistInput>
+                                            <button type='button' type="button" class="btn btn-default" (click)="addArtist(artistInput, i)">
+                                                Add Artist
+                                            </button>
+                                        </div>
                                     </div>
                                     
                                     <div class="form-group">
@@ -180,12 +168,22 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div *ngSwitchCase="'text'"> This is a text switch case </div>
+                                <div *ngSwitchCase="'text'">
+                                    <div class="form-group">
+                                        <label for="post-text">Text</label>
+                                        <jodit-editor id="post-text" formControlName="text"></jodit-editor>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type='button' type="button" class="btn btn-default" (click)="entry.hideForm = true">
+                                            Save Text
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div *ngIf="entry.hideForm">
-                            {{ bodyVal[i].title }}
+                            {{ entry.value.title }} {{ entry.value.text }}
                             <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
                                 <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button>
                                 <button type="button" class="btn btn-default" (click)='deleteEntry(i)'>Delete</button>

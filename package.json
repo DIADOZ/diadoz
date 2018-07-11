@@ -42,6 +42,7 @@
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "hammerjs": "^2.0.8",
+    "jodit-angular": "^1.0.56",
     "jquery": "^3.3.1",
     "jquery-browserify": "^1.8.1",
     "jquery-mousewheel": "^3.1.13",

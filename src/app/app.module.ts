@@ -19,6 +19,7 @@ import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
 import { Md2DatepickerModule, MdNativeDateModule } from "md2";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { JoditAngularModule } from 'jodit-angular';
 
 import { AuthGuard } from "./services/auth-guard.service";
 import { AuthService } from "./services/auth.service";
@@ -108,6 +109,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    JoditAngularModule 
   ],
   entryComponents: [
     PostFormComponent,

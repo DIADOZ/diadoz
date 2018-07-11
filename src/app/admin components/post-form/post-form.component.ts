@@ -55,33 +55,6 @@ export class PostFormComponent implements OnInit, OnChanges{
     
     constructor(private dataService: DataService, private route: ActivatedRoute, private fb: FormBuilder) {
         this.createForm();
-        // this.mediaForm = fb.group({
-        //     'class': "media",
-        //     'title': "",
-        //     'embed': "",
-        //     'type': "",
-        //     'width': "",
-        // });
-
-        // this.artCardForm = fb.group({
-        //     'class': "card",
-        //     'title': "",
-        //     'primaryContributor': "",
-        //     'secondaryContributor': "",
-        //     'primaryType': "",
-        //     'summary': "",
-        //     'support': "",
-        // });
-
-        // this.textForm = fb.group({
-        //     'class': "text",
-        //     'text': "",
-        // });
-
-        // this.editForms = fb.group({
-        //     'editMedia': this.mediaForm,
-        //     'editArtCard': this.artCardForm
-        // });
     }
 
     createForm(){
@@ -106,6 +79,7 @@ export class PostFormComponent implements OnInit, OnChanges{
     get body(){
         return this.postForm.get('body') as FormArray;
     }
+
     get bodyVal(){
         return this.body.value;
     }
@@ -213,6 +187,8 @@ export class PostFormComponent implements OnInit, OnChanges{
             'primaryType': "",
             'summary': "",
             'support': "",
+            'sources': this.fb.array([]),
+            'contributingArtists': this.fb.array([])
         }));
     }
 
@@ -223,18 +199,19 @@ export class PostFormComponent implements OnInit, OnChanges{
         }));
     }
     
-    // public addSource() {
-    //     const sourceInput = this.source;
-    //     this.sourcesArray.push(sourceInput);
+    public addSource(sourceInput, index) {
+        var sources = this.body.at(index).get('sources').value;
+        sources.push(sourceInput.value);
 
-    //     this.source = '';
-    // }
-    // public addArtist() {
-    //     var artistData = this.artist;
-    //     this.artistArray.push(artistData);
+        sourceInput.value = '';
+    }
 
-    //     this.artist = "";
-    // }
+    public addArtist(artistInput, index) {
+        var artists = this.body.at(index).get('contributingArtists').value;
+        artists.push(artistInput.value);
+
+        artistInput.value = '';
+    }
     
 
 
