@@ -1,15 +1,10 @@
-import { DatePipe } from "@angular/common";
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
+import { DatePipe, Location } from "@angular/common";
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, SimpleChange } from "@angular/core";
 import { FormControl, FormGroup, Validators, FormBuilder, FormArray, FormGroupDirective, ControlContainer } from "@angular/forms";
-import { DateAdapter, NativeDateAdapter } from "@angular/material";
-import { MatRadioGroup } from "@angular/material/radio";
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { DataService } from "../../services/data.service";
-
-import { Post } from "./data-class";
-import { AbstractControl } from "@angular/forms/src/model";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 @Component({
   selector: "app-post-form",
@@ -22,19 +17,12 @@ import { AbstractControl } from "@angular/forms/src/model";
 })
 export class PostFormComponent implements OnInit, OnChanges{
     @Input() postData;
+    @Input() populate;
     @Output() public sentSubmit = new EventEmitter<boolean>();
     public postForm: FormGroup;
-    public galleryForm: FormGroup;
-    public mediaForm: FormGroup;
-    public artCardForm: FormGroup;
-    public textForm: FormGroup;
-    public entityForm: FormGroup;
-    public editForms: FormGroup;
-    //save this
 
     public postID;
 
-    public hideEditSource = true;
     public forReview = false;
 
     // change to constants
@@ -43,21 +31,31 @@ export class PostFormComponent implements OnInit, OnChanges{
     public widthSize = ["fullWidth", "semiFullWidth", "halfWidth",
     "columnWidth", "halfColumnWidth", "miniColumnWidth"];
 
-    public source = "";
-    public artist =  "";
     public showGallery = false;
-    public showMedia = false;
-    public bodyText = "";
-     
-    public bodyArray = [];
-    public sourcesArray = [];
-    public artistArray = [];
+    public galleryValues = null;
+
+    get headline(){
+        return this.postForm.get('headline') as FormControl;
+    }
+
+    get gallery(){
+        return this.postForm.get('gallery') as FormControl;
+    }
+
+    get body(){
+        return this.postForm.get('body') as FormArray;
+    }
+
+    get bodyVal(){
+        return this.body.value;
+    }
     
-    constructor(private dataService: DataService, private route: ActivatedRoute, private fb: FormBuilder) {
+    constructor(private dataService: DataService, private route: ActivatedRoute, 
+        private location: Location, private fb: FormBuilder) {
         this.createForm();
     }
 
-    createForm(){
+    public createForm(){
         this.postForm = this.fb.group({
             'headline': [null, Validators.compose([Validators.required, Validators.maxLength(200)])],
             'subHeadline': [null, Validators.maxLength(200)],
@@ -72,37 +70,18 @@ export class PostFormComponent implements OnInit, OnChanges{
         });
     }
 
-    get headline(){
-        return this.postForm.get('headline') as FormControl;
-    }
-
-    get body(){
-        return this.postForm.get('body') as FormArray;
-    }
-
-    get bodyVal(){
-        return this.body.value;
-    }
-
     // Set customURL events
     // Set publishedBy
     public ngOnInit() {
-        // Events for customURL creation
-        this.createCustomURL();
-        
-        // To find the current user
-        this.populateCurrentUser();
+        this.createCustomURL(); // Events for customURL creation
+        this.populateCurrentUser(); // To find the current user
     }
 
-    public initBody(){
-        return this.fb.group(new FormGroup(null));
-    }
-
-    public ngOnChanges(changes){
-        if(!changes.postData.firstChange){
+    public ngOnChanges(changes: {[propKey: string]: SimpleChange}){
+        if(changes.populate.firstChange){
             var data = changes.postData.currentValue;
-            data.id? this.postID = data.id : this.postID = null;
-            this.postForm.setValue({
+            data._id? this.postID = data._id : this.postID = null;
+            this.postForm.patchValue({
                 'headline': data.headline,
                 'subHeadline': data.subHeadline,
                 'featuredImage': data.featuredImage,
@@ -111,9 +90,28 @@ export class PostFormComponent implements OnInit, OnChanges{
                 'published': data.published,
                 'publishedBy': data.publishedBy,
                 'postType': data.postType,
-                'gallery': data.gallery ? data.gallery : null,
-                'body': data.body
+                //'gallery': data.gallery ? data.gallery : null,
             });
+
+            this.galleryValues = {
+                'name': data.gallery.name,
+                'curator': data.gallery.curator,
+                'summary': data.gallery.summary,
+                'pieces': data.gallery.pieces
+            };
+
+            this.showGallery = true;
+
+            for(var x = 0; x < data.body.length; x++){
+                var currentBody = data.body[x];
+                if(currentBody.class === "card"){
+                    this.addArtCard(currentBody);
+                } else if (currentBody.class === "media"){
+                    this.addMedia(currentBody);
+                } else if(currentBody.class === "text"){
+                    this.addText(currentBody);
+                }
+            }
         }
     }
 
@@ -124,7 +122,17 @@ export class PostFormComponent implements OnInit, OnChanges{
 
     // Reset form and populate current user
     public onReset() {
-        this.postForm.reset();
+        this.showGallery = false;
+
+        // TODO: add publishedBy to this
+        this.postForm.reset({
+            'publishDate': (new Date).toISOString(),
+            'published': true,
+            'postType': this.postTypes[0],
+        });
+
+        this.postForm.setControl('body', this.fb.array([]));
+
         this.populateCurrentUser();
     }
 
@@ -142,11 +150,16 @@ export class PostFormComponent implements OnInit, OnChanges{
             });
         } else {
             this.dataService.insertPost(postData).subscribe((res) => {
-                this.onReset();
-                this.forReview = false;
-                this.sentSubmit.emit(true);
+                //this.onReset();
+                //this.forReview = false;
+                //this.sentSubmit.emit(true);
+                this.goBack();
             });
         }        
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 
     // Set forReview to false to edit
@@ -158,28 +171,36 @@ export class PostFormComponent implements OnInit, OnChanges{
     public toggleType(e) {
         if (e === "Gallery") {
             this.showGallery = true;
-            
-            // hide body and art card buttons
-            // show gallery inputs
-            // erase post body info
         } else {
-            // erase post body and article info
             this.showGallery = false;
         }
     }
 
-    public addMedia() {
-        this.body.push(this.fb.group({
+    public addMedia(mediaValue) {
+        var defaultMedia = {
+            'hideForm': false,
             'class': "media",
             'title': "",
             'embed': "",
             'type': "",
             'width': "",
-        }));
+        };
+
+        if(mediaValue){
+            defaultMedia.hideForm = mediaValue.hideForm ? mediaValue.hideForm : true;
+            defaultMedia.class = mediaValue.class ? mediaValue.class : 'media';
+            defaultMedia.title = mediaValue.title ? mediaValue.title : '';
+            defaultMedia.embed = mediaValue.embed ? mediaValue.embed : '';
+            defaultMedia.type = mediaValue.type ? mediaValue.type : '';
+            defaultMedia.width = mediaValue.wdith ? mediaValue.width : '';
+        }
+
+        this.body.push(this.fb.group(defaultMedia));
     }
 
-    public addArtCard() {
-        this.body.push(this.fb.group({
+    public addArtCard(artCardValue) {
+        var defaultArtCard = {
+            'hideForm': false,
             'class': "card",
             'title': "",
             'primaryContributor': "",
@@ -189,173 +210,70 @@ export class PostFormComponent implements OnInit, OnChanges{
             'support': "",
             'sources': this.fb.array([]),
             'contributingArtists': this.fb.array([])
-        }));
+        };
+
+        // Populate form when editing
+        if(artCardValue){
+            defaultArtCard.hideForm = artCardValue.hideForm ? artCardValue.hideForm : true;
+            defaultArtCard.class = artCardValue.class ? artCardValue.class : 'card';
+            defaultArtCard.title = artCardValue.title ? artCardValue.title : '';
+
+            defaultArtCard.primaryContributor = artCardValue.primaryContributor ? artCardValue.primaryContributor : '';
+            defaultArtCard.secondaryContributor = artCardValue.secondaryContributor ? artCardValue.secondaryContributor : '';
+            defaultArtCard.primaryType = artCardValue.primaryType ? artCardValue.primaryType : '';
+            defaultArtCard.summary = artCardValue.summary ? artCardValue.summary : '';
+            defaultArtCard.support = artCardValue.support ? artCardValue.support : '';
+
+            for(var item in artCardValue.sources){
+                defaultArtCard.sources.push(this.fb.control(artCardValue.sources[item]));
+            }
+
+            for(var item in artCardValue.contributingArtists){
+                defaultArtCard.contributingArtists.push(this.fb.control(artCardValue.contributingArtists[item]));
+            }
+        }
+        
+        this.body.push(this.fb.group(defaultArtCard));
     }
 
-    public addText() {
-        this.body.push(this.fb.group({
+    public addText(textValue) {
+        var defaultText = {
+            'hideForm': false,
             'class': "text",
             'text': "",
-        }));
+        };
+
+        if(textValue){
+            defaultText.hideForm = textValue.hideForm ? textValue.hideForm : true;
+            defaultText.class = textValue.class ? textValue.class : 'text';
+            defaultText.text = textValue.text ? textValue.text : '';
+        }
+
+        this.body.push(this.fb.group(defaultText));
     }
     
     public addSource(sourceInput, index) {
-        var sources = this.body.at(index).get('sources').value;
-        sources.push(sourceInput.value);
+        var sources = this.body.at(index).get('sources') as FormArray;
+        sources.push(this.fb.control(sourceInput.value));
 
         sourceInput.value = '';
     }
 
     public addArtist(artistInput, index) {
-        var artists = this.body.at(index).get('contributingArtists').value;
-        artists.push(artistInput.value);
+        var artists = this.body.at(index).get('contributingArtists') as FormArray;
+        artists.push(this.fb.control(artistInput.value));
 
         artistInput.value = '';
     }
     
-
-
-    // EDIT FORMS
-    public editEntry(index, entry) {
-        const editContainer = document.getElementById("edit-container-" + index);
-        if (entry.class === "media") {
-            this.editMediaEntry(index, entry);
-
-            const editMedia = editContainer.querySelector("#media-data-" + index);
-            editMedia.classList.remove("hide");
-        } else if (entry.class === "card"){
-            this.editArtCardEntry(index, entry);
-
-            const editArtCard = editContainer.querySelector("#art-card-data-" + index);
-            editArtCard.classList.remove("hide");
-        } else {
-            this.editTextEntry(index, entry);
-
-            const editBody = editContainer.querySelector("#body-data-" + index);
-            editBody.classList.remove("hide");
-        }
-        const buttonGroup: any = document.querySelector("#button-group-" + index);
-        buttonGroup.classList.add("hide");
+    public deleteSource(bodyIndex, sourceIndex){
+        (this.body.at(bodyIndex).get('sources') as FormArray).removeAt(sourceIndex);
     }
-    public editMediaEntry(index, entry) {
-        this.mediaForm.setValue({
-            class: entry.class,
-            title: entry.title,
-            embed: entry.embed,
-            type: entry.type,
-            width: entry.width
-        });
-        // set width on radio buttons
-    }
-    public editArtCardEntry(index, entry) {
-        this.artCardForm.setValue({
-            class: entry.class,
-            title: entry.title,
-            primaryContributor: entry.primaryContributor,
-            secondaryContributor: entry.secondaryContributor,
-            primaryType: entry.primaryType,
-            summary: entry.summary,
-            support: entry.support
-        });
-        this.sourcesArray = entry.source;
-        this.artistArray = entry.contributingArtists;
-    }
-    public editTextEntry(index, entry) {
-        // tinymce.init({
-        //     selector: "#article-text-" + index,
-        //     plugins: ["link", "paste", "table"],
-        //     skin_url: "assets/skins/lightgray",
-        //     branding: false,
-        // });
-        // tinymce.get("article-text-" + index).setContent(entry.text);
-    }
-    public editArtist(index, entry){
-        const editEntryArtist = document.querySelector("#artist-entry-" + index);
-        const editInputArtist = document.querySelector("#artist-input-" + index);
-        editEntryArtist.classList.add("hide");
-        editInputArtist.classList.remove("hide");
-
-        this.artist = entry;
-    }
-    public editSource(index, entry){
-        const editEntrySource = document.querySelector("#source-entry-" + index);
-        const editInputSource = document.querySelector("#source-input-" + index);
-        editEntrySource.classList.add("hide");
-        editInputSource.classList.remove("hide");
-
-        this.source = entry;
-    }
-    // SAVE FORMS
-    public saveEntry(index, classType) {
-        // grab all values into the media object
-        const editContainer = document.getElementById("edit-container-" + index);
-        if (classType === "media") {
-            this.saveMediaEntry(index);
-
-            const editMedia = editContainer.querySelector("#media-data-" + index);
-            editMedia.classList.add("hide");
-
-        } else if (classType === "card"){
-            this.saveArtCardEntry(index);
-            const editArtCard = editContainer.querySelector("#art-card-data-" + index);
-            editArtCard.classList.add("hide");
-        } else {
-            this.saveTextEntry(index);
-
-            const editText = editContainer.querySelector("#body-data-" + index);
-            editText.classList.add("hide");
-        }
-        const buttonGroup: any = document.querySelector("#button-group-" + index);
-        buttonGroup.classList.remove("hide");
-    }
-    public saveMediaEntry(index) {
-        this.bodyArray.splice(index, 1, this.mediaForm.value);
-    }
-    public saveArtCardEntry(index){
-        var newArtCard = this.artCardForm.value;
-        newArtCard.source = this.sourcesArray.splice(0);
-        newArtCard.contributingArtists = this.artistArray.splice(0);
-        this.bodyArray.splice(index, 1, newArtCard)
-    }
-    public saveTextEntry(index) {
-        var textEntry = {
-            class: "text",  
-            // text: tinymce.get("article-text-" + index).getContent(),
-        };
-        this.bodyArray.splice(index, 1, textEntry);
-    }
-    public saveSource(index){
-        const editEntrySource = document.querySelector("#source-entry-" + index);
-        const editInputSource = document.querySelector("#source-input-" + index);
-        editEntrySource.classList.remove("hide");
-        editInputSource.classList.add("hide");
-
-        this.sourcesArray.splice(index, 1, this.source);
-        this.source = '';
-    }
-    public saveArtist(index){
-        const editEntryArtist = document.querySelector("#artist-entry-" + index);
-        const editInputArtist = document.querySelector("#artist-input-" + index);
-        editEntryArtist.classList.remove("hide");
-        editInputArtist.classList.add("hide");
-
-        this.artistArray.splice(index, 1, this.artist);
-        this.artist = '';
-    }
-    
-    public deleteSource(index){
-        this.sourcesArray.splice(index, 1);
-    }
-    public deleteArtist(index){
-        this.artistArray.splice(index, 1);
+    public deleteArtist(bodyIndex, sourceIndex){
+        (this.body.at(bodyIndex).get('contributingArtists') as FormArray).removeAt(sourceIndex);
     }
     public deleteEntry(index) {
         this.body.removeAt(index);
-    }
-
-    // Add bodyObject to postForm's body array
-    private addToBodyArray(bodyObject) {
-        this.bodyArray.push(bodyObject);
     }
 
     // Sets events to headline and subheadline to populate customURL
@@ -372,7 +290,7 @@ export class PostFormComponent implements OnInit, OnChanges{
                 if(subHeadlineControl.value){
                     updatedURL = subHeadlineControl.value + '-' + value;
                 } else {
-                    updatedURL = value;
+                    updatedURL = value ? value : '';
                 }
 
                 updatedURL = this.slugify(updatedURL);
@@ -387,7 +305,7 @@ export class PostFormComponent implements OnInit, OnChanges{
                 if(headlineControl.value){
                     updatedURL = value + '-' + headlineControl.value;
                 } else {
-                    updatedURL = value;
+                    updatedURL = value ? value : '';
                 }
 
                 updatedURL = this.slugify(updatedURL);
@@ -398,30 +316,33 @@ export class PostFormComponent implements OnInit, OnChanges{
 
     // Populate value of publishedBy with current user
     private populateCurrentUser() {
-        this.route.queryParams.subscribe((params: Params) => {
-            this.postForm.patchValue({
-                publishedBy: params.user
+        if(this.postForm.get('publishedBy').value == null){
+            this.route.queryParams.subscribe((params: Params) => {
+                this.postForm.patchValue({
+                    publishedBy: params.user
+                });
+                console.log(this.postForm.get('publishedBy').value + " is using the post form");
             });
-            console.log(this.postForm.get('publishedBy').value + " is using the post form");
-        });
-    }
-
-    // Prepares text data to be submitted
-    private prepareSaveText() {
-        // const text = tinymce.get("articleText").getContent();
-
-        const saveMedia = {
-            class: "text",
-            // text: text,
-        };
-
-        return saveMedia;
+        }
     }
 
     // Prepares postForm data to be submitted
     private prepareSaveForm() {
         const formModel = this.postForm.value;
-        
+
+        const bodyDeepCopy = formModel.body.map(
+            (body) => Object.assign({}, body)
+        );
+
+        var gal;
+        if(formModel.gallery.pieces){
+            const piecesDeepCopy = formModel.gallery.pieces.map(
+                (piece) => Object.assign({}, piece)
+            );
+            gal = formModel.gallery;
+            gal.pieces = piecesDeepCopy;
+        }
+
         const savePost = {
             _id: null,
             headline: formModel.headline as string,
@@ -433,13 +354,19 @@ export class PostFormComponent implements OnInit, OnChanges{
             published: formModel.published as boolean,
             publishedBy: formModel.publishedBy as string, //id
         
-            body: this.bodyArray,
-            gallery: formModel.gallery as Array<string>,
+            body: bodyDeepCopy,
+            gallery: gal ? gal : {},
         };
 
         this.postID ? savePost._id = this.postID: savePost._id = null;
 
         return savePost;
+    }
+
+    // Toggle hidden forms
+    private hideForm(form, hidden){
+        var hideFormControl = form.get('hideForm') as FormControl;
+        hideFormControl.setValue(hidden);
     }
 
     // Modify text for URL

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class GalleryFormComponent implements ControlValueAccessor, OnChanges {
   @Input() showGallery: boolean;
+  @Input() galleryValues;
   public showPieceForm: boolean = false;
   public gallery: FormGroup;
   public mediaTypes = ["Photograph", "Illustration", "Painting"];
@@ -32,9 +33,20 @@ export class GalleryFormComponent implements ControlValueAccessor, OnChanges {
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    for (let propName in changes) {
-      if (propName == "showGallery" && changes[propName].currentValue) {
-      }
+    if(changes.showGallery.firstChange){
+      if(changes.galleryValues.currentValue){
+        var data = changes.galleryValues.currentValue;
+        this.gallery.patchValue({
+          'name': data.name,
+          'curator': data.curator,
+          'summary': data.summary
+        });
+
+        // TODO: Could reduce this further with restructuring
+        for(var x = 0; x < data.pieces.length; x++){
+          this.addPiece(data.pieces[x]);
+        }
+      }  
     }
   }
 
@@ -70,19 +82,38 @@ export class GalleryFormComponent implements ControlValueAccessor, OnChanges {
     }
   }
 
-  public addPiece() {
-    this.pieces.push(this.fb.group({
+  public addPiece(pieceValue) {
+    var defaultPiece = {
+      "hideForm": false,
       "title": "",
       "artist": "",
       "type": "Photograph",
       "dateCreated": "",
       "info": "",
       "embed": ""
-    }));
+    };
+
+    // TODO: make this smarter/refactor
+    if(pieceValue){
+      defaultPiece.hideForm = pieceValue.hideForm ? pieceValue.hideForm : true;
+      defaultPiece.title = pieceValue.title ? pieceValue.title : '';
+      defaultPiece.artist = pieceValue.artist ? pieceValue.artist : '';
+      defaultPiece.type = pieceValue.type ? pieceValue.type : '';
+      defaultPiece.dateCreated = pieceValue.dateCreated ? pieceValue.dateCreated : '';
+      defaultPiece.info = pieceValue.info ? pieceValue.info : '';
+      defaultPiece.embed = pieceValue.embed ? pieceValue.embed : '';
+    }
+
+    this.pieces.push(this.fb.group(defaultPiece));
   }
 
   public deletePiece(index) {
     this.pieces.removeAt(index);
+  }
+
+  private hideForm(form, hidden){
+    var hideFormControl = form.get('hideForm') as FormControl;
+    hideFormControl.setValue(hidden);
   }
 
 }

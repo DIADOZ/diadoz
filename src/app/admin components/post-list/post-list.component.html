@@ -15,14 +15,22 @@
 <div [hidden]="formDisplay">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let post of list">
-      {{ post.headline }}
-      <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" (click)='editPost(post.customURL)'>Edit</button>
-        <button type="button" class="btn btn-default" (click)='deletePost(post._id)'>Delete</button>
+      <div *ngIf="post.hideForm">
+          <button class="btn btn-primary" (click)="post.hideForm = false">Cancel</button>
       </div>
+
+      <div *ngIf="!post.hideForm">
+          {{ post.headline }}
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" (click)="post.hideForm = true">Edit</button>
+            <button type="button" class="btn btn-default" (click)='deletePost(post._id)'>Delete</button>
+          </div>
+      </div>
+
+      <app-post-form *ngIf="post.hideForm" [postData]="post" [populate]="post.hideForm" (sentSubmit)="sentSubmit($event)"></app-post-form>
     </li>
   </ul>
-</div> 
+</div>
 
 <!-- <div [hidden]="!formDisplay">
   <app-post-form [postData]="postData" (sentSubmit)="sentSubmit($event)"></app-post-form>

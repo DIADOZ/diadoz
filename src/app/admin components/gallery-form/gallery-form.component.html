@@ -11,7 +11,7 @@
 
   <div class="form-group">
     <label for="summary">Summary</label>
-    <jodit-editor formControlName="summary"></jodit-editor>
+    <textarea formControlName="summary"></textarea>
   </div>
 
   <div class="form-group">
@@ -19,7 +19,7 @@
     <div formArrayName="pieces">
       <div class="list-group-item" *ngFor="let entry of pieces.controls; index as i" [formGroupName]="i">
         
-        <div *ngIf="!entry.hideForm">
+        <div *ngIf="!entry.value.hideForm">
           <div class="form-group">
             <label for="mediaTitle">Title</label>
             <input type="text" class="form-control" id="mediaTitle" formControlName="title">
@@ -45,7 +45,7 @@
 
           <div class="form-group">
             <label for="summary">Info</label>
-            <jodit-editor formControlName="info"></jodit-editor>
+            <textarea formControlName="info"></textarea>
           </div>
 
           <div class="form-group">
@@ -54,16 +54,16 @@
           </div>
 
           <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
-            <button name="saveButton" type="button" class="btn btn-default" (click)="entry.hideForm = true">Save</button>
+            <button name="saveButton" type="button" class="btn btn-default" (click)="hideForm(entry, true)">Save</button>
           </div>
         </div>
 
-        <div *ngIf="entry.hideForm">
+        <div *ngIf="entry.value.hideForm">
           <div>
             {{ piece[i].title }}
           </div>
           <div id="button-group-{{i}}" class="btn-group" role="group" aria-label="...">
-            <button name="editButton" type="button" class="btn btn-default" (click)="entry.hideForm = false">Edit</button>
+            <button name="editButton" type="button" class="btn btn-default" (click)="hideForm(entry, false)">Edit</button>
             <button type="button" class="btn btn-default" (click)='deletePiece(i)'>Delete</button>
           </div>
         </div>

@@ -52,7 +52,7 @@ import { PostDetailsComponent } from "./post components/post-details/post-detail
 
 const appRoutes: Routes = [
   { path: "login", component: LoginComponent},
-  { path: "admin", component: AdminComponent, canActivate: [AuthGuard]},
+  { path: "admin", component: AdminComponent},
   // re-add canActivate: [AuthGuard] to admin path
 
   { path: "", component: HomeComponent},
