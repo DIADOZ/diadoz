@@ -7,6 +7,7 @@ import { GalleryComponent } from "../gallery/gallery.component";
 import { DataService } from "../../services/data.service";
 
 import "rxjs/add/operator/switchMap";
+import { PostInfo } from "../../admin components/post-form/data-class";
 
 @Component({
   selector: "app-post-details",
@@ -16,18 +17,7 @@ import "rxjs/add/operator/switchMap";
 export class PostDetailsComponent implements OnInit {
   color = 'black';
   public post$;
-  public post = {
-    _id: 0,
-    headline: "",
-    subHeadline: "",
-    featuredImage: "",
-    customURL: "",
-    postType: "",
-    publishDate: "",
-    published: false,
-    publishedBy: "",
-    body: [],
-  };
+  public post: PostInfo;
 
   private selectedId: number;
   constructor(

@@ -1,0 +1,22 @@
+<h1 class="title">Administration</h1>
+<!-- <nav>
+  <a routerLink="form" routerLinkActive="active">New Post</a>
+  <a routerLink="posts" routerLinkActive="active">All Posts</a>
+</nav> -->
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item routerLink="form" routerLinkActive="active"> New Post </mat-list-item>
+      <mat-list-item routerLink="posts" routerLinkActive="active"> Posts </mat-list-item>
+      <mat-list-item (click)='logOut()'> Log Out </mat-list-item>
+      <!-- <mat-divider></mat-divider>
+      <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Media </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item routerLink="/crisis-center" routerLinkActive="active"> Entity </mat-list-item> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

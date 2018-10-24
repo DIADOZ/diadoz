@@ -11,7 +11,8 @@
 
   <div class="form-group">
     <label for="summary">Summary</label>
-    <textarea formControlName="summary"></textarea>
+    <jodit-editor [config]="{buttons: 'bold'}" formControlName="summary"></jodit-editor>
+    <!-- <textarea formControlName="summary"></textarea> -->
   </div>
 
   <div class="form-group">
@@ -45,7 +46,7 @@
 
           <div class="form-group">
             <label for="summary">Info</label>
-            <textarea formControlName="info"></textarea>
+            <jodit-editor [config]="{buttons: 'bold'}" formControlName="info"></jodit-editor>
           </div>
 
           <div class="form-group">

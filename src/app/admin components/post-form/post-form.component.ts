@@ -1,10 +1,11 @@
 import { DatePipe, Location } from "@angular/common";
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, SimpleChange } from "@angular/core";
 import { FormControl, FormGroup, Validators, FormBuilder, FormArray, FormGroupDirective, ControlContainer } from "@angular/forms";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Params, Router, ParamMap } from "@angular/router";
 
 import { DataService } from "../../services/data.service";
 import { text } from "@fortawesome/fontawesome-svg-core";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-post-form",
@@ -51,7 +52,7 @@ export class PostFormComponent implements OnInit, OnChanges{
     }
     
     constructor(private dataService: DataService, private route: ActivatedRoute, 
-        private location: Location, private fb: FormBuilder) {
+        private router:Router, private location: Location, private fb: FormBuilder) {
         this.createForm();
     }
 
@@ -73,6 +74,11 @@ export class PostFormComponent implements OnInit, OnChanges{
     // Set customURL events
     // Set publishedBy
     public ngOnInit() {
+        this.postForm.patchValue(this.route.paramMap.pipe(
+            switchMap((params: ParamMap) => {
+                return this.dataService.getPostByID(params.get('id'))
+            })
+        ));
         this.createCustomURL(); // Events for customURL creation
         this.populateCurrentUser(); // To find the current user
     }

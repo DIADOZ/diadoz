@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, ComponentFactoryResolver, ViewChild, ViewContainerRef} from "@angular/core";
 import { Router, Routes } from "@angular/router";
 
-import { AuthService } from "../../services/auth.service";
-import {LoginComponent} from "../login-form/login.component";
-import {MediaFormComponent} from "../media-form/media-form.component";
-import {PostFormComponent} from "../post-form/post-form.component";
+import { AuthService } from "../services/auth.service";
+// import {LoginComponent} from "./login-form/login.component";
+// import {MediaFormComponent} from "./media-form/media-form.component";
+// import {PostFormComponent} from "./post-form/post-form.component";
 
 @Component({
     selector: "admin",

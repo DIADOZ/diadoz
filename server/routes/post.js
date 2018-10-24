@@ -24,6 +24,18 @@ router.get('/all', function (req, res){
 	});
 });
 
+router.get('/:id', function(req, res){
+	var cursor = post.findById(req.params.id, 
+		function(err, data){
+			if (err){
+				res.send(err);
+			}
+
+			res.json(data);
+		}
+	);
+});
+
 router.get('/:customURL', function(req, res){
 	var cursor = post.findOne({
 		customURL: req.params.customURL

@@ -1,14 +1,28 @@
 export class Post {
-  public headline: string;
-  public featuredImage: string; //id
-  public customURL: string;
-  public publishDate: Date;
-  public published: boolean;
-  public publishedBy: string; //id
-  public postType: string;
-  public subHeadline?: string;
-  public body?: any[];
-  public gallery: Gallery;
+  headline: string;
+  featuredImage: string; //id
+  customURL: string;
+  publishDate: Date;
+  published: boolean;
+  publishedBy: string; //id
+  postType: string;
+  subHeadline?: string;
+  body?: any[];
+  gallery: Gallery;
+}
+
+export class PostInfo {
+  _id: string;
+  headline: string;
+  featuredImage: string; //id
+  customURL: string;
+  publishDate: Date;
+  published: boolean;
+  publishedBy: string; //id
+  postType: string;
+  subHeadline?: string;
+  body?: any[];
+  gallery: Gallery;
 }
 
 

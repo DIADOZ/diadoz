@@ -22,16 +22,16 @@ export class LoginComponent {
     };
 
     public onSubmit() {
-        this.authService.login(this.model).subscribe((user) => {
-            if (this.authService.isLoggedIn) {
-                // Get the redirect URL from our auth service
-                // If no redirect has been set, use the default
-                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : "/admin";
-                const userHandle = user.firstName.trim() + " " + user.lastName.trim();
-                // Redirect the user
-                this.router.navigate([redirect], { queryParams: { user: userHandle } });
-            }
-        });
+        // this.authService.login(this.model).subscribe((user) => {
+        //     if (this.authService.isLoggedIn) {
+        //         // Get the redirect URL from our auth service
+        //         // If no redirect has been set, use the default
+        //         const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : "/admin";
+        //         const userHandle = user.firstName.trim() + " " + user.lastName.trim();
+        //         // Redirect the user
+        //         this.router.navigate([redirect], { queryParams: { user: userHandle } });
+        //     }
+        // });
 
         // this.submitted = true;
         // this.dataService.logIn(this.model).subscribe((model) => {

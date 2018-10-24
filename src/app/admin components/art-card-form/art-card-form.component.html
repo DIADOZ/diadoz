@@ -21,7 +21,8 @@
   
   <div class="form-group">
       <label for="summary">Summary</label>
-      <input type="text" class="form-control" id="summary" formControlName="summary">
+      <!-- <input type="text" class="form-control" id="summary" formControlName="summary"> -->
+      <jodit-editor [config]="{buttons: 'bold'}" formControlName="summary"></jodit-editor>
   </div>
   
   <div class="form-group">
