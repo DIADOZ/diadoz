@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import "rxjs/add/operator/map";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Post, PostInfo } from "../admin components/post-form/data-class";
+import { Post, PostInfo } from "../admin/post-form/data-class";
 import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
+import { Observable, of } from "rxjs";
 
 @Injectable()
 export class DataService {
@@ -14,10 +15,15 @@ export class DataService {
     console.log("DataService is connected...");
   }
 
-  public getAllPosts() {
+  getAllPosts(): Observable<Post[]> {
     // return this.http.get('./assets/data/posts')
-    return this.http.get<Post[]>("/api/post/all");
+    return this.http.get<Post[]>("/api/post/all").pipe(
+      // TODO: add logging for succesful event
+      //tap(post => this.log('fetched heroes')),
+      catchError(this.handleError('getAllPosts', []))
+    );
   }
+
 
   public getPosts(page) {
     // return this.http.get('./assets/data/posts')
@@ -25,17 +31,14 @@ export class DataService {
       .map((res) => res);
   }
 
-  public getPostByURL(data) {
-    const customURL = data.customURL;
+  public getPostByURL(customURL) {
     // return this.http.get('./assets/data/posts')
     return this.http.get<PostInfo>(`/api/post/${customURL}`);
   }
 
   public getPostByID(id) {
     // return this.http.get('./assets/data/posts')
-    return this.http.get<Post>(`/api/post/${id}`).pipe(
-      map(post => post)
-    );
+    return this.http.get<Post>(`/api/post/edit/${id}`);
   }
 
   public deletePost(id) {
@@ -58,4 +61,26 @@ export class DataService {
     return this.http.post("/api/user/login", data)
       .map((res) => res);
   }
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+  */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: add a log function (message service on Angular website) 
+      //       better job of transforming error for user consumption
+      //this.log(`${operation} failed: ${error.message}`);
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
 }

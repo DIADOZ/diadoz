@@ -1,7 +1,7 @@
 import { NgModule }       from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule }   from '@angular/common';
 
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSidenavModule } from "@angular/material";
 import { MatCheckboxModule } from "@angular/material";
 import { MatRadioModule } from "@angular/material";
@@ -11,11 +11,9 @@ import { MatButtonToggleModule } from "@angular/material";
 import { MatDatepickerModule } from "@angular/material";
 import { MatNativeDateModule } from "@angular/material";
 import { MatInputModule } from "@angular/material";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Angulartics2Module } from "angulartics2";
 import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
-import { Md2DatepickerModule, MdNativeDateModule } from "md2";
+import { Md2DatepickerModule, MdNativeDateModule } from "angular-md2";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JoditAngularModule } from 'jodit-angular';
@@ -27,7 +25,7 @@ import { ArtCardFormComponent } from './art-card-form/art-card-form.component';
 import { TextFormComponent } from './text-form/text-form.component';
 import { PiecesFormComponent } from './pieces-form/pieces-form.component';
  
-import { AdminComponent } from './admin.component';
+import { AdminComponent } from './admin/admin.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostFormComponent } from './post-form/post-form.component';
  
@@ -37,10 +35,10 @@ import { AdminRoutingModule } from './admin-routing.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AdminRoutingModule,
-    BrowserModule,
+
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
     MatButtonToggleModule,
@@ -51,7 +49,6 @@ import { AdminRoutingModule } from './admin-routing.module';
     MatRadioModule,
     InfiniteScrollModule,
     MatButtonModule,
-    ReactiveFormsModule,
     FontAwesomeModule,
     JoditAngularModule ,
     MdNativeDateModule,

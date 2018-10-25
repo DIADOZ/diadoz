@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs/Observable";
 import { of } from "rxjs";
 import { delay, tap } from "rxjs/operators";
 

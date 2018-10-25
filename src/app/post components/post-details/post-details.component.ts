@@ -7,7 +7,8 @@ import { GalleryComponent } from "../gallery/gallery.component";
 import { DataService } from "../../services/data.service";
 
 import "rxjs/add/operator/switchMap";
-import { PostInfo } from "../../admin components/post-form/data-class";
+import { PostInfo } from "../../admin/post-form/data-class";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-post-details",
@@ -17,7 +18,16 @@ import { PostInfo } from "../../admin components/post-form/data-class";
 export class PostDetailsComponent implements OnInit {
   color = 'black';
   public post$;
-  public post: PostInfo;
+  public post = {
+    _id: "",
+    headline: "",
+    featuredImage: "",
+    customURL: "",
+    postType: "",
+    publishDate: new Date,
+    published: false,
+    publishedBy: "",
+  };
 
   private selectedId: number;
   constructor(
@@ -26,14 +36,18 @@ export class PostDetailsComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.post$ = this.route.params
-      .switchMap((params: ParamMap) =>
-        this.dataService.getPostByURL(params),
-      )
-      .subscribe((post)  =>
-        this.post = post,
-      );
-
+    // this.post$ = this.route.params
+    //   .switchMap((params: ParamMap) =>
+    //     this.dataService.getPostByURL(params),
+    //   )
+    //   .subscribe((post)  =>
+    //     this.post = post,
+    //   );
+    this.route.params.switchMap((params) => 
+      this.dataService.getPostByURL(params.customURL)
+    ).subscribe(
+      (post) => this.post = post
+    );
   }
   public fbClick() {
     fbButton({

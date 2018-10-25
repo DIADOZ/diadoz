@@ -11,7 +11,7 @@ export class Post {
   gallery: Gallery;
 }
 
-export class PostInfo {
+export interface PostInfo {
   _id: string;
   headline: string;
   featuredImage: string; //id

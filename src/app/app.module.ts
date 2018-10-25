@@ -1,11 +1,14 @@
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from '@angular/common/http';
-
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+
 import { Angulartics2Module } from "angulartics2";
 import { Angulartics2GoogleAnalytics } from "angulartics2/ga";
-import { Md2DatepickerModule, MdNativeDateModule } from "md2";
+import { Md2Module } from 'angular-md2';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JoditAngularModule } from 'jodit-angular';
@@ -24,14 +27,26 @@ import { HomeComponent } from "./components/home/home.component";
 import { PageNotFoundComponent } from "./components/404-page/not-found.component";
 import { MousewheelComponent } from "./components/mousewheel/mousewheel.component";
 
-import { AdminModule } from "./admin components/admin.module";
-import { PostFormComponent } from "./admin components/post-form/post-form.component";
+import { AdminModule } from "./admin/admin.module";
+import { PostFormComponent } from "./admin/post-form/post-form.component";
 
 import { GalleryComponent } from './post components/gallery/gallery.component';
 import { CardComponent } from "./post components/card/card.component";
 import { PostDetailsComponent } from "./post components/post-details/post-details.component";
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    InfiniteScrollModule,
+    FontAwesomeModule,
+    JoditAngularModule ,
+    Md2Module
+  ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -43,24 +58,15 @@ import { PostDetailsComponent } from "./post components/post-details/post-detail
     EscapeHtmlPipe,
     GalleryComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    BrowserAnimationsModule,
-    InfiniteScrollModule,
-    FontAwesomeModule,
-    JoditAngularModule ,
-    MdNativeDateModule,
-    Md2DatepickerModule,
-    AdminModule,
-    AppRoutingModule,
-  ],
   providers: [
     DataService,
     AuthGuard,
     AuthService,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}
