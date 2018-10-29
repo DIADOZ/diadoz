@@ -24,7 +24,7 @@ router.get('/all', function (req, res){
 	});
 });
 
-router.get('edit/:id', function(req, res){
+router.get('/edit/:id', function(req, res){
 	var cursor = post.findById(ObjectId(req.params.id), 
 		function(err, data){
 			if (err){

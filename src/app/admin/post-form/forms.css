@@ -14,4 +14,8 @@
     display: inline-flex;
     flex-direction: column;
 }
+
+.box{
+    display: flex;
+}
 /* move to admin? */

@@ -6,6 +6,7 @@ import { ActivatedRoute, Params, Router, ParamMap } from "@angular/router";
 import { DataService } from "../../services/data.service";
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { switchMap } from "rxjs/operators";
+import { Post, PostInfo } from "./data-class";
 
 @Component({
   selector: "app-post-form",
@@ -47,6 +48,10 @@ export class PostFormComponent implements OnInit, OnChanges{
         return this.postForm.get('body') as FormArray;
     }
 
+    get syncURL(){
+        return this.postForm.get('syncURL') as FormControl;
+    }
+
     get bodyVal(){
         return this.body.value;
     }
@@ -56,12 +61,14 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.createForm();
     }
 
+    
     public createForm(){
         this.postForm = this.fb.group({
             'headline': [null, Validators.compose([Validators.required, Validators.maxLength(200)])],
             'subHeadline': [null, Validators.maxLength(200)],
             'featuredImage': [null, Validators.required],
-            'customURL': [null, Validators.required],
+            'customURL': [{value: null, disabled: true}, Validators.required],
+            'syncURL': true,
             'publishDate': [(new Date).toISOString(), Validators.required],
             'published': [true, Validators.required],
             'publishedBy': [null, Validators.required],
@@ -74,14 +81,22 @@ export class PostFormComponent implements OnInit, OnChanges{
     // Set customURL events
     // Set publishedBy
     public ngOnInit() {
-        this.postForm.patchValue(this.route.paramMap.pipe(
-            switchMap((params: ParamMap) => {
-                return this.dataService.getPostByID(params.get('id'))
-            })
-        ));
+        this.route.data.subscribe(
+            (data: { postData: PostInfo }) => {
+                if(Object.keys(data).length !== 0 && data.constructor === Object){
+                    this.postForm.patchValue(data.postData);
+                    this.patchBodyArray(data.postData);
+                    this.postID = data.postData._id;
+                }
+            }
+        );
+
         this.createCustomURL(); // Events for customURL creation
         this.populateCurrentUser(); // To find the current user
+
     }
+
+    
 
     public ngOnChanges(changes: {[propKey: string]: SimpleChange}){
         if(changes.populate.firstChange){
@@ -108,16 +123,7 @@ export class PostFormComponent implements OnInit, OnChanges{
 
             this.showGallery = true;
 
-            for(var x = 0; x < data.body.length; x++){
-                var currentBody = data.body[x];
-                if(currentBody.class === "card"){
-                    this.addArtCard(currentBody);
-                } else if (currentBody.class === "media"){
-                    this.addMedia(currentBody);
-                } else if(currentBody.class === "text"){
-                    this.addText(currentBody);
-                }
-            }
+            this.patchBodyArray(data);
         }
     }
 
@@ -282,6 +288,19 @@ export class PostFormComponent implements OnInit, OnChanges{
         this.body.removeAt(index);
     }
 
+    private patchBodyArray(post){
+        for(var x = 0; x < post.body.length; x++){
+            var currentBody = post.body[x];
+            if(currentBody.class === "card"){
+                this.addArtCard(currentBody);
+            } else if (currentBody.class === "media"){
+                this.addMedia(currentBody);
+            } else if(currentBody.class === "text"){
+                this.addText(currentBody);
+            }
+        }
+    }
+
     // Sets events to headline and subheadline to populate customURL
     // Only when customURL is untouched
     private createCustomURL(){
@@ -289,8 +308,18 @@ export class PostFormComponent implements OnInit, OnChanges{
         const subHeadlineControl = this.postForm.get('subHeadline') as FormControl;
         const customURLControl = this.postForm.get('customURL') as FormControl;
 
+        this.syncURL.valueChanges.forEach((value)=>{
+            if(value){
+                // grab current vals of headline and subheadlines
+                customURLControl.setValue(this.slugify(subHeadlineControl.value + '-' + headlineControl.value));
+                customURLControl.disable();
+            } else {
+                customURLControl.enable();
+            }
+        });
+
         headlineControl.valueChanges.forEach((value) => {
-            if(!customURLControl.touched){
+            if(this.syncURL.value === true){
                 // update
                 var updatedURL = '';
                 if(subHeadlineControl.value){
@@ -305,7 +334,7 @@ export class PostFormComponent implements OnInit, OnChanges{
         });
 
         subHeadlineControl.valueChanges.forEach((value) => {
-            if(!customURLControl.touched){
+            if(this.syncURL.value === true){
                 // update
                 var updatedURL = '';
                 if(headlineControl.value){

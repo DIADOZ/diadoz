@@ -6,7 +6,7 @@
             <div [hidden]="forReview">
                 <div class="form-group">
                     <label for="headline">Headline</label>
-                    <input type="text" class="form-control" id="headline" formControlName="headline">
+                    <input type="text" class="form-control" id="headline" formControlName="headline" required>
                     <div [hidden]="headline.valid || headline.pristine"
                     class="alert alert-danger">
                         Headline is required
@@ -20,32 +20,33 @@
     
                 <div class="form-group">
                     <label for="featuredImage">Featured Image</label>
-                    <input type="text" class="form-control" id="featuredImage" formControlName="featuredImage">
+                    <input type="text" class="form-control" id="featuredImage" formControlName="featuredImage" required>
                 </div>
     
                 <div class="form-group">
                     <label for="customURL">Custom URL</label>
-                    <p>{{postForm.get('customURL').value}}</p>
-                    <!-- <input type="text" class="form-control" id="customURL" formControlName="customURL"> -->
+                    <input type="text" class="form-control" id="customURL" formControlName="customURL" required>
+                    <label for="customURL">Sync with Headline and Sub-Headline</label>
+                    <input type="checkbox" formControlName="syncURL" checked>
                 </div>
     
                 <div class="form-group">
                     <label for="publishDate">Publish Date</label>
-                    <md2-datepicker type='datetime' name='publishDate' formControlName="publishDate"></md2-datepicker>
+                    <md2-datepicker type='datetime' name='publishDate' formControlName="publishDate" required></md2-datepicker>
                 </div>
     
                 <div class="form-group">
-                    <mat-checkbox formControlName="published" labelPosition="before">Published</mat-checkbox>
+                    <mat-checkbox formControlName="published" labelPosition="before" required>Published</mat-checkbox>
                 </div>
                 
                 <div class="form-group">
                     <label for="publishBy">Published By</label>
-                    <input type="text" class="form-control" id="publishedBy" formControlName="publishedBy">
+                    <input type="text" class="form-control" id="publishedBy" formControlName="publishedBy" required>
                 </div>
             
                 <div class="form-group">
                     <label for="postType">Post Type</label>
-                    <mat-radio-group class="form-control" id="postType" formControlName="postType" (ngModelChange)='toggleType($event)'>
+                    <mat-radio-group class="form-control" id="postType" formControlName="postType" (ngModelChange)='toggleType($event)' required>
                         <mat-radio-button *ngFor="let type of postTypes" [value]="type">{{type}}</mat-radio-button>
                     </mat-radio-group>
                 </div>
