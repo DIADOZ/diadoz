@@ -352,11 +352,9 @@ export class PostFormComponent implements OnInit, OnChanges{
     // Populate value of publishedBy with current user
     private populateCurrentUser() {
         if(this.postForm.get('publishedBy').value == null){
-            this.route.queryParams.subscribe((params: Params) => {
-                this.postForm.patchValue({
-                    publishedBy: params.user
-                });
-                console.log(this.postForm.get('publishedBy').value + " is using the post form");
+            let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            this.postForm.patchValue({
+                publishedBy: currentUser.userName ? currentUser.userName : 'N/A'
             });
         }
     }
