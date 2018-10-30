@@ -52,6 +52,10 @@ export class PostFormComponent implements OnInit, OnChanges{
         return this.postForm.get('syncURL') as FormControl;
     }
 
+    get customURL(){
+        return this.postForm.get('customURL') as FormControl;
+    }
+
     get bodyVal(){
         return this.body.value;
     }
@@ -156,9 +160,10 @@ export class PostFormComponent implements OnInit, OnChanges{
         
         if(postData._id){
             this.dataService.updatePost(postData).subscribe((res) => {
-                this.onReset();
-                this.forReview = false;
-                this.sentSubmit.emit(true);
+                // this.onReset();
+                // this.forReview = false;
+                // this.sentSubmit.emit(true);
+                this.goBack();
             });
         } else {
             this.dataService.insertPost(postData).subscribe((res) => {
@@ -204,7 +209,7 @@ export class PostFormComponent implements OnInit, OnChanges{
             defaultMedia.title = mediaValue.title ? mediaValue.title : '';
             defaultMedia.embed = mediaValue.embed ? mediaValue.embed : '';
             defaultMedia.type = mediaValue.type ? mediaValue.type : '';
-            defaultMedia.width = mediaValue.wdith ? mediaValue.width : '';
+            defaultMedia.width = mediaValue.width ? mediaValue.width : '';
         }
 
         this.body.push(this.fb.group(defaultMedia));
@@ -361,6 +366,10 @@ export class PostFormComponent implements OnInit, OnChanges{
 
     // Prepares postForm data to be submitted
     private prepareSaveForm() {
+        if(this.customURL.disabled){
+            this.customURL.enable();
+        }
+
         const formModel = this.postForm.value;
 
         const bodyDeepCopy = formModel.body.map(

@@ -24,6 +24,7 @@ export class MediaFormComponent implements OnInit, AfterViewInit {
     public showMain = true;
 
     public mediaForm: FormGroup;
+    public mediaTypes = ["Video", "Image", "Tweet", "Other"];
   
     constructor(parent: FormGroupDirective, private fb: FormBuilder) {
     //   this.form = parent;

@@ -19,12 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JoditAngularModule } from 'jodit-angular';
 
 import { GalleryFormComponent } from './gallery-form/gallery-form.component';
-import { PostReviewComponent } from './post-review/post-review.component';
 import { MediaFormComponent } from "./media-form/media-form.component";
-import { ArtCardFormComponent } from './art-card-form/art-card-form.component';
-import { TextFormComponent } from './text-form/text-form.component';
-import { PiecesFormComponent } from './pieces-form/pieces-form.component';
- 
 import { AdminComponent } from './admin/admin.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostFormComponent } from './post-form/post-form.component';
@@ -62,11 +57,7 @@ import { AdminRoutingModule } from './admin-routing.module';
     PostListComponent,
     PostFormComponent,
     MediaFormComponent,
-    ArtCardFormComponent,
-    TextFormComponent,
     GalleryFormComponent,
-    PostReviewComponent,
-    PiecesFormComponent,
   ]
 })
 export class AdminModule {}
