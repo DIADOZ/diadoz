@@ -32,7 +32,7 @@
     
                 <div class="form-group">
                     <label for="publishDate">Publish Date</label>
-                    <md2-datepicker type='datetime' name='publishDate' formControlName="publishDate" required></md2-datepicker>
+                    <md2-datepicker type='datetime' format='M/d/y H:mm A' name='publishDate' formControlName="publishDate" required></md2-datepicker>
                 </div>
     
                 <div class="form-group">
@@ -123,7 +123,7 @@
                                         
                                         <div class="form-group">
                                             <label for="summary">Summary</label>
-                                            <jodit-editor [config]="{buttons: 'bold'}" formControlName="summary"></jodit-editor>
+                                            <jodit-editor formControlName="summary"></jodit-editor>
                                         </div>
                                         
                                         <div class="form-group">
@@ -178,7 +178,7 @@
                                     <div *ngSwitchCase="'text'">
                                         <div class="form-group">
                                             <label for="post-text">Text</label>
-                                            <jodit-editor [config]="{buttons: 'bold'}" formControlName="text"></jodit-editor>
+                                            <jodit-editor formControlName="text"></jodit-editor>
                                         </div>
                                         <div class="form-group">
                                             <button type='button' type="button" class="btn btn-default" (click)="hideForm(entry, true)">
