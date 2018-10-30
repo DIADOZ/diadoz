@@ -6,13 +6,15 @@ import { PostDetailsComponent } from './post components/post-details/post-detail
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
     // re-add canActivate: [AuthGuard] to admin path
     { 
         path: 'admin', 
         loadChildren: 'app/admin/admin.module#AdminModule',
-        data: { preload: true }
+        canLoad: [AuthGuard],
+        //data: { preload: true }
     },
 
     { path: "post/:customURL", component: PostDetailsComponent},

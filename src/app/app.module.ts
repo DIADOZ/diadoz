@@ -33,13 +33,21 @@ import { PostFormComponent } from "./admin/post-form/post-form.component";
 import { GalleryComponent } from './post components/gallery/gallery.component';
 import { CardComponent } from "./post components/card/card.component";
 import { PostDetailsComponent } from "./post components/post-details/post-details.component";
+import { LoginComponent } from "./admin/login-form/login.component";
+import { LoginRoutingModule } from "./login-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    LoginRoutingModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    
+    
 
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     InfiniteScrollModule,
@@ -49,6 +57,7 @@ import { PostDetailsComponent } from "./post components/post-details/post-detail
   ],
   declarations: [
     AppComponent,
+    LoginComponent,
     HomeComponent,
     PostDetailsComponent,
     CardComponent,
