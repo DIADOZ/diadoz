@@ -17,7 +17,7 @@ body{
   margin: 0;
 }
 
-.container{
+.details-container{
   box-sizing: border-box;
   display: block;
   position: relative;
@@ -174,7 +174,7 @@ body{
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 550px) {
-  .container{
+  .details-container{
     padding-top: 3.3em;
   }
 
@@ -183,7 +183,7 @@ body{
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 
-  .container{
+  .details-container{
     position: relative;
     /*padding: 0px;*/
     width: 100%;
