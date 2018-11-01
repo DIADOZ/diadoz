@@ -14,7 +14,7 @@
 
     <br />
     <div class="card-body-wrapper">
-    <p class="card-body-text">{{card.summary}}</p>
+    <p class="card-body-text" [innerHTML]="card.summary | keepHtml"></p>
     <p class="contributing-artist-header-text">Contributing Artists</p>
     <p *ngFor="let artist of card.contributingArtists" class="contributing-artist-text">
       {{artist}}
